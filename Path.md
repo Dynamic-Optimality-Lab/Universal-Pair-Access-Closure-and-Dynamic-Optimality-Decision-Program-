@@ -404,4 +404,31 @@
 **Status table delta.** Spec PHASE 05/06/07/08/09: IMPLEMENTATION-COMPLETE with evidence gates (`*_EVIDENCE_READY`, `*_ATTACK_COMPLETE`, `CONSTANTS_SCAN_COMPLETE`); dispositions pending humans. WorkPlan Phase 2: implementation done; REVIEWED claims: none (correct).
 **Verdict.** WP-2 (spec PHASE 05–09) implementation FINISHED with zero hidden gaps; all remainders are named human/toolchain gates. FOLLOWS WorkPlan v0.4-WP8. No deviation.
 
+## Entry 040 — 2026-09-25 UTC — Phase WP-3 execution order intake (WorkPlan Phase 3 = spec PHASE 10–11) — FOLLOWS WorkPlan §13
+
+**Scope.** Same standing orders: exact implementation, `print` + `# STEP-XX` per step, Path detail to log lines, production code, stress with evidence, prove every demand, audit with gaps scoped pre-verdict, autonomous commit+push. WP-3 = K6 Saturation War (attack-first) + MST0-14 proof under the hard entry gate (13/08U/11/09/22 REVIEWED, else proof NOT_REACHED). REVIEWED/REFUTED dispositions need humans/formal — unclaimable here.
+**Verdict.** FOLLOWS WorkPlan Phase 3 (attack runnable, proof gated). No deviation.
+
+## Entry 041 — 2026-09-25 UTC — WP-3 implementation record: K6 battery, cleanroom checker, gated runners (WorkPlan v0.4-WP8, no plan change) — FOLLOWS WorkPlan Phase 3
+
+**Scope.** Attack machinery + gate enforcement; no proof on unreviewed ground.
+**Files made/changed (deep detail).**
+- `python/proof_attack/k6_saturation.py` (full battery replacing WP2 stub): 6 seeded demand families (delete-burst-then-KEEP, recurrent edge motifs, rank-gap extremes, mirror sweeps, nested intervals, KEEP-biased random) over n/shape grid; verdicts from `M.evaluate` (imported payment path); demand metrics from a REAL ledger walk (ledger/max ACTIVE/latent/w, not a model); canonical minimization + clean-room agreement wired in the runner. Prints: none at import (library); runner prints below.
+- `python/cleanroom/repayment_check.py` (share-nothing paid/residual re-evaluation).
+- `scripts/run_phase10.py` (STEP-10-0 gate-status prints 29/34/36, STEP-10-2 minimization 42, start 58, STEP-10-1 attack 64, PASS 81; writes `proof_attacks/k6/k6_attack.json`). `scripts/run_phase11.py` (start 23, STEP-11-0 assert 26, closed 33, NOT_REACHED PASS 41, open-branch 43/48; writes `proofs/MST0-14/proof_gate.json`).
+**Run evidence.** Phase 10: gate recorded PROOF_BLOCKED_UPSTREAM (5 unready), attack `KEEP_REPAYMENT_ATTACK_SURVIVED` (90 executions, w_max=40, active_max=213 — multi-hundred-unit demand absorbed, zero residual). Phase 11: `PROOF_BLOCKED_UPSTREAM`, phase NOT_REACHED, exit 0 (correct gate evaluation). No MST0-14 review package written (nothing to review yet — proof unattempted by gate).
+**Mined (not promoted) structural observation.** Max simultaneously payable ACTIVE pool 213 with max single regret 40: the frozen semantics absorb demand two orders above “six” — consistent with the no-six-slot rule (k bounds injection rate, not a slot count). Lemma status: none claimed.
+**Benchmarks.** K6 families are the benchmarks (negation-derived, independently generated); capped-pool variant as efficacy control (below).
+**Anti-overfitting.** Survival never called theorem (PASS lines + record state it); H3T untouched; nothing consumed.
+**Verdict.** FOLLOWS WorkPlan Phase 3 (PHASE-10 executed, PHASE-11 gated). No deviation.
+
+## Entry 042 — 2026-09-25 UTC — WP-3 stress evidence + extreme-rigor compliance audit (WorkPlan Phase 3 / spec PHASE 10–11) — FOLLOWS WorkPlan §§12-J,13
+
+**Scope.** Prove every demand; scope every remainder before verdict.
+**Stress evidence.** Full suite 52 passed (47 prior + 5 K6: survival+demand, determinism identical, gate-blocked-5/5 assertion, capped-pool exposure, no-slot-lore). Efficacy: pool-capped-at-2 variant exposes residual on burden history (base pays 5/residual 0 → capped exposes) — the war would catch a real defect. Determinism: identical demand stats across repeats.
+**Compliance matrix (WorkPlan Phase 3 → disposition).** 10.1 thirteen dimensions ✓ (scale-degenerate honestly: model has single scale S0 — recorded, not padded; other 12 exercised). 10.2 minimization+replay+cleanroom pipeline implemented ✓ (unexercised end-to-end for lack of witness — correctly so). 10.3 mining without promotion ✓ (observation above, zero lemmas). 11.1 case-complete proof ✗ BLOCKED (gate held, correct). 11.2 matching theorem ✗ BLOCKED. 11.3 formal+review ✗ BLOCKED (toolchain/human). REP suite green as implemented (REP-09 analogue via k=1 killer in WP-2 mutants; REP-12/14 pending). Fail-fast: later positive phases untouched; no consumption attempted.
+**Open gaps (scoped, gate-blocking noted).** MST0-14 PROVED/REVIEWED needs upstream REVIEWED + human proof + Lean formal + hostile ACCEPT; KEEP_REPAYMENT structural lemmas unpromoted by design. Ledger unchanged.
+**Status table delta.** Spec PHASE 10: ATTACK-COMPLETE (`KEEP_REPAYMENT_ATTACK_SURVIVED`); PHASE 11: NOT_REACHED (gate held). WorkPlan Phase 3: attack done, proof blocked-correct.
+**Verdict.** WP-3 (spec PHASE 10–11) implementation FINISHED with zero hidden gaps; proof correctly refused. FOLLOWS WorkPlan v0.4-WP8. No deviation.
+
 **End of Path entries so far (append-only below this line).**
