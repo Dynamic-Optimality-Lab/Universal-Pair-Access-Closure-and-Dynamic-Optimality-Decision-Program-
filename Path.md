@@ -1,8 +1,8 @@
 # SPLAY-AM-DECIDE-v0.4 Path — implementation tracker
 
 **Experiment:** `SPLAY-AM-DECIDE-v0.4`
-**Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order)
-**Plan:** `WorkPlan.md` (current revision v0.4-WP5; revision history WP1→WP2→WP3→WP4 preserved below)
+**Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule)
+**Plan:** `WorkPlan.md` (current revision v0.4-WP6; revision history WP1→WP2→WP3→WP4→WP5 preserved below)
 **Rule for this file:** Every implementation step is appended here contemporaneously with deep detail matching `WorkPlan.md` granularity — scope, files made, code produced and how it was coded, benchmarks (and their training-disjointness), anti-overfitting actions, gates — plus an explicit verdict: **FOLLOWS WorkPlan §X** or **DEVIATION from WorkPlan §X (justified)**. A phase gate without a Path entry is not closed (`INV-097`). No entry is ever rewritten; corrections are new entries (erratum-preserving).
 **Current terminal status:** `PRE_FOUNDATION` (planning + skeleton done; `FOUNDATION_FROZEN` not yet claimed; no Phase 01+ theorem-facing execution has occurred — complies with `PRE_FREEZE_PARENT_PIN_REQUIRED`).
 **Repo state at last entry:** `impl/` on `main`, clean skeleton + docs; `artifacts/v04/` empty by design (only new results after this plan are present — stale-clearance verified).
@@ -208,5 +208,25 @@
 **Anti-overfitting.** Endpoint omission class eliminated by SHA derivation; PSC behavior frozen before implementations; H3T untouched.
 **Status table delta.** WorkPlan v0.4-WP5; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS WorkPlan v0.4-WP5 + v0.4.1 A2–A4. No deviation.
+
+## Entry 018 — 2026-09-25 UTC — Fifth review intake: 2 freeze-readiness verifications (WP5 → WP6) — FOLLOWS WorkPlan §13
+
+**Scope.** Intake verification review: (1) v0.4.1 A5 literally binds WP3 while plan is WP5 — pre-freeze revision allowed, but stack must bind the living revision by rule or ratify WP5 at Phase 00. (2) WP5 reuses `proof_attack` + `pair_access_certificate` schemas for the endpoint-aware witness — verify they can actually encode `E_0/E_m`, ledger identity/trace, subsequence certificate, `lhs`/`rhs`, strict residual (restrictive `additionalProperties:false` on the payload path would break the contract). Both accepted as verification items (architecture not in dispute).
+**Verdict.** FOLLOWS reviewer order (verify before freeze). No deviation.
+
+## Entry 019 — 2026-09-25 UTC — WP6 repairs: v0.4.2 binding + authored schemas + green validation (WorkPlan v0.4-WP6) — FOLLOWS WorkPlan v0.4-WP6
+
+**Scope.** Implement Entry-018 dispositions.
+**Files made/changed.**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (new, RATIFIED 2026-09-25): B1 rebinds the stack to the final pre-freeze WorkPlan revision by rule (sealed by `prereg_sha256.txt` at freeze; no version-tag freeze — v0.4/v0.4.1 bytes untouched, A2–A4 in force); B2 requires the witness payload to validate under both schemas with no closed-world blockers, demonstrated by a validation record freeze artifact.
+- `schemas/proof_attack.schema.json` (new): §8.4 envelope (12 required fields) + open-world `exact_witness` object with typed endpoint-aware payload properties (`E_0/E_m` rationals, `L_0/L_m` ledger refs with energy, `subsequence_certificate`, `paired_execution`, `block_decomposition`, costs, `lhs/rhs/residual`); envelope-level `additionalProperties:false` constrains only the 12-field record shell, never the payload path (B2-compliant).
+- `schemas/pair_access_certificate.schema.json` (new): MST0-17 evaluation (`theorem_id` const, statement SHA, witness ref, `n`, ledger hashes, energies, costs, `A_n`, `lhs/rhs/residual`, strict-positive flag, subsequence certificate, block hash, replay/checker).
+- Validation: sample endpoint-aware witness (lhs 26 > rhs 20, residual 6) validated green through both schemas with project-pinned jsonschema 4.25.1; record `artifacts/v04/freeze/WITNESS_SCHEMA_VALIDATION.json` (schema SHAs `97590c598934…` / `490ccf8aebc8…`, gitignored freeze artifact, SHA-logged here).
+- `WorkPlan.md` → v0.4-WP6 (normative line, version, §0 stack item, §3 tree, §11 schemas note, Phase-5 validation parenthetical); `Path.md` headers (WP6, both amendments); `CHANGELOG.md` (WP6 lines).
+**Code/how.** `Write` (amendment + 2 schemas) + `Bash` validation (`jsonschema.validate` ×2 green) + record writer (SHA-256) + `Edit` per item.
+**Benchmarks.** None (schemas + validation only; sample is a shape check, not evidence).
+**Anti-overfitting.** Payload fields optional at the witness-object level by design (attack-survived `null` + other theorems unaffected); closed-world risk eliminated on the payload path; H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP6, inside its own stack by B1 rule; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP6 + v0.4.1 A2–A4 + v0.4.2 B1–B2. No deviation.
 
 **End of Path entries so far (append-only below this line).**
