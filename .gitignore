@@ -1,0 +1,16 @@
+artifacts/v04/freeze/*
+artifacts/v04/formal/*
+artifacts/v04/proof_attacks/*
+artifacts/v04/counterexamples/*
+artifacts/v04/proofs/*
+artifacts/v04/negative/*
+artifacts/v04/audits/*
+artifacts/v04/logs/*
+artifacts/v04/seal/*
+!artifacts/v04/*/.gitkeep
+!artifacts/v04/*/*/.gitkeep
+__pycache__/
+*.pyc
+.venv/
+*.tar.zst
+parent-ref/
