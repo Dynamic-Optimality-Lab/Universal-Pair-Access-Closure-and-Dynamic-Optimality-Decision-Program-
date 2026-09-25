@@ -146,4 +146,23 @@
 **Checks.** `tests/mutation/.gitkeep` present; `lake-manifest.json` present at root; `lean/` 13 `.lean` + root configs; `prereg/` 13 present files (14th `prereg_sha256.txt` pending freeze); `IMPLEMENTATION_SPEC_v0.4.md` 85,888 bytes; `run_phase00.py` still exits 2 `NOT_FROZEN`; WorkPlan grep clean (no live stale counts/taxonomy/formula); theorem ledger unchanged (all `UNPROVED`/`BLOCKED`, no lifecycle jump); no secrets in tree.
 **Verdict.** FOLLOWS WorkPlan §12 (verification). Proceeding to commit+push (user ordered, no prompt).
 
+## Entry 011 — 2026-09-25 UTC — Second review intake: WP2 structurally strong, DON'T freeze yet (4 items + 2 nits) — FOLLOWS WorkPlan §13
+
+**Scope.** Intake follow-up review: document/spec-level recheck confirms WP2 repairs (39/14/17/13/14/11/24, 15-step, mutation ownership, dependence-scoped scan, fail-fast gates, imported payment, multi-owner endgame). Four pre-freeze items demanded: (1) BLOCKER — WP2 REJECT semantics now better than literal spec Phase-05 (which routes REJECT to failure record + lifting) → ratify via amendment, don’t revert plan; (2) BLOCKER — terminal hole (REJECT/BLOCKED/unproved with no witness and no exhaustion fits none of the five outcomes) → add `POSITIVE_ROUTE_BLOCKED_UNRESOLVED_NO_CLAIM`; (3) MAJOR/FORMAL — bridge-acquire-before-freeze is a deliberate deviation from literal Phase-02 assignment → ratify via same amendment; (4) MINOR — `prereg/ (14 entries + prereg_sha256.txt)` reads as 15 → fix wording. Nits: “five upstream … plus constant independence” miscounts (22 is one of the five); study-history timeline ambiguity (`b091dea` LICENSE-only vs skeleton/spec creation order).
+**Disposition.** All accepted. Fix vehicle: new ratified file `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2/A3/A4) + `WorkPlan.md` v0.4-WP2 → v0.4-WP3 + stub wording + `CHANGELOG.md`. No theorem work; `FOUNDATION_FROZEN` still unclaimed.
+**Verdict.** FOLLOWS reviewer order + WorkPlan §13 (repair before freeze). No deviation.
+
+## Entry 012 — 2026-09-25 UTC — WP3 repairs: amendment + six-outcome taxonomy + typo/nits (WorkPlan v0.4-WP3) — FOLLOWS WorkPlan v0.4-WP3
+
+**Scope.** Implement Entry-011 dispositions with deep detail matching WorkPlan granularity.
+**Files made/changed.**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (new, RATIFIED 2026-09-25): A1 pin restatement; A2 REJECT/BLOCKED sets reviewer gate only, status stays `UNPROVED` absent exact witness, bare REJECT/BLOCKED never lifts; A3 exactly-six outcomes with new-level allowed (“blocked at named unresolved theorem(s); no refutation, no exhaustion, no YES/NO”) / forbidden (never refutation/DOC/bridge/resource, never consume blocked theorem); A4 acquisition = Phase-00 input before freeze, Phase-02 verifies + writes `artifacts/v04/freeze/PHASE02_BRIDGE_SOURCES_FREEZE.json`; A5 stack (spec bytes + amendment + WP3 + Path + hashed prereg); A6 effect. V0.4 bytes untouched.
+- `WorkPlan.md` → v0.4-WP3: header normative line + version line; core rule (+ new level); §0 timeline sentence (b091dea LICENSE-only; skeleton/spec uncommitted afterward) + new item 6 (amendment in stack); §3 tree (+ amendment file; prereg typo → “14 entries total, including prereg_sha256.txt”); Phase-2 scope (“five upstream nodes, including constant independence”); Phase-2 coverage/exit (+ `MST0_13_BLOCKED` gate, blockage → new no-claim routing); Phase-6 coverage/run_phase18/exit (five → six outcomes, unresolved-blockage routing, escape hatch stays removed); §11 allowed/forbidden (10 levels incl. new wording); `CHANGELOG.md` (WP3/WP2 lines).
+- `prereg/allowed_claims.md` / `prereg/forbidden_claims.md`: new-level allowed/forbidden lines.
+**Code/how.** `Write` (amendment) + `Edit` per item + `Select-String` re-grep: “exactly five” 0, “13-step” 0, “14 entries +” 0, “exactly six” live; §12-D/F/G multi-owner retained.
+**Benchmarks.** None (plan + amendment only).
+**Anti-overfitting.** Amendment prevents decision-machine lying about stop reason; bare REJECT still can’t lift; counts/meanings frozen before evidence; H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP3; theorem ledger unchanged (all `UNPROVED`/`BLOCKED`); Phase 1 still STARTED (planning), Phases 2–7 PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP3 (§§1,3,11,12,13) + v0.4.1 A2–A4. No deviation.
+
 **End of Path entries so far (append-only below this line).**
