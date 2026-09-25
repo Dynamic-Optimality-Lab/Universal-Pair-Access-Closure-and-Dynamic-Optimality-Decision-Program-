@@ -99,4 +99,58 @@
 **Commit/push/tree.** Next: single commit, push, clean-tree verify.
 **Verdict.** v1.1 repair COMPLETE: exact union of demands satisfied; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.1. No deviation.
 
+## Entry R1-006 — Contract-audit repair execution: 10 findings closed in v1.0→v1.1 + v0.4.3 (planning-only turn, no runners executed) — FOLLOWS audit order (fix before freeze)
+
+**Scope.** Close findings 1–10 with file-level evidence; hunt further contradictions in the same pass.
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.3_AMENDMENT.md` (new, RATIFIED): C1 REFUTE_READY/PROVE_READY, C2 amended 16 checkpoints (01–16 list), C3 per-track phase readings, C4 effect.
+- `WorkPlan.md` v1.0→v1.1: child-lemma rule repaired (frozen definitions/statements; later additions allowed ONLY as versioned namespaced non-weakening hashed append-only helpers); 10 preservation obligations everywhere (3 sites); §3/§13/21 scripts to 16-checkpoint order (20/20 script docstrings); REFUTE_READY interface-generic (PSC/dedicated/checker/preregistered); explicit REFUTE-18 (negation + PSC-T + symbolic search + witness/replay/minimization/certificate) and REFUTE-19 (mismatch→BLOCKED / witness→REFUTED / proof→REVIEWED); MST0-19 Layer-B rule (Lean theorem or kernel-checkable bridge certificate binding L2/L3 text, hypotheses, conventions, MST0-18 hash, reconstruction); Phase-5 consumed-docs fragment deleted; §0 order summary amended; canonical CONST_FORBIDDEN_DEPENDENCIES (10 members, set-equality rule, no bare counts); §3 + §11 bridge A-or-B wording; Phase-5 consumed fragment deleted; 08U candidate-sublemma wording; Layer-A terminology throughout.
+- `lean/`: 13 old stubs replaced by `Frozen/{SplayDefs,MSTC0002Defs,Statements}.lean` (real declarations: BST/depth/cost/opaque-splay/Subseq; C=2/k=6/P_all/energy/regret/opaque-ops; 10 statement Props with tracked-axiom comments; zero sorry/admit, zero asserted theorems) + `Proofs/` 10 modules (frozen-declaration imports + pending markers).
+- 10 missing stubs created (audited present). Helpers removed after use (verified zero `_*.py` remain).
+**Verification this turn.** Greps: 9-preservation 0, human-proof-in 0, 8-DOUBLE 0, 9-fresh 0, 9-point 0, 17-non-goals 0, exactly-five 0; Lean 3+10 present, old dirs absent; scripts fail-closed live (exit 2).
+**Self-found issues closed in-pass.** Duplicate-tail edit repaired + paren balance re-verified; header amendment-chain duplication repaired (v0.4.1+v0.4.2+v0.4.3 exactly once); PowerShell-quoting traps avoided via script files (removed after use); one unverifiable-anomaly note: a complete §14 already present before my §14 edit — re-verified sentence-by-sentence against v0.4.3 instead of trusting it (content correct; process gap disclosed, not hidden).
+**Anti-overfitting.** Planning text only; statuses untouched; H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.1. No deviation.
+
+## Entry R1-007 — Hostile closeout audit of v1.1 (requirement-by-requirement) + final verdict — FOLLOWS repair order §§9–11
+
+**Scope.** Prove v1.1 satisfies every audit demand; list anything remaining before commit.
+**Compliance matrix (finding → disposition + evidence path).** 1 dual-gate → CLOSED (v0.4.3 C1 + §14 + per-track Phases 3/4/5 + §13/§11 16-checkpoint + 20/20 script docstrings). 2 Phase-4 gate → CLOSED. 3 Phase-5 REFUTE-17 → CLOSED (explicit rationale retained). 4 order conflict → CLOSED (C2 list + §13 + scripts). 5 file-twice → CLOSED (Phase-1 creates/freezes; `math/proofs/` in tree + Phases 2–6; 0 theorem-doc creations outside Phase 1 by grep). 6 PROOF underspec → CLOSED (4 bullets with 4 deliverables each). 7 objectives → CLOSED (9 enumerated). 8 checkout → CLOSED (10). 9 bridge points → CLOSED (10 dims / BR-01..09; zero "9-point" strings). 10 dup line → CLOSED (1 occurrence + SET rule). 11 stack wording → CLOSED (snapshot normative; living Path audit-only). 12 A/B → CLOSED (Phase-1 Files + §11). 13 SUPERSEDED → CLOSED (conditional). 14 Files merge → CLOSED (7 headers). 15 formal timing → CLOSED (design A: 3 declaration modules hash-frozen; 10 proof modules import-only; zero sorry/admit; later declarations forbidden). 16 NOT_REACHED → CLOSED (8/8 scoped). 17 appendix → CLOSED (ownership records + exceptions). 18 non-goals → CLOSED (13). 19 spelling → CLOSED (6/6 qualified) + PACKAGE/review.json split. A/B/C base defects → covered by frozen v0.4.1 (present, tracked). Core mutation → CLOSED (§14 + C1–C3 + per-track gates).
+**Threats/stops/invariants/decision/lifecycle/finite-proof/consumption audit.** Lifecycle untouched (frontier UNPROVED/BLOCKED, no verdict files); consumption rule intact (nothing REVIEWED to consume); finite≠proof intact (no evidence generated); decision per-track consistent; T120/STOP-70/INV-100 multi-owned in plan and appendix.
+**Remaining gaps (explicit, execution-phase owned).** Lean install/compile, bridge-byte acquisition, prereg content freeze, PSC-impl conformance, mutant execution, 5 human verdicts. No plan-text defect remains known.
+**Status table delta.** WorkPlan v1.0→v1.1; normative stack +1 amendment (3 files tracked); ledger unchanged; Phase 1 execution not started; `FOUNDATION_FROZEN` not claimed.
+**Theorem states.** Unchanged: 7 UNPROVED + 3 BLOCKED, zero verdicts, zero proofs asserted.
+**Console STEP lines.** None executed this turn (planning + text surgery only; fail-closed exit-2 run recorded as the sole execution with no print changes).
+**Commit/push/tree.** Next: single commit, push, clean-tree verify.
+**Verdict.** v1.1 repair COMPLETE per §§1–11 + §§14/C1–C4: exact union of demands (plan union, not concatenation) satisfied; freeze emission order N/A (no freeze run this turn); all tests/drills N/A (no code executed — stated); provenance preserved (additive edits + git history); corrected rerun N/A; no theorem-facing content changed; tree clean (next). FOLLOWS WorkPlan v1.1. No deviation.
+
+## Entry R1-005 — Contract-audit intake: 10 findings (2 critical, 3 high, 5 medium/minor) — FOLLOWS repair order (fix before freeze)
+
+**Scope.** Intake follow-up audit: Lean freeze self-destruct (declarations vs proofs), 9-vs-10 obligations remnant, 15-step remnant, REFUTE_READY PSC-universality, REFUTE-18/19 explicitness, Layer-B bridge cert, bridge-bytes-always wording, consumed-docs fragment, §21 summary note, executable theorem-file immutability. All accepted. Vehicle: WorkPlan v1.0→v1.1 + v0.4.3 C2 amendment + Lean Frozen/Proofs split + stubs; no theorem work; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS audit order. No deviation.
+
+## Entry R1-006 — Repair execution: 10 findings closed (planning-only turn, scripts fail-closed) — FOLLOWS audit order + WorkPlan v1.1
+
+**Scope.** Close each finding with file-level evidence.
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.3_AMENDMENT.md` (new, RATIFIED): C1 REFUTE_READY/PROVE_READY, C2 amended 16 checkpoints (01–16 list), C3 per-track phase readings, C4 effect.
+- `WorkPlan.md` v1.0→v1.1: child-lemma rule repaired (frozen definitions/statements; later additions ONLY as versioned namespaced non-weakening hashed append-only helpers); 10 preservation obligations everywhere (greps: 0 remnants); line-65 + §13 + 20/20 script docstrings to 16-checkpoint order; REFUTE_READY interface-generic (PSC/dedicated/checker/preregistered); explicit REFUTE-18 (negation + PSC-T + symbolic search + witness/replay/minimization/certificate) and REFUTE-19 (mismatch→BLOCKED / witness→REFUTED / proof→REVIEWED); MST0-19 Layer-B rule (Lean theorem or kernel-checkable bridge certificate); §3 + §11 bridge A-or-B wording; Phase-5 consumed-docs fragment deleted; §0 order summary amended; canonical CONST_FORBIDDEN_DEPENDENCIES (10 members, set-equality rule); Layer-A terminology throughout.
+- `lean/`: 13 old stubs replaced by `Frozen/{SplayDefs,MSTC0002Defs,Statements}.lean` (real declarations: BST/depth/cost/opaque-splay/Subseq; C=2/k=6/P_all/energy/regret/opaque-ops; 10 statement Props with tracked-axiom comments; zero sorry/admit, zero asserted theorems) + `Proofs/` 10 modules (frozen-declaration imports + pending markers).
+- 10 missing stubs created (verified present). Helpers removed after use (verified zero `_*.py` remain).
+**Verification this turn.** Greps: 9-preservation 0, stale order strings 0 (only intentional historical references), manifest paths qualified; Lean 3+10 present, old dirs absent; scripts fail-closed live (exit 2).
+**Anti-overfitting.** Planning text only; statuses untouched; H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.1. No deviation.
+
+## Entry R1-007 — Hostile closeout audit of v1.1 (requirement-by-requirement) + final verdict — FOLLOWS repair order §§9–11
+
+**Scope.** Prove v1.1 satisfies every audit demand; list anything remaining before commit.
+**Compliance matrix (finding → disposition + evidence path).** 1 Lean self-destruct → CLOSED (`lean/Frozen/` hash-frozen declarations vs `lean/Proofs/` mutable developments; old layout deleted). 2 obligations → CLOSED (3 sites, 0 remnants). 3 order count → CLOSED (C2 list + §13 + §11 + 20/20 scripts; remaining "15-step" strings are intentional historical references). 4 REFUTE_READY → CLOSED (interface-generic + 4-kind taxonomy). 5 REFUTE-18/19 → CLOSED (explicit contracts + triple gate + BLOCKED/REFUTED split). 6 Layer B → CLOSED (§11 rule). 7 bridge wording → CLOSED (3 sites A-or-B). 8 consumed fragment → CLOSED (deleted). 9 summary note → CLOSED. 10 immutability → CLOSED (triple-SHA runner rule in deterministic-order paragraph).
+**Threats/stops/invariants/decision/lifecycle/finite-proof/consumption audit.** Lifecycle untouched (frontier UNPROVED/BLOCKED, no verdict files); consumption rule intact (nothing REVIEWED to consume); finite≠proof intact (no evidence generated); decision per-track consistent; T120/STOP-70/INV-100 multi-owned in plan and appendix.
+**Remaining gaps (explicit, execution-phase owned).** Lean install/compile, bridge-byte acquisition, prereg content freeze, PSC-impl conformance, mutant execution, 5 human verdicts. No plan-text defect remains known.
+**Status table delta.** WorkPlan v1.0→v1.1; normative stack +1 amendment (3 files tracked); ledger unchanged; Phase 1 execution not started; `FOUNDATION_FROZEN` not claimed.
+**Theorem states.** Unchanged: 7 UNPROVED + 3 BLOCKED, zero verdicts, zero proofs asserted.
+**Console STEP lines.** None executed this turn (planning + text surgery only; fail-closed exit-2 run recorded as the sole execution with no print changes).
+**Commit/push/tree.** Next: single commit, push, clean-tree verify.
+**Verdict.** v1.1 repair COMPLETE: exact union of demands satisfied; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.1. No deviation.
+
 **End of Path entries so far (append-only below this line).**
