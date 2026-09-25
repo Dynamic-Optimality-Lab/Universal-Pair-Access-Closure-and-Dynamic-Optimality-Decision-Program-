@@ -2,7 +2,7 @@
 
 **Experiment:** `SPLAY-AM-DECIDE-v0.4`
 **Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (85,888 bytes, SHA-256 `30acc6f96abc35a9a4fc91ad159560888e54180f55be21f947b59dff8b62b5f9`, copied verbatim from `Downloads/SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.md`) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule)
-**Plan:** `WorkPlan.md` (current revision v1.1; revision history v1.0 preserved below; 7 phases covering spec PHASE 00–19)
+**Plan:** `WorkPlan.md` (current revision v1.3; revision history v1.0-v1.2 preserved below; 7 phases covering spec PHASE 00–19)
 **Prior history:** full prior-cycle history preserved in git (through `543ca6f` reset); this cycle starts from the license-only tree per explicit reset order. Prior-cycle lessons (all freeze-hygiene repairs) are folded into v1.0 from the start.
 **Rule for this file:** every implementation step appended contemporaneously with WorkPlan-matching granularity (scope, files, code, how, benchmarks, anti-overfitting, gates) plus explicit verdict **FOLLOWS WorkPlan §X** or **DEVIATION (justified)**. A gate without a Path entry is not closed (`INV-097`). Entries append-only; corrections are new entries.
 **Current terminal status:** `PRE_FOUNDATION` (planning done; `FOUNDATION_FROZEN` not claimed; no Phase 01+ theorem-facing execution).
@@ -197,5 +197,18 @@
 **Scope.** Final sweep caught `artifacts/v04/freeze/PROOF_STATUS_AT_FOUNDATION_FREEZE.json` listed twice in v0.4.4 D3 (26 lines, 25 unique) — the exact duplicate-path class this program hunts.
 **Disposition.** Deleted the duplicate line (v0.4.4 not yet committed this cycle, so direct correction is legitimate; had it been frozen, a v0.4.5 erratum would have been required instead). Re-verified: 26 lines, 26 unique. No semantic change (the manifest rule already demands uniqueness; the list now satisfies its own rule).
 **Verdict.** Closed before commit. No deviation.
+
+## Entry R1-013 — Audit intake: v0.4.4 stack authority + §14 Phase-5 compression — FOLLOWS repair order (fix before freeze)
+
+**Scope.** Intake: (1) WorkPlan v1.2 relies on D1/D3/D4/D6 while v0.4.4 is absent from the header norm-stack line, §0 item 6, and §3 tree — omission from summaries would leave D-rules without declared authority; (2) §14 compresses Phase-5 PROVE to flat seven-upstream, contradicting the D1 chain 7→17→18→19. Both accepted as freeze-relevant (normative, not cosmetic).
+**Verdict.** FOLLOWS audit order. No deviation.
+
+## Entry R1-014 — Repair execution: stack completion + chained readiness (planning-only turn) — FOLLOWS audit order + WorkPlan v1.3
+
+**Scope.** Close both findings with file-level evidence.
+**Files made/changed.** `WorkPlan.md` v1.2→v1.3: header normative line + §0 item 6 + §3 tree now name v0.4.4 with its D-rules; §14 per-track line replaced by chained per-node readiness (17 needs seven, 18 needs 17, 19 needs 18+sources+conventions; never compressed).
+**Verification.** Greps: v0.4.4 named in header/stack/tree (3/3); chained formulas present (17/18/19 each once with correct prerequisites); version line clean single parenthetical (repaired a fused run-on in-pass); scripts fail-closed live (exit 2).
+**Anti-overfitting.** Planning text only; statuses untouched; H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.3. No deviation.
 
 **End of Path entries so far (append-only below this line).**
