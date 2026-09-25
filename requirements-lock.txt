@@ -1,0 +1,8 @@
+# requirements-lock.txt — SPLAY-AM-DECIDE-v0.4 (exact versions pinned at Phase-1 freeze; interim floors below)
+python==3.13.7
+sympy==1.14.0
+zstandard==0.24.0
+jsonschema==4.25.0
+z3-solver==4.15.1.0
+pytest==8.3.5
+# Lean 4 toolchain pinned in lean-toolchain (Phase 1); mathlib pin in lake-manifest.json (Phase 1).

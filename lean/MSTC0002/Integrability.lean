@@ -1,0 +1,1 @@
+-- MSTC0002/Integrability.lean (STUB) — Lean 4 definitions/theorems bound by hash to math/ statements + V03_MSTC_0002.json. Toolchain pinned at Phase 1; no sorry/admit/undeclared axioms.

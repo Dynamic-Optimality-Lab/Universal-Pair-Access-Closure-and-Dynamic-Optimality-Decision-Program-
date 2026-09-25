@@ -1,0 +1,1 @@
+# MST0-18 (STUB) — exact statement + exact negation + owner phase + first consumer + prerequisites + child namespace + forbidden premises + 4 artifacts. Frozen Phase 1; proof/refutation in WorkPlan Phases 2-5.

@@ -1,0 +1,130 @@
+# SPLAY-AM-DECIDE-v0.4 Path — implementation tracker
+
+**Experiment:** `SPLAY-AM-DECIDE-v0.4`
+**Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim from `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.md`)
+**Plan:** `WorkPlan.md` (v0.4-WP1, 7 phases covering spec PHASE 00–19)
+**Rule for this file:** Every implementation step is appended here contemporaneously with deep detail matching `WorkPlan.md` granularity — scope, files made, code produced and how it was coded, benchmarks (and their training-disjointness), anti-overfitting actions, gates — plus an explicit verdict: **FOLLOWS WorkPlan §X** or **DEVIATION from WorkPlan §X (justified)**. A phase gate without a Path entry is not closed (`INV-097`). No entry is ever rewritten; corrections are new entries (erratum-preserving).
+**Current terminal status:** `PRE_FOUNDATION` (planning + skeleton done; `FOUNDATION_FROZEN` not yet claimed; no Phase 01+ theorem-facing execution has occurred — complies with `PRE_FREEZE_PARENT_PIN_REQUIRED`).
+**Repo state at last entry:** `impl/` on `main`, clean skeleton + docs; `artifacts/v04/` empty by design (only new results after this plan are present — stale-clearance verified).
+
+---
+
+## Entry 001 — 2026-09-25 UTC — Deep doc study (WorkPlan §0) — FOLLOWS WorkPlan §0
+
+**Scope.** Study-first: read the controlling v0.4 spec in full (via user-provided text, 3240 lines, §§0–38, PHASE 00–19, T001–T120, INV-001–100, STOP-01–70, full test matrix, Q01–Q60), plus lineage headers (`SPLAY_AM_MST_IMPLEMENTATION_SPEC_v0.3.md` 120,420 bytes, `SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.md` 100,175 bytes, `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.md` 120,584 bytes — executive-purpose + pivot sections read), plus live parent/implementation repo pages (verified impl repo has 1 commit / LICENSE-only; parent repo has 18 commits / full v0.3 tree), plus unrelated `Downloads/WorkPlan.md` inspected and rejected as non-authoritative (MAVS Chapter 10B, different project — not used).
+**Files made.** None (read-only study; no code).
+**Code/how.** `Read` tool on `Downloads/SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.md` (lines 1–100 verified byte-consistent with user text), `SPLAY_AM_MST…v0.3`/`…BD…v0.2`/`…PD…v0.1` (lines 1–120 each), `WebFetch` on both GitHub repos (markdown). Confirmed: 20 spec phases, 10 theorem nodes, 7 PSC families, Pair-Access form `Splay(Y,T) ≤ 2·Splay(X,T)+A(n)`, constants `C=2/k=6/P_all` frozen, YES/NO-only success, finite≠proof doctrine, dual prove/refute + 3-layer cert + human ACCEPT, negative dormant-until-REFUTED with `g/f→∞` requirement.
+**Benchmarks.** None (study only; no measurement claimed).
+**Anti-overfitting.** No finite result treated as theorem; lineage docs treated as evidence/context, never premises; web summaries never override frozen sources.
+**Verdict.** FOLLOWS WorkPlan §0 (source authority). No deviation.
+
+## Entry 002 — 2026-09-25 UTC — Clone implementation + parent repos, verify toolchain (WorkPlan §§0–1) — FOLLOWS WorkPlan §§0–1
+
+**Scope.** Establish working copies and verify auth/toolchain before any file creation.
+**Files made.** Local dirs `Dynamic-Optimality/impl/` (clone of implementation repo) and `Dynamic-Optimality/parent-ref/` (read-only reference clone of parent repo, never mutated).
+**Code/how.** `git clone https://github.com/Dynamic-Optimality-Lab/Universal-Pair-Access-Closure-and-Dynamic-Optimality-Decision-Program- impl` → HEAD `b091dea Initial commit`, `LICENSE` only (1100 bytes), `git status` clean, `origin` https. `git clone …/splay-multiscale-transfer parent-ref` → HEAD `353ee922b1cee0043afa46fe8929f42f7652e5bf` (short `353ee92`, matches spec navigation commit), log shows WP-6 seal message with lifecycle `10/4/3/3/6`, `FINAL_RESULT` finite level, 424-file manifest, 16.9 MB archive, reproduce PASS. `gh auth status` → logged in as `InfernusReal` (repo/workflow scopes, push-capable). `python --version` → `3.13.7` (satisfies `3.12+`); `lean`/`lake` not on PATH (recorded as pending Phase-1 toolchain pin — no Lean claim made).
+**Benchmarks.** None.
+**Anti-overfitting.** Parent clone is reference-only; no parent artifact edited; no H3T touched; no theorem execution.
+**Verdict.** FOLLOWS WorkPlan §0 (repo identities) and §3/Phase-1 setup. No deviation.
+
+## Entry 003 — 2026-09-25 UTC — Parent seal inspection (WorkPlan Phase 1 scope) — FOLLOWS WorkPlan Phase 1
+
+**Scope.** Read sealed parent evidence to bind exact identities for Phase-1 freeze (no execution, read-only).
+**Files read (parent-ref, all read-only).**
+- `TRANSFER_CALCULUS_LEDGER.md`: frozen set `MSTC-0001/0002/0003`, set hash `8FD3273143DEC3CA4611A1093F3521B8F22DE2BBD6A82715EE270412F65A2A00`, Branch-A unsigned ledger `E(L)=|LATENT|+|ACTIVE|`, T7 (≤k LATENT per A-rotation at cycling interior boundaries, LEFT iff `i+1≤x`), T5 (predicate-gated LATENT→ACTIVE), T6 (`w=y-2a`, `paid=min(pool,w)`, residual rejects at frozen C), WP-6 seal note (0002 stands 70k/70k + 54 large-n zero residuals; 0001 max_res 8 / 0003 max_res 23 killed fresh).
+- `THEOREM_STATUS_REPORT.md`: lifecycle `UNPROVED→PROVED→REVIEWED`, table (REVIEWED 10 incl. 08-scoped-finite + 01/02/03/04/05/06/07/10/16; PROVED 4 incl. 13-author-claim + 23/24/26 pending review; NOT_APPLICABLE 3 (12/20/21); BLOCKED 3 (17/18/19); UNPROVED 6 (09/11/14/15/22/25)), gates 0–15 reached / 16 pending-review / 17–21 not reached, human actions (ACCEPT/REJECT/BLOCKED on 13/23/24/26; 13-ACCEPT permits re-seal at `BOUNDED_DELETE_INJECTION_PROVED` by amendment only).
+- `artifacts/v03/seal/FINAL_RESULT.json`: terminal `TRANSFER_CALCULUS_SURVIVES_FINITE_TESTS`, `standing:[MSTC-0002]`, killed-fresh records (0001 n=32 idx=4406 res[2,1]/w[11,1] max[8,1]; 0003 n=16 idx=3610 res[1,1]/w[8,1] max[23,1]), hashes (candidate-set `8FD32731…`, H3T logical `CB37F3D9…`, per-size streams, reveal `FC916F06…`), firewalls (`H1 EMPTY/NOT_APPLICABLE, H2R BANK_COMMITTED/NOT_APPLICABLE, H3T UNLOCKED_ONCE/1, n8 CANARY_CONTAMINATED`), `parent_sealed_commit 38c1be6afd2ab2420aa094c68ce45ee6a26b3628`, `ancestor 6de1ca2a595e8895f54794f3a211fe6ee1a95a80`, `repo_head 94197b89…`.
+- `artifacts/v03/holdouts/{candidate_set_commit,h3t_state,h3t_reveal}.json`: 3 candidates with SHAs (`0001 A8492C94…`, `0002 930EAD00…`, `0003 FE56D095…`), `UNLOCKED_ONCE/unlock_count=1`, reveal note “survival is finite-sample survival, never theorem status”.
+- `SPLAY_AM_MST_IMPLEMENTATION_SPEC_v0.3.1_PIN.md`: ratified parent pin (`38c1be6afd…`, `FINITE_DEBT_LAW_MINING_RESULTS`, FINAL_RESULT SHA `C5B1C60A…`, manifest SHA `5C4BA61B…`, archive SHA `87AEA34C…`, spec SHA `462676E1…` 120,420 bytes), chain aides, freeze composition.
+- `parent/import_ledger.json`, seal `MANIFEST.sha256` (head), `scripts/` (run_phase00–19 + reproduce), `python/` + `artifacts/v03/` layouts (used as interface reference for WorkPlan `python/inherited` wrappers).
+**Code/how.** PowerShell `Get-Content`/`Get-ChildItem` only; no execution of parent scripts; no bank I/O.
+**Benchmarks.** None (evidence inventory only).
+**Anti-overfitting.** Finite seal explicitly recorded as non-theorem; H3T state verified `UNLOCKED_ONCE` without re-unlock; sibling kills preserved in plan.
+**Verdict.** FOLLOWS WorkPlan §0 + Phase-1 spec coverage (PHASE 00–01 inputs). No deviation. Pending Phase-1 work (hash-recompute verifier, prereg freeze, bridge/Lean/PSC freeze) is explicitly not claimed as done.
+
+## Entry 004 — 2026-09-25 UTC — Stale-results clearance (user instruction + WorkPlan §3) — FOLLOWS WorkPlan §3
+
+**Scope.** Satisfy “when you clone the repo, the previous results are cleared and only the new results after the changes are present.”
+**Finding.** `impl/` at clone contained only `LICENSE` (commit `b091dea`); `artifacts/v04/` did not exist. There were no previous results to clear — no deletion needed, no legacy output carried forward.
+**Files made.** Created empty canonical `artifacts/v04/{freeze,formal,proof_attacks,counterexamples,proofs,negative,audits,logs,seal}/` (with `.gitkeep` placeholders added in Entry 006) so all future results are new-by-construction; `STALE_CLEARANCE.json` will be written at Phase-7 seal asserting this.
+**Code/how.** `New-Item -ItemType Directory` for each `artifacts/v04/*` leaf; `Get-ChildItem impl` + `git log` verification.
+**Benchmarks/anti-overfitting.** N/A (hygiene only; prevents stale-output contamination, `STOP-68/69`).
+**Verdict.** FOLLOWS WorkPlan §3 (repo contract; `artifacts/v04` starts empty) + user clearance instruction. No deviation.
+
+## Entry 005 — 2026-09-25 UTC — Repository skeleton + spec copy (WorkPlan §3) — FOLLOWS WorkPlan §3
+
+**Scope.** Create the verbatim §18 directory skeleton so WorkPlan file references resolve; copy normative spec bytes.
+**Files made.** `parent/`, `prereg/`, `math/negative/`, `math/reviews/`, `lean/{Splay,MSTC0002,PairAccess,Negative}/`, `python/{inherited,formal_bridge,proof_attack,negative,audit,seal,cleanroom}/`, `schemas/`, `tests/{parent,seal}/`, `artifacts/v04/{freeze,seal,logs}/`, `scripts/` (dirs only in this entry; file placeholders in Entry 006); `IMPLEMENTATION_SPEC_v0.4.md` copied verbatim from `Downloads/SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.md` via `Copy-Item -Force` (85,888 bytes, length verified).
+**Code/how.** PowerShell `New-Item -ItemType Directory -Force` per leaf (parent verified via `Test-Path impl\LICENSE`); `Copy-Item -LiteralPath …Downloads… -Destination impl\IMPLEMENTATION_SPEC_v0.4.md`. No semantic editing of spec bytes.
+**Benchmarks.** None.
+**Anti-overfitting.** Spec is reference copy, not premise mutation; skeleton dirs contain no scientific claims.
+**Verdict.** FOLLOWS WorkPlan §3 (root tree). No deviation. Full file placeholders + docs follow in Entries 006–007.
+
+## Entry 006 — 2026-09-25 UTC — WorkPlan.md creation (WorkPlan §§0–13) — FOLLOWS WorkPlan (self)
+
+**Scope.** Write the normative implementation plan dividing all practical implications of the v0.4 documents into 7 phases (more than 5–6 because workload demands it), with nothing omitted and flawless division verified by coverage matrices.
+**Files made.** `impl/WorkPlan.md` (v0.4-WP1): header (IDs, parent full SHA `353ee922…`, survivor/sibling/H3T hashes, core YES/NO rule) + §0 source authority (v0.4 full-spec study + lineage + parent-seal identities + literature L0–L4) + §1 mission/scope/non-goals + §2 no-training/brutal-benchmark/anti-overfitting policy (no ML training; PSC entirely disjoint from v0.3 banks; sensitivity/mutant/clean-room/independent/exact-arithmetic controls; finite≠proof at every gate) + §3 repo contract/tree + Phases 1–7 (each: scope, spec coverage PHASE 00–19, files, code + how-to-code with exact methods/determinism/canonical order/dual tracks/formal binding, brutal benchmarks with training-disjointness, anti-overfitting, exit gates) + §11 cross-cutting (prereg 13 files, 16+ schemas, §21 order, scaling/logging/deps/AI/decision-ladder/interpretation/allowed-forbidden/seal-checklist/success/Q01–Q60→reports/citations) + §12 verification appendix (matrices A–J: PHASE→WP, theorems→WP, PSC→WP, T001–T120→WP, tests→WP, INV-001–100→WP, STOP-01–70→WP, gates→WP, Q→reports, execution method) + §13 Path.md obligation.
+**Code/how.** Authored via `Write` tool in one versioned file; structure mirrors spec §§0–38 so every spec section has an explicit WorkPlan owner (see appendix matrices). “Models to train” addressed head-on in §2.1–2.3 (none; PSC = brutal entirely-different benchmarks + 8 anti-overfitting actions). Per-phase “how will you code” gives concrete module/function/hash/gate detail (e.g., pure-function Splay core with trace, `Fraction` regret, JSON-schema survivor binding, seeded/sorted PSC, sympy/z3 hooks, share-nothing clean-room, AST quantifier scan, graph-based double-spend audit, 10-point bridge checklist, closed-form negative families, artifact-derived `FINAL_RESULT`).
+**Benchmarks.** Plan-level: no benchmark executed in this entry; every future benchmark is specified as negation-derived + disjoint-seed/generator/objective/size/symbolic-axis from v0.3 banks, with replay/minimization/clean-room/mutant/formal/human controls.
+**Anti-overfitting.** Plan forbids finite-as-proof, constant relaxation, calculus mutation, silent DAG edits, premature consumption/bridge/decision (mapped to STOPs/INVs/tests).
+**Verification of “nothing omitted”.** Appendix A–J checked before writing: 20/20 spec phases owned, 10/10 theorems owned, 7/7 PSC owned, 120/120 threats owned (machine-checkable via `threat_control_matrix.yaml` in Phase 1), full test matrix owned, 100/100 invariants owned, 70/70 stops owned, 15/15 decision gates owned, 60/60 Qs mapped. `IMPLEMENTATION_SPEC_v0.4.md` byte length re-verified (85,888).
+**Verdict.** FOLLOWS the user’s WorkPlan instructions (7 phases with scope/files/code/how/benchmarks/anti-overfitting; models addressed; flawless division verified) and WorkPlan §12 (self). No deviation. WorkPlan is versioned by git; after `FOUNDATION_FROZEN` it will never be silently edited.
+
+## Entry 007 — 2026-09-25 UTC — Path.md creation + foundation scaffolding (this file; WorkPlan §13) — FOLLOWS WorkPlan §13
+
+**Scope.** Create this tracker and the minimal committable foundation scaffold so every Path claim resolves to a real file. This entry itself is the contemporaneous Path update for Entries 001–007.
+**Files made in this entry.**
+- `impl/Path.md` (this file, Entries 001–007 + status + next steps).
+- Foundation scaffold (all stubs explicitly marked `STUB — Phase-1 execution pending`, no scientific claims):
+  - Docs: `README.md`, `CHANGELOG.md`, `CITATIONS.md`, `AI_USE.md`, `.gitignore`.
+  - Build: `pyproject.toml`, `requirements-lock.txt`, `lean-toolchain`, `lakefile.lean`.
+  - `parent/README.md` (pin record: navigation `353ee92`, full `353ee922b1cee0043afa46fe8929f42f7652e5bf`, ancestor/parent commits, terminal claim, `PARENT_SEAL_MISMATCH` rule).
+  - `prereg/` 13 stubs (`experiment_v0.4.yaml`, `parent_contract.yaml`, `theorem_battlefield.yaml`, `theorem_gate_matrix.yaml`, `dual_obligation_policy.yaml`, `proof_kernel_policy.yaml`, `proof_stress_corpus.yaml`, `negative_lifting_policy.yaml`, `bridge_sources.yaml`, `threat_control_matrix.yaml`, `stop_control_matrix.yaml`, `allowed_claims.md`, `forbidden_claims.md`) — structure-only, hashes pending Phase-1 freeze (`prereg_sha256.txt` to be written at freeze).
+  - `math/` stubs (`definitions_v0.4.md`, 10 `theorem_MST*.md` headers, `proof_status.json` with 10 nodes `UNPROVED` + 17/18/19 `BLOCKED`).
+  - `lean/` stubs (12 `.lean` headers binding to frozen statements by hash placeholder).
+  - `python/` stubs (`inherited/{splay.py,pair_access.py,mstc0002.py}`, `proof_attack/` 6 files, `negative/` 4 files, `audit/verify_parent.py`, `seal/final_result.py`, `cleanroom/README.md`) — exact-semantics TODOs pointing at parent interfaces, deterministic/exact-arithmetic notes.
+  - `schemas/README.md` (16-schema list + canonical JSON rules).
+  - `tests/test_foundation.py` (skeleton asserting parent full-SHA + survivor-tuple + battlefield-set placeholders — executable only after Phase-1 freeze; currently documents pending checks).
+  - `scripts/{run_phase00..run_phase19,reproduce_all_v0.4}.py` (20 stubs, each printing its spec PHASE + WorkPlan-phase owner + `§21` order reminder; `run_phase00.py` additionally prints the three pin SHAs).
+  - `.gitkeep` placeholders in all empty `artifacts/v04/*`, `tests/*`, `lean/*` leaves so the tree is committable without fake results.
+**Code/how.** `Write` tool per file (absolute paths under `impl/`); Python stubs are import-safe (`if __name__ == "__main__"` guards, no network, no holdout I/O); scripts exit `2` with `NOT_FROZEN` message until Phase-1 freeze (fail-closed, prevents accidental theorem execution). No Lean toolchain invocation (not installed — recorded, not bypassed).
+**Benchmarks.** None executed (scaffold only). Test skeleton lists `PARENT-01..10`/`FORM-01..12` placeholders as pending, never green-claimed.
+**Anti-overfitting.** No finite evidence generated; no theorem status changed (all `UNPROVED`/`BLOCKED` as per mapped frontier); no bridge consumed; no H3T opened; AI assistance disclosed here + `AI_USE.md` (Muse Spark via OpenCode: plan/scaffold authorship; no human ACCEPT recorded; no theorem proof claimed).
+**Verdict.** FOLLOWS WorkPlan §3 (tree), §11 (prereg/schemas/AI-use scaffolds), §13 (Path contemporaneous detail). Explicit non-deviation: scaffold stubs are narrower than WorkPlan Phase-1 deliverables (full verifier/binder/PSC/Lean implementations remain pending) — recorded here as pending, not silently omitted. Next blockers: (i) run Phase-1 freeze (hash-recompute verifier, survivor binder, L2/L3 source acquisition, Lean pin, PSC freeze) to claim `FOUNDATION_FROZEN`; (ii) no Phase-2+ work until then.
+
+---
+
+## Status table (mirrors WorkPlan phases; updated per entry)
+
+| WorkPlan phase | Spec PHASEs | Status after Entry 007 | Follows WorkPlan? |
+|---|---|---|---|
+| Phase 1 — Foundation (parent/prereg/bridge/Lean/PSC) | 00,01,02,03,04 | STARTED (study+clone+seal-inventory+skeleton+plan done; verifier/binder/source-freeze/Lean-pin/PSC-freeze execution pending) | FOLLOWS (planning subset complete; execution explicitly pending, no premature gate claimed) |
+| Phase 2 — Upstream blockers (13/08U/11/09/22) | 05,06,07,08,09 | PENDING (stubs only) | FOLLOWS (not started before `FOUNDATION_FROZEN`, per §21) |
+| Phase 3 — KEEP repayment (10/11) | 10,11 | PENDING | FOLLOWS |
+| Phase 4 — Integrability (12/13) | 12,13 | PENDING | FOLLOWS |
+| Phase 5 — Composition (17/18/19) | 14,15,16 | PENDING (`BRIDGE_SOURCE_UNAVAILABLE` fail-closed armed) | FOLLOWS |
+| Phase 6 — Negative + decision | 17,18 | PENDING (dormant, no speculative mining) | FOLLOWS |
+| Phase 7 — Seal/reproduce/release | 19 | PENDING | FOLLOWS |
+
+**Theorem ledger (frozen frontier, unchanged in Entries 001–007):** `08U UNPROVED`, `09 UNPROVED`, `11 UNPROVED`, `13 PROVED-author-claim/human-review-pending (treated as UNPROVED for consumption)`, `14 UNPROVED`, `15 UNPROVED`, `22 UNPROVED`, `17 BLOCKED`, `18 BLOCKED`, `19 BLOCKED/PENDING-source-freeze`. No lifecycle jump occurred (`INV-020`, lifecycle audit pending Phase 1).
+
+---
+
+## Next steps (committed)
+
+1. Commit Entries 001–007 scaffold + docs and push to `main` (user ordered commit+push without prompting — executed next, with `git status/diff/log` inspection before commit, secrets never committed).
+2. Execute WorkPlan Phase 1 for real: `python scripts/run_phase00.py` (hash-recompute vs `353ee922…`/manifest/archive/`FINAL_RESULT`/candidate-set/H3T-state/lifecycle/atlas), survivor field-by-field binder, `prereg/` freeze + `prereg_sha256.txt`, L2/L3 acquisition (or `BRIDGE_SOURCE_UNAVAILABLE`), Lean toolchain pin + equivalence canaries, PSC + dual-obligation freeze — each with its own Path entry — then claim `FOUNDATION_FROZEN` only when all Phase-1 exit criteria are green.
+3. Phases 2–7 strictly in order with §21 discipline; first `REFUTED` (if any) freezes the positive route and activates Phase 6 per §31; `FINAL_RESULT` derived only in Phase 6/7 from artifacts.
+
+## Entry 008 — 2026-09-25 UTC — Scaffold generation method clarification + pre-commit verification (WorkPlan §§3,12–13) — FOLLOWS WorkPlan (clarification, no scientific deviation)
+
+**Scope.** Preserve audit honesty about Entry 007 tooling and verify nothing is omitted before commit+push.
+**Clarification (erratum-preserving, Entry 007 not rewritten).** Entry 007 states “`Write` tool per file”. Implementation used one `Write` (`_scaffold_gen.py` bulk generator, since removed via `Remove-Item -Force`, verified absent) + one `python _scaffold_gen.py` execution producing the 80 stub files + `.gitkeep` leaves (164 total filesystem objects under `impl/`), then `python -m py_compile` + `python scripts/run_phase00.py` checks. File contents are byte-identical to the stub specifications in Entry 007; the difference is execution method only, not content or WorkPlan compliance (WorkPlan mandates file existence/content/phase ownership, not agent tool choice). Helper `_scaffold_gen.py` was deleted after use so the sealed tree contains only spec-layout files.
+**Pre-commit verification (“verify if needed”, WorkPlan §12).**
+- `Get-ChildItem -Recurse impl` → 164 objects; `scripts/` contains `run_phase00..19` + `reproduce_all_v0.4.py` (21 files); `lean/` 13 files; `math/` 10 theorem stubs + definitions + proof_status; `prereg/` 13 stubs + allowed/forbidden; `python/` 16 stubs + cleanroom README; `IMPLEMENTATION_SPEC_v0.4.md` 85,888 bytes; `WorkPlan.md` + `Path.md` present; `artifacts/v04/` leaves exist with only `.gitkeep` (no fake results — stale-clearance holds).
+- `run_phase00.py` exits `2 NOT_FROZEN` (fail-closed, correct pre-freeze behavior); `py_compile` clean.
+- Coverage re-asserted: 20/20 spec PHASEs owned (WorkPlan §12-A), 10/10 theorems (B), 7/7 PSC (C), T001–T120 matrix filed as `prereg/threat_control_matrix.yaml` stub for Phase-1 population (D), full test matrix stubbed (E), INV-001–100 (F), STOP-01–70 (G), gates (H), Q01–Q60→reports (I). No theorem status changed; no bridge consumed; H3T untouched; `FOUNDATION_FROZEN` not claimed.
+- Secrets scan: no tokens/keys in tree (`gh` token lives in OS keyring only, never written to repo).
+**Verdict.** FOLLOWS WorkPlan §§3 (tree), 12 (verification), 13 (contemporaneous Path). No deviation.
+
+**End of Path entries so far (append-only below this line).**

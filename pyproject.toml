@@ -1,0 +1,12 @@
+[project]
+name = "splay-decide-v04"
+version = "0.4.0"
+description = "SPLAY-AM-DECIDE-v0.4: Universal Pair-Access Closure and Dynamic-Optimality Decision Program"
+requires-python = ">=3.12"
+dependencies = ["sympy", "zstandard", "jsonschema", "z3-solver"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

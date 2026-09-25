@@ -1,0 +1,15 @@
+experiment_id: SPLAY-AM-DECIDE-v0.4
+# STUB — full prereg frozen at Phase-1 execution (WorkPlan Phase 1). No Phase-01+ science before prereg_sha256.txt.
+parent:
+  experiment_id: SPLAY-AM-MST-v0.3
+  sealed_commit: 353ee922b1cee0043afa46fe8929f42f7652e5bf  # TO_BE_VERIFIED_BY_HASH
+  expected_terminal_claim: TRANSFER_CALCULUS_SURVIVES_FINITE_TESTS
+primary_candidate:
+  calculus_id: MSTC-0002
+  predicate: P_all
+  k: 6
+  C: 2
+  mutation_allowed: false
+target_problem: Sleator-Tarjan Dynamic Optimality Conjecture
+success_outcomes: [DYNAMIC_OPTIMALITY_PROVED, DYNAMIC_OPTIMALITY_DISPROVED]
+no_claim_outcomes_allowed: true
