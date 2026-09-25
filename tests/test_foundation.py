@@ -1,8 +1,8 @@
-"""Foundation tests for spec PHASE 00 (WorkPlan Phase 1).
+"""Foundation tests for spec PHASE 00-01 (WorkPlan Phase 1).
 
-Functional layer: each test mirrors one run_phase00 STEP by calling the same
-check functions, so a green suite means the script and the suite agree.
-Stress layer lives in test_phase00_stress.py.
+Functional layer: each test mirrors one run_phaseXX STEP by calling the same
+check functions, so a green suite means the scripts and the suite agree.
+Stress layers live in test_phase00_stress.py and test_phase01_stress.py.
 """
 
 import sys
@@ -13,6 +13,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 import run_phase00
+import run_phase01
 
 PARENT = Path(__file__).resolve().parent.parent.parent / "parent-ref"
 
@@ -72,4 +73,33 @@ def test_downstream_docs_present():
     """Atlas + downstream theorem docs/reviews recorded by hash."""
     log = []
     run_phase00.check_downstream_docs(PARENT, log)
+    assert log[0]["status"] == "PASS"
+
+
+def test_survivor_binding():
+    """PHASE 01.1: MSTC-0002 fields bound across 3 sealed records."""
+    log = []
+    run_phase01.check_survivor_binding(PARENT, log)
+    assert log[0]["status"] == "PASS"
+
+
+def test_set_hash_agreement():
+    """PHASE 01.1: one set hash in FINAL_RESULT, h3t_state, candidate-set."""
+    log = []
+    run_phase01.check_set_hash_agreement(PARENT, log)
+    assert log[0]["status"] == "PASS"
+
+
+def test_fresh_history():
+    """PHASE 01.2: reveal verdicts match kills; commitment intact; no unlock."""
+    log = []
+    run_phase01.check_fresh_history(PARENT, log)
+    run_phase01.check_no_reunlock(log)
+    assert all(c["status"] == "PASS" for c in log)
+
+
+def test_blocker_dag():
+    """PHASE 01.3: 10-node critical set re-derived; ledger agrees."""
+    log = []
+    run_phase01.check_blocker_dag(PARENT, log)
     assert log[0]["status"] == "PASS"

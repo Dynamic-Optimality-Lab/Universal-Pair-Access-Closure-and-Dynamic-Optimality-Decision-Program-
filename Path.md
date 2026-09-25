@@ -290,4 +290,29 @@
 **Status table delta.** Spec PHASE 00: COMPLETE (`PHASE00_PASS`, 13/13 checks, 12/12 tests). WorkPlan Phase 1: STARTED (PHASE-00 block done; PHASE 01–04 pending). Theorem ledger: unchanged (frontier verified, no jumps). `FOUNDATION_FROZEN`: not claimed.
 **Verdict.** WP-0 (spec PHASE 00) FINISHED with zero known gaps; WorkPlan Phase 1 correctly remains open. FOLLOWS WorkPlan v0.4-WP8. No deviation.
 
+## Entry 027 — 2026-09-25 UTC — Phase WP-1 execution order intake (spec PHASE 01 under WorkPlan Phase 1) — FOLLOWS WorkPlan §13
+
+**Scope.** Same standing orders as WP-0: follow WorkPlan exactly; `print` + `# STEP-XX` at every step (Python per spec §28); Path detail down to log line numbers; production-grade code; stress tests with evidence; prove every demand; extreme-rigor audit with gaps closed pre-verdict; autonomous commit+push. WP-1 = spec PHASE 01 (01.1 survivor binding, 01.2 fresh-history integrity, 01.3 blocker-DAG re-derivation; gates `SURVIVOR_IDENTITY_VERIFIED`, `BATTLEFIELD_VERIFIED`). WorkPlan Phase 1 otherwise (PHASE 02–04) stays pending; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan Phase 1 (PHASE-01 subset). No deviation.
+
+## Entry 028 — 2026-09-25 UTC — WP-1 implementation record: full `run_phase01.py` + tests (WorkPlan v0.4-WP8, no plan change) — FOLLOWS WorkPlan Phase 1
+
+**Scope.** Replace the `NOT_FROZEN` stub with a real read-only verifier plus real tests.
+**Files made/changed (deep detail).**
+- `scripts/run_phase01.py` (4 → ~240 lines, typed, stdlib-only, `Phase01Error` fail-closed): frozen expectations + `STEP-CFG` print (line 25); per-check `# STEP-XX:` comment + first-statement `print` — STEP-00 continuity HEAD+clean (comment ~58/print 59), STEP-01 survivor fields across candidate-set/FINAL_RESULT/ledger note incl. parent-calculus SHA `930EAD00…` (74/75), STEP-02 set-hash agreement 3 records (99/100), STEP-03 reveal verdicts + witness-hash cross-check + `UNLOCKED_ONCE` + commitment stream (112/113), STEP-04 v0.4-side no-holdout scan (141/142), STEP-05 DAG derivation from parent statuses + scoped-08 gap rule + ledger agreement (152/153), STEP-06 cert/log writer (183/184); `main()` start/PASS/FAIL prints (222/230/232). Cert `artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json` (gitignored freeze artifact) + append-only `logs/phase01.log`.
+- `tests/test_foundation.py` (+4 tests: binding, set-hash, history+no-reunlock, DAG — same-function agreement). `tests/test_phase01_stress.py` (new, 5 tests: repeatability incl. gates assertion, missing-parent, mutated-k=5, flipped-verdict, wrong-commit; slim fixture copies seal JSONs only, never bank content).
+**Run evidence.** `python scripts/run_phase01.py` → 7 STEP prints in order → `PHASE01_PASS: 6 checks green`, exit 0. `pytest` (3 files) → 21 passed. One self-found defect pre-verdict:arity bug (`check_no_reunlock(parent, log)` vs 1-arg def) failed closed on first run; fixed call, re-ran green — plus the WP-0–class string-mangle habit now guarded by re-reading every edit.
+**Benchmarks.** None (verification phase by design).
+**Anti-overfitting.** Read-only; no bank content read anywhere (fixtures copy seal JSONs only); no status changed; no bridge/Lean consumed.
+**Verdict.** FOLLOWS WorkPlan Phase 1 (PHASE-01 block). No deviation.
+
+## Entry 029 — 2026-09-25 UTC — WP-1 stress evidence + extreme-rigor compliance audit (WorkPlan Phase 1 / spec PHASE 01) — FOLLOWS WorkPlan §§12-J,13
+
+**Scope.** Prove every demand; scope every remainder before verdict.
+**Stress evidence.** Repeatability: two full runs → identical 6-step sequences + gates asserted (green). Tamper-evidence: k=6→5 rejected; `FRESH_H3T_FAIL`→PASS flip rejected; foreign HEAD rejected; absent dir raises (all green). Real-failure drill: the arity `TypeError` proved fail-closed-then-fix-then-green discipline holds for this phase too.
+**Compliance matrix (spec PHASE 01 → disposition).** 01.1 ✓ (STEP-01 fields + STEP-02 hash agreement + standing/ledger cross-checks). 01.2 ✓ (STEP-03 verdicts/witness-hashes/commitment + STEP-04 v0.4-side scan; bank bytes never opened — only `h3t_state/reveal/commitment` JSONs, which are seal records, not the bank). 01.3 ✓ (STEP-05 derives exactly the 10-node set from parent `REVIEWED`-scoped-08 + 5×UNPROVED + author-PROVED-13 + 3×BLOCKED, and asserts v0.4 ledger agreement). Gates `SURVIVOR_IDENTITY_VERIFIED` + `BATTLEFIELD_VERIFIED` emitted by the script and asserted by test (no hand-claim). PARENT-05/06 green.
+**Open gaps (scoped, not hidden).** PHASE 02 (bridge), 03 (Lean), 04 (PSC/prereg freeze) remain stubs; `FOUNDATION_FROZEN` + `BRIDGE_SOURCES_FROZEN`/`FORMAL_KERNEL_FROZEN`/`PSC_FROZEN`/`DUAL_OBLIGATIONS_FROZEN` NOT claimed. Theorem ledger unchanged (verified, no jumps).
+**Status table delta.** Spec PHASE 00: COMPLETE; PHASE 01: COMPLETE (`PHASE01_PASS`, 6/6 checks, 9/9 WP-1 tests); WorkPlan Phase 1: STARTED (PHASE 02–04 pending).
+**Verdict.** WP-1 (spec PHASE 01) FINISHED with zero known gaps. FOLLOWS WorkPlan v0.4-WP8. No deviation.
+
 **End of Path entries so far (append-only below this line).**
