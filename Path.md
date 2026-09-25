@@ -153,4 +153,11 @@
 **Commit/push/tree.** Next: single commit, push, clean-tree verify.
 **Verdict.** v1.1 repair COMPLETE: exact union of demands satisfied; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.1. No deviation.
 
+## Entry R1-008 — Path entry-index correction: duplicate numbers disambiguated without rewriting history — FOLLOWS append-only rule (no entry edited or deleted)
+
+**Scope.** The file holds 14 entries with ambiguous numbers (R1-005×2, R1-006×3, R1-007×3) from overlapping audit cycles. This entry assigns canonical unique IDs in file order and marks operative vs superseded-duplicate status. No prior text touched.
+**Canonical index (file order).** E01=R1-001 study, E02=R1-002 clone, E03=R1-003 v1.0 plan, E04=R1-004 skeleton (all operative foundation). E05=R1-005 19-findings intake (operative). E06=R1-006 19-repair, first variant (operative for the 19-audit). E07=R1-007 19-closeout, first variant (operative). E08=R1-006 19-repair, second variant, and E09=R1-007 19-closeout, second variant: SUPERSEDED-DUPLICATE (preserved, non-operative; E09 additionally contradicts current plan text with "later declarations forbidden" while the frozen plan allows versioned child lemmas — current plan text governs, verified by grep of the child-lemma rule). E10=R1-006 10-findings repair variant and E11=R1-007 10-findings closeout variant (no intake precedes them): SUPERSEDED-DUPLICATE (preserved, non-operative). E12=R1-005 10-findings intake, E13=R1-006 10-findings repair, E14=R1-007 10-findings closeout (complete intake→execution→closeout chain, verified against current file bytes this turn): OPERATIVE for the 10-finding audit.
+**Counting note.** E08's "21 phase-script docstrings" counts 20 run_phase scripts + reproduce_all; E13/E14's "20/20" counts run_phase scripts only. Both true; canonical: 21 script files.
+**Verdict.** Index unambiguous henceforth: cite E01–E14, never bare R1-00X. FOLLOWS append-only discipline. No deviation.
+
 **End of Path entries so far (append-only below this line).**
