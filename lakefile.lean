@@ -1,2 +1,0 @@
--- lakefile.lean — SPLAY-AM-DECIDE-v0.4 (STUB; dependencies pinned at Phase-1 freeze)
--- See WorkPlan Phase 1 (formal kernel). No theorem-critical build before FORMAL_KERNEL_FROZEN.

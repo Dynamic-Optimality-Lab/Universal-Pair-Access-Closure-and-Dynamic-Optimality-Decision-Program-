@@ -1,9 +1,0 @@
-{
-  "archive_sha256": "6eba42d44b6b6e293a73d3bc8a521dc53a418098e021e7546321bd69b1648f2b",
-  "candidate_set_hash": "8FD3273143DEC3CA4611A1093F3521B8F22DE2BBD6A82715EE270412F65A2A00",
-  "experiment": "SPLAY-AM-MST-v0.3",
-  "h3t_state": "UNLOCKED_ONCE/unlocks=1",
-  "manifest_lines": 424,
-  "sealed_head": "353ee922b1cee0043afa46fe8929f42f7652e5bf",
-  "terminal_claim": "TRANSFER_CALCULUS_SURVIVES_FINITE_TESTS"
-}
