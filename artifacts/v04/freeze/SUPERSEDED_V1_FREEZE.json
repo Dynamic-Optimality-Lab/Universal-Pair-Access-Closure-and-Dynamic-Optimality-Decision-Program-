@@ -1,0 +1,48 @@
+{
+  "artifact": "SUPERSEDED_V1_FREEZE",
+  "authoritative": "corrected-post-freeze-phase1-rerun-only",
+  "comparison": {
+    "artifacts/v04/freeze/FOUNDATION_FROZEN.json": {
+      "new_sha256": "bfb1d86b734e2903cb2ea31e3d84a34ed22dad24ecefa05f37bb8edbedc2513f",
+      "old_sha256": "6b0d0ffa6985a6664b41864235ff6b296833fad099152fe1a17021818a9f846b",
+      "verdict": "divergent"
+    },
+    "artifacts/v04/freeze/PHASE00_PARENT_PIN.json": {
+      "new_sha256": "2fbe5af811b6fd69534cb8bde602f9d08fb75ae123f4953520358b4fa9ab1bf9",
+      "old_sha256": "2044994dddde75f28eadd82fb7aee847d9c3134e45ab49ebf5f5f7075f4e2860",
+      "verdict": "semantically-identical-checks"
+    },
+    "artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json": {
+      "new_sha256": "6dbd0a8e8e62fe0aa8b21f227d8e1df6869be15f2d279edf6111ea20485f4e7d",
+      "old_sha256": "55c627e7e416d24f85a79191b946c9d5362962859ac2e7e315412838db8f3888",
+      "verdict": "semantically-identical-checks"
+    },
+    "artifacts/v04/logs/phase00.log": {
+      "new_sha256": "8810e976c8a317b6641ac57d3dfac49bcaaeaa224f46547d55dafd72d9630fe1",
+      "old_sha256": "9acbf202ad432d21a117ea91ab961df20339cf0c738a1a4a7ce050e3a822cf3d",
+      "verdict": "divergent-or-unparsable"
+    },
+    "artifacts/v04/logs/phase01.log": {
+      "new_sha256": "2898bce169b2e793a3726a3a9dd0410dd4a1ac7a7b9e674b924551c192ab9f09",
+      "old_sha256": "29e9f226dd83b513c463a51ba2e90ea5de06e672d9bba8544972af606f98d1a9",
+      "verdict": "divergent-or-unparsable"
+    },
+    "prereg/prereg_sha256.txt": {
+      "new_sha256": "dc0c1b5b7eefb69cd34f18bd4042e99006c2a542e2c280d928b4703137f4f2c1",
+      "old_sha256": "fd320a153dcfa6c9651543004921d9f3670c5eda5acae7b52130278590be7456",
+      "verdict": "divergent-or-unparsable"
+    }
+  },
+  "defect_classification": "mechanical-freeze-contract-exact-set-and-order-defect",
+  "new_foundation_sha": "bfb1d86b734e2903cb2ea31e3d84a34ed22dad24ecefa05f37bb8edbedc2513f",
+  "new_manifest_sha": "dc0c1b5b7eefb69cd34f18bd4042e99006c2a542e2c280d928b4703137f4f2c1",
+  "new_phase1_sha": "6dbd0a8e8e62fe0aa8b21f227d8e1df6869be15f2d279edf6111ea20485f4e7d",
+  "old_foundation_sha": "6b0d0ffa6985a6664b41864235ff6b296833fad099152fe1a17021818a9f846b",
+  "old_manifest_sha": "fd320a153dcfa6c9651543004921d9f3670c5eda5acae7b52130278590be7456",
+  "old_phase1_sha": "55c627e7e416d24f85a79191b946c9d5362962859ac2e7e315412838db8f3888",
+  "prior_classification": "PRE_FREEZE_EXECUTION_NONAUTHORITATIVE",
+  "prior_recovery_commit": "0ef545f",
+  "rule": "v1-freeze-preserved-and-superseded-forbidden-from-gates-and-downstream",
+  "scientific_content_changed": false,
+  "utc": "2026-09-25T17:36:48Z"
+}

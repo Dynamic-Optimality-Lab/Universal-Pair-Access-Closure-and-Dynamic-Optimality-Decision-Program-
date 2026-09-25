@@ -9,12 +9,15 @@ missing, extra, mismatching, or ambiguous freeze-bound input:
   F-03 lifecycle legality: zero jumps, zero pointerless, counts agree
   F-04 bridge manifest check (L3 bytes + SHA; L2 UNAVAILABLE record)
   F-05 prereg completeness (13 sources real content; manifest correctly absent)
-  F-06 immutable PATH_AT_FOUNDATION_FREEZE.md snapshot
-  F-07 write prereg/prereg_sha256.txt over PREREG_PAYLOAD u FREEZE_BOUND
-  F-08 byte-verify every manifest line
+  F-06 immutable PATH_AT_FOUNDATION_FREEZE.md snapshot (v1 preserved alongside)
+  F-07 write prereg/prereg_sha256.txt over the canonical unique union
+  F-08 strict set-equality manifest verification (unique, exact, ordered)
   F-09 prefix-verify living Path opens with the snapshot bytes
   F-10 emit FOUNDATION_FROZEN with scope + pending-execution list, or fail
-Only F-10 success claims the gate. Pre-freeze planning files are untouched.
+  F-00B rerun PHASE-01 checks only AFTER foundation emission
+  F-11 versioned v1 supersession record (old/new SHAs, comparison)
+Only F-10 success claims the gate, and no authoritative Phase-1 certificate
+can exist before it. Pre-freeze planning files are untouched.
 """
 
 import argparse
@@ -72,6 +75,33 @@ FREEZE_BOUND_FILES = [
     "parent/V03_COUNTEREXAMPLE_INDEX.json", "parent/BOOTSTRAP_MANIFEST.sha256",
     "artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md",
 ]
+# The one preregistered intentional overlap between the raw declarations:
+# proof_stress_corpus.yaml is both a prereg payload source and a bound schema.
+EXPECTED_OVERLAP = frozenset({"prereg/proof_stress_corpus.yaml"})
+
+
+def freeze_members():
+    """Canonical duplicate-free ordered union of payload u bound files.
+
+    Inspects the raw concatenated declarations, requires any overlap to equal
+    exactly EXPECTED_OVERLAP (fail closed otherwise), and returns the unique
+    members in deterministic (sorted) order. No silent masking: undeclared
+    duplicates raise FreezeError.
+    """
+    raw = list(PREREG_PAYLOAD_FILES) + list(FREEZE_BOUND_FILES)
+    seen, dupes = set(), set()
+    for p in raw:
+        if p in seen:
+            dupes.add(p)
+        seen.add(p)
+    if dupes != set(EXPECTED_OVERLAP):
+        raise FreezeError("undeclared freeze-member overlap: %r" % sorted(dupes))
+    unique = sorted(set(PREREG_PAYLOAD_FILES) | set(FREEZE_BOUND_FILES))
+    if len(unique) != len(set(PREREG_PAYLOAD_FILES) | set(FREEZE_BOUND_FILES)):
+        raise FreezeError("union cardinality breach")
+    if len(unique) != len(raw) - len(EXPECTED_OVERLAP):
+        raise FreezeError("member count mismatch vs declarations")
+    return unique
 DOWNSTREAM_DOCS = [
     "math/theorem_MST01_parent_transport.md", "math/theorem_MST02_rotation_refinement.md",
     "math/theorem_MST03_l6_translation.md", "math/theorem_MST04_keep_reference_snapshot.md",
@@ -276,27 +306,42 @@ def verify_prereg_content(log):
         if len(lines) < 5 or any(ln.startswith("# STUB") for ln in lines):
             raise FreezeError("prereg source is stub-only: %s" % rel)
     if (REPO_ROOT / "prereg" / "prereg_sha256.txt").exists():
-        raise FreezeError("prereg_sha256.txt exists before freeze")
+        log.append({"step": "STEP-F-05", "name": "prior_manifest_noted", "status": "PASS",
+                    "detail": "v1 manifest present; superseded by F-07 rewrite"})
     log.append({"step": "STEP-F-05", "name": "prereg_content", "status": "PASS",
                 "detail": "13 sources normative"})
 
 
 def write_snapshot(log):
-    """F-06: immutable PATH_AT_FOUNDATION_FREEZE.md snapshot (prefix rule)."""
+    """F-06: versioned immutable Path freeze snapshot (prefix rule).
+
+    The v1 snapshot from the superseded freeze is preserved byte-identical at
+    PATH_AT_FOUNDATION_FREEZE.v1_SUPERSEDED.md (first occurrence only); the
+    corrected snapshot governs at the canonical path. Never mutates history.
+    """
     print("STEP-F-06: writing immutable Path freeze snapshot")
     live = (REPO_ROOT / "Path.md").read_bytes()
-    snap = REPO_ROOT / "artifacts" / "v04" / "freeze" / "PATH_AT_FOUNDATION_FREEZE.md"
-    snap.parent.mkdir(parents=True, exist_ok=True)
+    freeze = REPO_ROOT / "artifacts" / "v04" / "freeze"
+    freeze.mkdir(parents=True, exist_ok=True)
+    snap = freeze / "PATH_AT_FOUNDATION_FREEZE.md"
+    old = freeze / "PATH_AT_FOUNDATION_FREEZE.v1_SUPERSEDED.md"
+    if snap.exists() and not old.exists():
+        old.write_bytes(snap.read_bytes())
+        log.append({"step": "STEP-F-06", "name": "snapshot_preserve_v1", "status": "PASS",
+                    "detail": "v1 sha256=%s" % sha256_file(old)})
     snap.write_bytes(live)
     log.append({"step": "STEP-F-06", "name": "path_snapshot", "status": "PASS",
                 "detail": "sha256=%s" % sha256_file(snap)})
 
 
 def write_manifest(log):
-    """F-07: write prereg_sha256.txt over PAYLOAD u BOUND (never itself)."""
-    print("STEP-F-07: writing prereg_sha256.txt (payload u bound, never itself)")
+    """F-07: write prereg_sha256.txt over the canonical unique union."""
+    print("STEP-F-07: writing prereg_sha256.txt (unique union, never itself)")
+    members = freeze_members()
+    log.append({"step": "STEP-F-07", "name": "union_overlap", "status": "PASS",
+                "detail": "declared overlap=%r" % sorted(EXPECTED_OVERLAP)})
     rows = []
-    for rel in PREREG_PAYLOAD_FILES + FREEZE_BOUND_FILES:
+    for rel in members:
         p = REPO_ROOT / rel
         if not p.exists():
             raise FreezeError("freeze-bound file missing: %s" % rel)
@@ -304,16 +349,31 @@ def write_manifest(log):
     (REPO_ROOT / "prereg" / "prereg_sha256.txt").write_text(
         "\n".join(rows) + "\n", encoding="utf-8")
     log.append({"step": "STEP-F-07", "name": "manifest", "status": "PASS",
-                "detail": "%d lines" % len(rows)})
+                "detail": "%d unique lines" % len(rows)})
 
 
 def verify_manifest(log):
-    """F-08: byte-verify every manifest line against workdir bytes."""
-    print("STEP-F-08: byte-verifying every manifest line")
+    """F-08: strict set-equality verification of the manifest.
+
+    Fails closed on: duplicate paths (even with identical hashes), missing
+    members, unexpected members, self-reference, SHA mismatch, or a line
+    count differing from the mechanically derived unique-member count.
+    Checks both ordered canonical sequence equality and set equality.
+    """
+    print("STEP-F-08: strict set-equality manifest verification")
+    members = freeze_members()
     rows = (REPO_ROOT / "prereg" / "prereg_sha256.txt").read_text(
         encoding="utf-8").splitlines()
-    if len(rows) != len(PREREG_PAYLOAD_FILES) + len(FREEZE_BOUND_FILES):
-        raise FreezeError("manifest line count=%d" % len(rows))
+    paths = [ln.split()[1] for ln in rows if len(ln.split()) == 2]
+    if len(rows) != len(members):
+        raise FreezeError("manifest line count=%d, union=%d" % (len(rows), len(members)))
+    if len(set(paths)) != len(paths):
+        raise FreezeError("duplicate manifest path")
+    if set(paths) != set(members):
+        raise FreezeError("manifest set mismatch: missing=%r extra=%r" % (
+            sorted(set(members) - set(paths)), sorted(set(paths) - set(members))))
+    if paths != sorted(members):
+        raise FreezeError("manifest order is not canonical sorted order")
     for ln in rows:
         parts = ln.split()
         if len(parts) != 2 or parts[1] == "prereg/prereg_sha256.txt":
@@ -321,7 +381,7 @@ def verify_manifest(log):
         if sha256_file(REPO_ROOT / parts[1]) != parts[0].lower():
             raise FreezeError("manifest mismatch: %s" % parts[1])
     log.append({"step": "STEP-F-08", "name": "manifest_verify", "status": "PASS",
-                "detail": "%d lines byte-verified" % len(rows)})
+                "detail": "%d unique lines byte-verified" % len(rows)})
 
 
 def verify_prefix(log):
@@ -339,11 +399,13 @@ def stash_pre_freeze():
     """Capture pre-freeze cert bytes before the rerun overwrites them."""
     print("STEP-F-00A: stashing pre-freeze outputs for comparison")
     stashed = {}
-    freeze = REPO_ROOT / "artifacts" / "v04" / "freeze"
-    logs = REPO_ROOT / "artifacts" / "v04" / "logs"
-    for rel in ("freeze/PHASE00_PARENT_PIN.json", "freeze/PHASE01_SURVIVOR_BINDING.json",
-                "logs/phase00.log", "logs/phase01.log"):
-        p = REPO_ROOT / "artifacts" / "v04" / rel
+    for rel in ("artifacts/v04/freeze/PHASE00_PARENT_PIN.json",
+                "artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json",
+                "artifacts/v04/freeze/FOUNDATION_FROZEN.json",
+                "artifacts/v04/logs/phase00.log",
+                "artifacts/v04/logs/phase01.log",
+                "prereg/prereg_sha256.txt"):
+        p = REPO_ROOT / rel
         if p.exists():
             stashed[rel] = {"sha256": sha256_file(p), "bytes": p.read_bytes().decode("utf-8", "replace")}
         else:
@@ -351,13 +413,18 @@ def stash_pre_freeze():
     return stashed
 
 
-def write_superseded(stashed, log):
-    """F-11: mark pre-freeze outputs non-authoritative; compare with rerun."""
-    print("STEP-F-11: writing supersede record with pre/post comparison")
+def write_superseded_v1(stashed, log):
+    """F-11: versioned repair record superseding the v1 freeze (0ef545f).
+
+    Names the prior freeze, records old/new SHAs for foundation cert,
+    manifest, and Phase-1 cert, and states the comparison. No history is
+    edited: v1 artifacts remain committed; this record supersedes them.
+    """
+    print("STEP-F-11: writing versioned v1 supersession record")
     freeze = REPO_ROOT / "artifacts" / "v04" / "freeze"
     comparison = {}
     for rel, old in stashed.items():
-        p = REPO_ROOT / "artifacts" / "v04" / rel
+        p = REPO_ROOT / rel
         new_sha = sha256_file(p) if p.exists() else None
         if old["sha256"] is None:
             verdict = "absent-before"
@@ -376,24 +443,37 @@ def write_superseded(stashed, log):
                            "verdict": verdict}
     for rel in [r for r in comparison if r.endswith(".log")]:
         old_b = stashed[rel]["bytes"] or ""
-        new_p = REPO_ROOT / "artifacts" / "v04" / rel
+        new_p = REPO_ROOT / rel
         new_b = new_p.read_text(encoding="utf-8", errors="replace") if new_p.exists() else ""
         if new_b == old_b:
             comparison[rel]["verdict"] = "byte-identical"
         elif old_b and new_b.startswith(old_b):
             comparison[rel]["verdict"] = "appended-to"
+    if comparison["artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json"]["verdict"] == "divergent":
+        raise FreezeError("phase1 scientific divergence after repair: STOP, do not bless")
+    if comparison["artifacts/v04/freeze/PHASE00_PARENT_PIN.json"]["verdict"] == "divergent":
+        raise FreezeError("phase00 scientific divergence after repair: STOP, do not bless")
     rec = {
-        "classification": "PRE_FREEZE_EXECUTION_NONAUTHORITATIVE",
-        "reason": "ordering-provenance-defect: executed-before-corrected-FOUNDATION_FROZEN",
-        "rule": "retained-for-provenance-forbidden-from-gates-and-downstream",
+        "artifact": "SUPERSEDED_V1_FREEZE",
+        "prior_recovery_commit": "0ef545f",
+        "defect_classification": "mechanical-freeze-contract-exact-set-and-order-defect",
+        "prior_classification": "PRE_FREEZE_EXECUTION_NONAUTHORITATIVE",
+        "rule": "v1-freeze-preserved-and-superseded-forbidden-from-gates-and-downstream",
         "utc": utcnow(),
+        "old_foundation_sha": stashed["artifacts/v04/freeze/FOUNDATION_FROZEN.json"]["sha256"],
+        "old_manifest_sha": stashed["prereg/prereg_sha256.txt"]["sha256"],
+        "old_phase1_sha": stashed["artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json"]["sha256"],
+        "new_foundation_sha": sha256_file(REPO_ROOT / "artifacts/v04/freeze/FOUNDATION_FROZEN.json"),
+        "new_manifest_sha": sha256_file(REPO_ROOT / "prereg/prereg_sha256.txt"),
+        "new_phase1_sha": sha256_file(REPO_ROOT / "artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json"),
         "comparison": comparison,
-        "authoritative": "post-freeze-rerun-outputs-only",
+        "scientific_content_changed": False,
+        "authoritative": "corrected-post-freeze-phase1-rerun-only",
     }
-    (freeze / "SUPERSEDED_PRE_FREEZE.json").write_text(
+    (freeze / "SUPERSEDED_V1_FREEZE.json").write_text(
         json.dumps(rec, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    log.append({"step": "STEP-F-11", "name": "supersede", "status": "PASS",
-                "detail": comparison})
+    log.append({"step": "STEP-F-11", "name": "supersede_v1", "status": "PASS",
+                "detail": "phase1=%s" % comparison["artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json"]["verdict"]})
     return rec
 
 
@@ -439,15 +519,15 @@ def run_freeze(parent_dir):
     write_manifest(log)
     verify_manifest(log)
     verify_prefix(log)
-    print("STEP-F-00B: rerunning PHASE-01 checks from the frozen foundation")
+    cert = emit_foundation(log)
+    print("STEP-F-00B: rerunning PHASE-01 checks AFTER foundation emission")
     try:
         cert01 = run_phase01.run_phase01(str(parent))
     except run_phase01.Phase01Error as e:
-        raise FreezeError("phase01 rerun failed: %s" % e)
+        raise FreezeError("post-freeze phase01 rerun failed: no authoritative Phase-1 gate: %s" % e)
     log.append({"step": "STEP-F-00B", "name": "phase01_rerun", "status": "PASS",
                 "detail": "%d checks" % len(cert01["checks"])})
-    cert = emit_foundation(log)
-    write_superseded(stashed, log)
+    write_superseded_v1(stashed, log)
     return cert
 
 

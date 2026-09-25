@@ -67,40 +67,52 @@
       "step": "STEP-F-04"
     },
     {
+      "detail": "v1 manifest present; superseded by F-07 rewrite",
+      "name": "prior_manifest_noted",
+      "status": "PASS",
+      "step": "STEP-F-05"
+    },
+    {
       "detail": "13 sources normative",
       "name": "prereg_content",
       "status": "PASS",
       "step": "STEP-F-05"
     },
     {
-      "detail": "sha256=caabf00f171f052434735dafbd0853bb172ac69b773c1d9ca70e9dda6bc9dda7",
+      "detail": "v1 sha256=caabf00f171f052434735dafbd0853bb172ac69b773c1d9ca70e9dda6bc9dda7",
+      "name": "snapshot_preserve_v1",
+      "status": "PASS",
+      "step": "STEP-F-06"
+    },
+    {
+      "detail": "sha256=4c19235f2343113536976e479c5c5fc96ad639ca3e6d273e1ed97892207a0874",
       "name": "path_snapshot",
       "status": "PASS",
       "step": "STEP-F-06"
     },
     {
-      "detail": "45 lines",
+      "detail": "declared overlap=['prereg/proof_stress_corpus.yaml']",
+      "name": "union_overlap",
+      "status": "PASS",
+      "step": "STEP-F-07"
+    },
+    {
+      "detail": "44 unique lines",
       "name": "manifest",
       "status": "PASS",
       "step": "STEP-F-07"
     },
     {
-      "detail": "45 lines byte-verified",
+      "detail": "44 unique lines byte-verified",
       "name": "manifest_verify",
       "status": "PASS",
       "step": "STEP-F-08"
     },
     {
-      "detail": "60457 snapshot bytes are a live prefix",
+      "detail": "69882 snapshot bytes are a live prefix",
       "name": "prefix_verify",
       "status": "PASS",
       "step": "STEP-F-09"
-    },
-    {
-      "detail": "6 checks",
-      "name": "phase01_rerun",
-      "status": "PASS",
-      "step": "STEP-F-00B"
     }
   ],
   "experiment": "SPLAY-AM-DECIDE-v0.4",
@@ -122,5 +134,5 @@
     "lean-toolchain-compile-agreement"
   ],
   "scope": "freeze-contract-inputs-immutable: parent-package, bridge-bytes(L3)/L2-block-record, prereg-content, manifest, snapshot, PHASE-00/01-evidence",
-  "utc": "2026-09-25T17:19:16Z"
+  "utc": "2026-09-25T17:36:48Z"
 }

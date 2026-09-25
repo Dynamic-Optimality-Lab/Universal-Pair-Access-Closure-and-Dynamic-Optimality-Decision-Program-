@@ -3,6 +3,7 @@
 All notable decisions are recorded here. Tracker detail lives in `Path.md` (append-only).
 
 ## [Unreleased] — 2026-09-25
+- Fixed (narrow): `freeze_members()` unique union (44 lines, corpus-once) + strict set-equality verification + emit-before-rerun order + versioned re-freeze (`SUPERSEDED_V1_FREEZE.json`, v1 snapshot preserved); 15 regression/drill tests; Path Entries 034–036 (corrected FOUNDATION re-emitted; only corrected post-freeze Phase-1 authoritative; no Phase 2).
 - Recovery (ERRATUM Entry 030): pre-freeze PHASE00/01 claims superseded (`PRE_FREEZE_EXECUTION_NONAUTHORITATIVE`, history preserved).
 - Added (recovery): `bridge_sources/` L3 bytes + README; 10 exact math statements; 13 fleshed prereg files; `scripts/freeze_foundation.py` (F-00–F-11); `parent/` 10-file import package; `prereg_sha256.txt` (45 lines); snapshot; `FOUNDATION_FROZEN.json`; `SUPERSEDED_PRE_FREEZE.json`; STEP-10 dual-mode; Path Entries 030–033 (FOUNDATION EMITTED scoped; execution gates pending; no Phase 2).
 - Added (WP-1): full `scripts/run_phase01.py` (6 STEP checks, both gates), `tests/test_phase01_stress.py` (5 tests), +4 foundation tests; `artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json` + `logs/phase01.log`; Path Entries 027–029 (spec PHASE 01 COMPLETE; PHASE 02–04 pending; `FOUNDATION_FROZEN` not claimed).
