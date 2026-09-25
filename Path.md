@@ -160,4 +160,42 @@
 **Counting note.** E08's "21 phase-script docstrings" counts 20 run_phase scripts + reproduce_all; E13/E14's "20/20" counts run_phase scripts only. Both true; canonical: 21 script files.
 **Verdict.** Index unambiguous henceforth: cite E01–E14, never bare R1-00X. FOLLOWS append-only discipline. No deviation.
 
+## Entry R1-009 — Audit intake: 12 state-machine/freeze-authority/dependency exploits (6 freeze blockers + 6 hardening) — FOLLOWS repair order (fix before freeze)
+
+**Scope.** Intake follow-up audit: per-node PROVE_READY sequencing, proof_status snapshot-vs-living, FREEZE_BOUND enumeration, custom-axiom loophole, Phase-02/04 post-freeze verification wording, REFUTE_READY semantic deps, PROVE/REFUTED language, decision.json path, MST0-19 unavailable representation, 3-layer asymmetry, Phase-17/18 dormancy split. All accepted. Vehicle: v0.4.4 amendment + WorkPlan v1.1→v1.2; no theorem work; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS audit order. No deviation.
+
+## Entry R1-009 — Audit intake: 12 state-machine/freeze-authority/dependency exploits (6 freeze blockers + 6 hardening) — FOLLOWS repair order (fix before freeze)
+
+**Scope.** Intake follow-up audit: per-node PROVE_READY sequencing, proof_status snapshot-vs-living, FREEZE_BOUND enumeration, custom-axiom loophole, Phase-02/04 post-freeze verification wording, REFUTE_READY semantic deps, PROVE/REFUTED language, decision.json path, MST0-19 unavailable representation, 3-layer asymmetry, Phase-17/18 dormancy split. All accepted. Vehicle: v0.4.4 amendment + WorkPlan v1.1→v1.2; no theorem work; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS audit order. No deviation.
+
+## Entry R1-010 — Repair execution: 12 findings closed (planning-only turn, scripts fail-closed) — FOLLOWS audit order + WorkPlan v1.2
+
+**Scope.** Close each finding with file-level evidence.
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.4_AMENDMENT.md` (new, RATIFIED): D1 per-node PROVE_READY(17/18/19), D2 status snapshot rule, D3 exact 26-member bound set (incl. both snapshots), D4 empty custom-theorem-axiom allowlist + 8 forbidden categories + `#print axioms` rule, D5 post-freeze verification chronology, D6 MST0-19 unavailable representation, D7 effect.
+- `WorkPlan.md` v1.1→v1.2: per-node Phase-5 formulas; living-vs-snapshot status rule + hash-recorded mutations; bound-set enumeration reference; allowlist + closure rule; verify-not-modify Phase-02/04 wording; semantic-deps REFUTE_READY + per-L battlefield dependencies; PROVE/REFUTED lifecycle language in Phase-3/4 exits; corrected decision.json path; unavailable representation block; asymmetry paragraph; dormancy split.
+**Verification this turn.** 12/12 finding greps green (per-node formulas, snapshot rule + bound membership, allowlist, verify-wording, semantic deps, lifecycle language, corrected path, representation block, asymmetry paragraph, dormancy split); v0.4.4 file tracked; scripts fail-closed live (exit 2).
+**Anti-overfitting.** Planning text only; statuses untouched; H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.2. No deviation.
+
+## Entry R1-011 — Hostile closeout audit of v1.2 + final verdict — FOLLOWS repair order §§9–11
+
+**Scope.** Prove v1.2 satisfies every demand; list anything remaining before commit.
+**Compliance matrix (finding → disposition + evidence path).** 1 sequencing → CLOSED (D1 + per-node Phase-5 formulas). 2 snapshot → CLOSED (D2 + Phase-1 rule + bound membership). 3 bound set → CLOSED (D3 26-member YAML + manifest rule). 4 axioms → CLOSED (D4 + Phase-1 code rule). 5 chronology → CLOSED (D5 + Phase-1 coverage wording). 6 Phase-02 wording → CLOSED. 7 semantic deps → CLOSED (§14 + battlefield rule). 8 language → CLOSED (Phase-3/4 exits). 9 path → CLOSED. 10 representation → CLOSED (D6 + Phase-5 block). 11 asymmetry → CLOSED (§11 paragraph). 12 dormancy → CLOSED (Phase-6 split).
+**Threats/stops/invariants/decision/lifecycle/finite-proof/consumption audit.** Lifecycle untouched (frontier UNPROVED/BLOCKED, no verdict files); consumption rule intact; finite≠proof intact (no evidence generated); decision per-track consistent; multi-owner controls intact.
+**Remaining gaps (explicit, execution-phase owned).** Lean install/compile, bridge-byte acquisition, prereg content freeze, PSC-impl conformance, mutant execution, 5 human verdicts. No plan-text defect remains known.
+**Status table delta.** WorkPlan v1.1→v1.2; normative stack +1 amendment (4 files tracked); ledger unchanged; Phase 1 execution not started; `FOUNDATION_FROZEN` not claimed.
+**Theorem states.** Unchanged: 7 UNPROVED + 3 BLOCKED, zero verdicts, zero proofs asserted.
+**Console STEP lines.** None executed this turn (planning + text surgery only; fail-closed exit-2 run recorded as sole execution).
+**Commit/push/tree.** Next: single commit, push, clean-tree verify.
+**Verdict.** v1.2 repair COMPLETE: exact union of demands satisfied; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.2. No deviation.
+
+## Entry R1-012 — Self-found defect in closeout: duplicated D3 bound line removed (v0.4.4 uncommitted-change window) — FOLLOWS append-only discipline for plan text, byte-surgery for the amendment
+
+**Scope.** Final sweep caught `artifacts/v04/freeze/PROOF_STATUS_AT_FOUNDATION_FREEZE.json` listed twice in v0.4.4 D3 (26 lines, 25 unique) — the exact duplicate-path class this program hunts.
+**Disposition.** Deleted the duplicate line (v0.4.4 not yet committed this cycle, so direct correction is legitimate; had it been frozen, a v0.4.5 erratum would have been required instead). Re-verified: 26 lines, 26 unique. No semantic change (the manifest rule already demands uniqueness; the list now satisfies its own rule).
+**Verdict.** Closed before commit. No deviation.
+
 **End of Path entries so far (append-only below this line).**
