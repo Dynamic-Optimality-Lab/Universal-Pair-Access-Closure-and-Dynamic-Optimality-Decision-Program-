@@ -211,4 +211,15 @@
 **Anti-overfitting.** Planning text only; statuses untouched; H3T untouched; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS audit order + WorkPlan v1.3. No deviation.
 
+## Entry R1-015 — v0.4.5 unavailable-branch completion + index extension (planning-only turn) — FOLLOWS audit order + WorkPlan v1.4
+
+**Scope.** Close the single substantive remainder: propagate the lawful unavailable branch through the freeze model (v0.4.5 E1–E4 + E2-wiring in WorkPlan).
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.5_AMENDMENT.md` (new, RATIFIED): E1 bound variants (26 available / 25 unavailable), E2 blocked-node representation (no-synthesis rule), E3 verification wording, E4 effect.
+- `WorkPlan.md` v1.3→v1.4: header/stack/tree name v0.4.5; Phase-1 Files + Lean clauses conditional (9 instantiated + blocked record in the unavailable branch); Phase-1 coverage E3 wording; manifest-variant rule; Phase-5 E2 reference.
+**Verification.** v0.4.5 tracked; E2-wiring greps green; scripts fail-closed live (exit 2).
+**Index extension (append-only; R1-008 covered E01–E14).** Two further duplicate R1-009 intake headers found, byte-identical (685 chars each): E15 = first occurrence (canonical reference for the 12-finding intake), E16 = second occurrence (preserved-non-operative duplicate). E17 = this entry (operative closeout for the v0.4.5 turn). Operative chain for the 12-finding audit: intake E15, repair/closeout per the R1-010/R1-011 entries, plus this entry. Cite E15–E17, never bare R1-009.
+**Anti-overfitting.** Planning text only; statuses untouched (7 UNPROVED + 3 BLOCKED, zero verdicts); H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.4. No deviation.
+
 **End of Path entries so far (append-only below this line).**
