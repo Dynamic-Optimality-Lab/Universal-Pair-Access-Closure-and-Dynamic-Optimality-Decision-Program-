@@ -20,19 +20,28 @@ PROVE_READY(L) = REFUTE_READY(L)
 - `REFUTED(L)` freezes later POSITIVE-route consumption and, when the obstruction is eligible, activates negative lifting (Phase 6).
 - Proof failure, human REJECT, or BLOCKED never equals `REFUTED` without an exact negation witness (v0.4.1 A2).
 
-## C2. Bifurcated gate asserts in the §21 order
+## C2. Amended deterministic execution order: 16 checkpoints (was §21's 15)
 
-The single `ASSERT THEOREM GATES` step is executed as two explicit asserts:
+The single `ASSERT THEOREM GATES` line is replaced by two explicit gate checkpoints. The amended order contains 16 checkpoints (any “15-step” reference now means this amended 16-checkpoint order):
 
 ```text
-ASSERT FOUNDATION / REFUTATION GATES   (before LOAD THEOREM + NEGATION)
-LOAD EXACT THEOREM + NEGATION
-RUN REFUTATION ATTACK FIRST OR IN PARALLEL
-ASSERT POSITIVE PROOF DEPENDENCY GATES (before DEVELOP / CHECK PROOF)
-DEVELOP / CHECK PROOF
+01 VERIFY HASHES
+02 LOAD CONTRACT
+03 ASSERT REFUTE_READY
+04 ASSERT BINDING
+05 ASSERT KERNEL
+06 LOAD THEOREM + NEGATION
+07 RUN REFUTATION
+08 ASSERT PROVE_READY
+09 DEVELOP/CHECK PROOF
+10 SAVE RAW
+11 BUILD FORMAL CERTIFICATE
+12 INDEPENDENT CHECK
+13 RUN MUTANTS
+14 BUILD REVIEW PACKAGE
+15 UPDATE STATUS AFTER HUMAN VERDICT
+16 APPEND PATH
 ```
-
-The remaining §21 steps are unchanged. `NOT_REACHED` is always per-track: a closed proof gate marks `PROVE(L)` not reached, never the phase's `REFUTE(L)`.
 
 ## C3. Phase-gate readings fixed by C1–C2
 
