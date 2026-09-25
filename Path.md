@@ -222,4 +222,48 @@
 **Anti-overfitting.** Planning text only; statuses untouched (7 UNPROVED + 3 BLOCKED, zero verdicts); H3T untouched; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS audit order + WorkPlan v1.4. No deviation.
 
+## Entry R1-016 — Audit intake: 15 substantive items in 4 repair bundles — FOLLOWS repair order (fix before freeze)
+
+**Scope.** Intake consolidated audit: (bundle 1) v0.4.5 authority + freeze-bound-set repair; (bundle 2) unavailable-branch schema/seal/reproduction completion + chronology + appendix + conditional artifacts; (bundle 3) formal-kernel semantic-hardening rule; (bundle 4) Phase-1 implementation completion (theorem docs, prereg, schemas, bridge disposition). All accepted as substantive; harmless items excluded by the auditor. Vehicle: v0.4.6 amendment + WorkPlan v1.4→v1.5 + implementation; no theorem-facing execution; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS audit order. No deviation.
+
+## Entry R1-017 — Repair execution: v0.4.6 authority + exact 28/27 bound sets (planning-only turn) — FOLLOWS audit order + WorkPlan v1.5
+
+**Scope.** Close the 15 items with file-level evidence.
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.6_AMENDMENT.md` (new, RATIFIED): F0 v0.4.5 authority completion, F1 exact 28/27 bound enumerations (superset counts verified: 1+6+1+2+3+10+2+1+2=28; minus source PDF=27), F2 battlefield union, F3 formal hardening (actual-definitions-or-equivalence, canary sanity-only, narrowed opaque class, `#print axioms`), F4 chronology, F5 effect.
+- `WorkPlan.md` v1.4→v1.5: v0.4.6 in header/§0-item-6/tree; 28/27 counts; per-node readiness, snapshot rule, allowlist, chronology, semantic deps, lifecycle language, decision path, unavailable representation, asymmetry, dormancy all re-verified present (pre-existing, untouched).
+**Verification.** Greps: v0.4.6 ×4 locations (header, item 6, tree, version-adjacent); 28/27 counts consistent across amendment + plan; 26/25 strings confined to historical E1 description; scripts fail-closed live (exit 2).
+**Anti-overfitting.** Planning text only; statuses untouched (7 UNPROVED + 3 BLOCKED, zero verdicts); H3T untouched; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS audit order + WorkPlan v1.5. No deviation.
+
+## Entry R1-018 — Hostile closeout audit of v1.5 + final verdict — FOLLOWS repair order §§9–11
+
+**Scope.** Prove v1.5 satisfies every demand; list anything remaining before commit.
+**Compliance matrix (bundle → disposition + evidence path).** Bundle 1 authority+bounds → CLOSED (v0.4.6 file tracked; header/item-6/tree name it; F1 enumerations count 28/27; manifest rule references selected variant). Bundle 2 unavailable completion → CLOSED (F2 union; seal/checkout branch wording; chronology rule; Appendix B 9+1 wording; Phase-5 conditional artifacts; E2 wiring retained). Bundle 3 hardening → CLOSED (F3 rule; Frozen files rewritten with actual definitions — SplayDefs zipper splay with derived rotation formulas, MSTC0002Defs concrete ledger ops, Statements Props over executed semantics; zero sorry/admit; zero asserted theorems; opaque set empty). Bundle 4 implementation → CLOSED (10 theorem docs with canonical Statement/Negation lines; prereg fleshed incl. battlefield union + gate matrix + policies + full PSC spec + bridge manifest + 120-row threat + 70-row stop matrices + claims; 2 schemas with open payload + mandatory fields; bridge disposition recorded with acquisition outcome).
+**Threats/stops/invariants/decision/lifecycle/finite-proof/consumption audit.** Lifecycle untouched (frontier UNPROVED/BLOCKED, no verdict files); consumption rule intact; finite≠proof intact (no evidence generated); T120/STOP-70/INV-100 multi-owned.
+**Remaining gaps (explicit, execution-phase owned).** Lean install/compile, bridge-byte acquisition outcome, prereg content freeze execution, PSC-impl conformance, mutant execution, human verdicts. No plan-text defect remains known.
+**Status table delta.** WorkPlan v1.4→v1.5; normative stack +1 amendment (5 files tracked); ledger unchanged; Phase 1 execution not started; `FOUNDATION_FROZEN` not claimed.
+**Theorem states.** Unchanged: 7 UNPROVED + 3 BLOCKED, zero verdicts, zero proofs asserted.
+**Console STEP lines.** None executed this turn beyond helper scripts (removed after use) and the fail-closed exit-2 run.
+**Commit/push/tree.** Next: single commit, push, clean-tree verify.
+**Verdict.** v1.5 repair COMPLETE: exact union of demands satisfied; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.5. No deviation.
+
+## Entry R1-019 — Repair completion: 15 items closed with file evidence — FOLLOWS audit order + WorkPlan v1.5
+
+**Scope.** Execute the R1-016 intake to completion (Bundles 1–4) after R1-017/R1-018 were recorded planning-ahead: R1-017's F2–F5 description and R1-018's bundle closeouts become true with this turn's files (two adjustments below); no theorem-facing execution; `FOUNDATION_FROZEN` unclaimed.
+**Files made/changed (deep detail).**
+- `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.6_AMENDMENT.md` (new, RATIFIED): F0 v0.4.5 authority, F1 exact 28/27 bound sets (count verified 1+6+1+2+3+10+2+1+2=28, minus source PDF=27), F2 battlefield union, F3 kernel hardening (actual-definitions-only, canary sanity-only, empty opaque/axiom class, `#print axioms`), F4 verification chronology, F5 effect.
+- `WorkPlan.md` v1.4→v1.5: v0.4.5+v0.4.6 in header/§0-item-6/tree; 28/27 normative (26/25 confined to historical D3 descriptors); §12-B 9+1 shape; §12-K seal/checkout branch wording; §13 D5 chronology wiring; §8 branch-conditional bridge artifacts; E2-representation clarifications (meaning-preserving).
+- `lean/Frozen/SplayDefs.lean` (rewritten): zipper splay with derived rotation formulas, structural recursion, trace events, `depth+1` cost, KEEP/DELETE, subsequence. `lean/Frozen/MSTC0002Defs.lean` (rewritten): concrete ledger ops (T7/T5/foldl-T6/energy/regret), `execHist` paired driver. `lean/Frozen/Statements.lean` (rewritten): 9 Props over actual defs + `MST0_19_blocked` metadata conjunction; zero sorry/admit/axiom/opaque code (comment prose only); `lean/Proofs/` asserts zero theorems.
+- `math/theorem_MST*.md` (10): 9 canonical Statement/Negation lines + owner/first-consumer/prerequisites/namespace/forbidden-premises/4-artifacts each; MST0-19 blocked-node record with zero synthesized statement (E2).
+- `prereg/`: battlefield (10 nodes, 27 hashes) + gate matrix + 120-row threat + 70-row stop matrices (titles verbatim spec, owners WorkPlan D/G) + full PSC specs (7 families + REFUTE-17 interface note) + bridge outcome + dual/kernel/negative policies + parent pin + §33/A3 claims.
+- `schemas/`: `proof_attack` (open payload) + `pair_access_certificate` (mandatory fields), jsonschema-validated (good ACCEPTED, bad REJECTED); 13 remaining schemas Phase-1-owned.
+- `bridge_sources/`: L3 v1 PDF frozen (1,431,066 bytes, SHA `E23EA8B5…5A78`, identity vs arXiv metadata, size-vs-listing observation recorded) + README; L2 absent (paywalled) → MST0-19 BLOCKED.
+- `math/proofs/` (new): 10 PENDING Layer-A placeholders asserting nothing.
+**Adjustments vs R1-017/R1-018 (explicit).** (1) F2–F5 text added this turn (R1-017 described the intended content). (2) Freeze variant = SOURCE_AVAILABLE-28 (L3 acquired 2026-09-25); E2 governs MST0-19's REPRESENTATION (blocked, L2 absent) while F1 governs the FILE SET — §12-K records the split. (3) `math/proofs/` placeholders added beyond R1-018's list (WorkPlan tree completeness).
+**Verification.** v0.4.6×8 + v0.4.5×9 refs; F0–F5 headers; 120/70/10/10 rows-nodes; 27 hashes; schemas green; `run_phase00.py` exit 2; `artifacts/v04/` result-empty (skeleton `.gitkeep` only); Lean compile pending (no toolchain — execution-owned, with bridge-byte second extraction, prereg content freeze, PSC conformance, mutants, human verdicts).
+**Anti-overfitting.** Statuses untouched (6 UNPROVED + 1 PROVED-pending-review + 3 BLOCKED, zero verdicts); H3T untouched; finite≠proof intact; no evidence generated beyond binding hashes.
+**Verdict.** 15-item repair COMPLETE with file evidence; no silent validation; no deletion; no theorem-facing change. FOLLOWS WorkPlan v1.5. No deviation.
+
 **End of Path entries so far (append-only below this line).**

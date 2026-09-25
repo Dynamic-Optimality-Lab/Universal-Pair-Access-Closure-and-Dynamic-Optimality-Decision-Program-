@@ -1,2 +1,172 @@
-# STUB — 10 nodes 08U/09/11/13/14/15/22/17/18/19 with statement/negation hashes, owner phases, first consumers, REVIEWED gates, child namespaces, forbidden premises. Frozen Phase 1.
-obligations: [MST0-08U, MST0-09, MST0-11, MST0-13, MST0-14, MST0-15, MST0-22, MST0-17, MST0-18, MST0-19]
+# theorem_battlefield.yaml — frozen Phase 1 (v0.4 section 19.2; union rule v0.4.6 F2).
+# Hash convention (FORM-12): statement_sha256 = SHA-256 over UTF-8 bytes of the
+# exact canonical Statement line (no trailing newline); likewise negation_sha256;
+# document_sha256 = SHA-256 over whole file bytes. Startup SHA-guard asserts all three.
+# Exactly 10 nodes; set equality asserted before any theorem-facing run.
+nodes:
+  MST0-08U:
+    document: "math/theorem_MST08U_locality.md"
+    lean_prop: "MST0_08U"
+    statement: "forall (E : Engine) (isA : Bool) (lo hi x n k : Nat), k <= 6 -> (T7inject E isA lo hi x n k).ledger.length <= E.ledger.length + 6"
+    statement_sha256: "f1a518a102c704d7d15d52fb34d57e75c842c0f90c0b05dc8d356f9dd10e2c3d"
+    negation: "exists (E : Engine) (isA : Bool) (lo hi x n k : Nat), k <= 6 /\\ (T7inject E isA lo hi x n k).ledger.length > E.ledger.length + 6"
+    negation_sha256: "c844da4e896cddc81687e1f5f07d88f95e696fa251c716db4fe48768022a872c"
+    document_sha256: "556d5927783e7b6a80b39d39e2085eaa9270cfe40239a26d91389da1b95d24c2"
+    parent_status: "UNPROVED"
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-08U/*"
+    proof_artifact: "math/proofs/MST0-08U_proof.md"
+    formal_artifact: "lean/Proofs/Locality.lean"
+    review_artifacts: ["math/reviews/MST0-08U.PACKAGE.md", "math/reviews/MST0-08U.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-08U/"
+  MST0-09:
+    document: "math/theorem_MST09_raw_boundary.md"
+    lean_prop: "MST0_09"
+    statement: "forall L : Ledger, energy L >= 0"
+    statement_sha256: "4c0836e8c174148f4e009d2d636f6926e32ea935f2e241b0cd2d7991512fbc5b"
+    negation: "exists L : Ledger, energy L < 0"
+    negation_sha256: "3ed35447df1e0adb21be4f5f0ed3c51ff1f0979f7ef9c13c23f20557530d50ff"
+    document_sha256: "9eb03584d3dba761592eaacb01ff894b13d6a153ed48847f72535c83ffe85734"
+    parent_status: "UNPROVED"
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-09/*"
+    proof_artifact: "math/proofs/MST0-09_proof.md"
+    formal_artifact: "lean/Proofs/Boundary.lean"
+    review_artifacts: ["math/reviews/MST0-09.PACKAGE.md", "math/reviews/MST0-09.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-09/"
+  MST0-11:
+    document: "math/theorem_MST11_preservation.md"
+    lean_prop: "MST0_11"
+    statement: "forall (E : Engine) (m : Mode), energy (T5activate E m).ledger = energy E.ledger"
+    statement_sha256: "88114ec8ea57628373f3ad4a39abccc951365108d4b39337124391529ba9ef9a"
+    negation: "exists (E : Engine) (m : Mode), energy (T5activate E m).ledger != energy E.ledger"
+    negation_sha256: "cd8e3ed5a8493f3b3efd40551386c75d80adfd199f5550a37d658f2f9cc9a3b0"
+    document_sha256: "f7a87becaf3166af24f17cf9de1bd72f6789aaf32d620c93ae210aac87f517f9"
+    parent_status: "UNPROVED"
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-11/*"
+    proof_artifact: "math/proofs/MST0-11_proof.md"
+    formal_artifact: "lean/Proofs/Preservation.lean"
+    review_artifacts: ["math/reviews/MST0-11.PACKAGE.md", "math/reviews/MST0-11.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-11/"
+  MST0-13:
+    document: "math/theorem_MST13_delete_injection.md"
+    lean_prop: "MST0_13"
+    statement: "forall (E : Engine) (isA : Bool) (lo hi x n k : Nat), k <= 6 -> energy (T7inject E isA lo hi x n k).ledger <= energy E.ledger + 6 * k"
+    statement_sha256: "855875412ab58fb584d2f4a42de16ac80c8d3c019883a5c287ead32bd2ab98f6"
+    negation: "exists (E : Engine) (isA : Bool) (lo hi x n k : Nat), k <= 6 /\\ energy (T7inject E isA lo hi x n k).ledger > energy E.ledger + 6 * k"
+    negation_sha256: "7fd51409e9172741ddfe55ef707a055f8ebad4bf3bab01c31713092d26221f22"
+    document_sha256: "c3b14c341f501db6544f2d94a53bff03ab124923917d493592610d2a1260d4e1"
+    parent_status: "PROVED-review-pending"
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding", "v0.3-author-proof-transport"]
+    child_namespace: "MST0-13/*"
+    proof_artifact: "math/proofs/MST0-13_proof.md"
+    formal_artifact: "lean/Proofs/Injection.lean"
+    review_artifacts: ["math/reviews/MST0-13.PACKAGE.md", "math/reviews/MST0-13.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-13/"
+  MST0-14:
+    document: "math/theorem_MST14_keep_repayment.md"
+    lean_prop: "MST0_14"
+    statement: "forall (L : Ledger) (y a : Nat), (discharge L (required y a)).2 = min (activePool L) (required y a)"
+    statement_sha256: "43bf2bea23aa310778c8c7a46b4a6af46993ba6a51afe00b795baa1b0b4f2878"
+    negation: "exists (L : Ledger) (y a : Nat), (discharge L (required y a)).2 != min (activePool L) (required y a)"
+    negation_sha256: "3dc01cb60bfe9a1c556526eae165d0d7eba602ce4c3b1bf5fc4c7aaf95aa38fa"
+    document_sha256: "7f724a1511fd23821e5d49975d66ee50dad2437535cc707ce6de0f9b6535e0d7"
+    parent_status: "UNPROVED"
+    owner_phase: 3
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-14/*"
+    proof_artifact: "math/proofs/MST0-14_proof.md"
+    formal_artifact: "lean/Proofs/Repayment.lean"
+    review_artifacts: ["math/reviews/MST0-14.PACKAGE.md", "math/reviews/MST0-14.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-14/"
+  MST0-15:
+    document: "math/theorem_MST15_integrability.md"
+    lean_prop: "MST0_15"
+    statement: "forall (L : Ledger) (need : Nat), activePool (discharge L need).1 + (discharge L need).2 = activePool L"
+    statement_sha256: "31d74be1ea2ec5a60902ad8873c9f27ddc6ed27bcf8f0548494bb817183b72e7"
+    negation: "exists (L : Ledger) (need : Nat), activePool (discharge L need).1 + (discharge L need).2 != activePool L"
+    negation_sha256: "9823475451be5783d7beac62f88f14aec9e315668a69e2e6229ac367d03433ae"
+    document_sha256: "462cc9472dc0f814516caa9c0b4ae4bbf343331c650d164e4459c288ab028155"
+    parent_status: "UNPROVED"
+    owner_phase: 4
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-15/*"
+    proof_artifact: "math/proofs/MST0-15_proof.md"
+    formal_artifact: "lean/Proofs/Integrability.lean"
+    review_artifacts: ["math/reviews/MST0-15.PACKAGE.md", "math/reviews/MST0-15.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-15/"
+  MST0-22:
+    document: "math/theorem_MST22_constant_independence.md"
+    lean_prop: "MST0_22"
+    statement: "C_frozen = 2 /\\ K_frozen = 6"
+    statement_sha256: "1e51131771cb4c05ee8d4268866f270eef188becc7c2d0a6b5cf404cd959dad4"
+    negation: "C_frozen != 2 \\/ K_frozen != 6"
+    negation_sha256: "6e77ba27224162223dfd1de37e7087c4121447f282bad0574a15c013369ff393"
+    document_sha256: "339819304ee5fb39ed3021425f31dd1703a16befcbf4e9df1e7eccb9c3063435"
+    parent_status: "UNPROVED"
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    prerequisites: ["frozen-definitions", "MSTC-0002-binding"]
+    child_namespace: "MST0-22/*"
+    proof_artifact: "math/proofs/MST0-22_proof.md"
+    formal_artifact: "lean/Proofs/Constants.lean"
+    review_artifacts: ["math/reviews/MST0-22.PACKAGE.md", "math/reviews/MST0-22.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-22/"
+  MST0-17:
+    document: "math/theorem_MST17_pair_access.md"
+    lean_prop: "MST0_17"
+    statement: "exists A : Nat -> Nat, forall (T0 : BST) (H : List (Mode * Nat)) (n : Nat), let (E, sA, sB) := execHist {ledger := [], cursor := 0} T0 H n in sB + energy E.ledger <= 2 * sA + A n"
+    statement_sha256: "f9c23b881c1194a2623fe655da740a1a3b05bdf0f2c6b77f6e6108dc0508cb17"
+    negation: "forall A : Nat -> Nat, exists (T0 : BST) (H : List (Mode * Nat)) (n : Nat), let (E, sA, sB) := execHist {ledger := [], cursor := 0} T0 H n in sB + energy E.ledger > 2 * sA + A n"
+    negation_sha256: "d57e739070b9565c61a8997f492221c6b5ada6ec539afdaf3e01b1cedc4a96b3"
+    document_sha256: "787582bd40ff9e4e8ef2277f7c7fce02c81aa8391b70c7a7c7dd1e97701be188"
+    parent_status: "BLOCKED"
+    owner_phase: 5
+    first_consumer: "MST0-18"
+    prerequisites: ["MST0-08U-REVIEWED", "MST0-09-REVIEWED", "MST0-11-REVIEWED", "MST0-13-REVIEWED", "MST0-14-REVIEWED", "MST0-15-REVIEWED", "MST0-22-REVIEWED"]
+    child_namespace: "MST0-17/*"
+    proof_artifact: "math/proofs/MST0-17_proof.md"
+    formal_artifact: "lean/Proofs/Composition.lean"
+    review_artifacts: ["math/reviews/MST0-17.PACKAGE.md", "math/reviews/MST0-17.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-17/"
+  MST0-18:
+    document: "math/theorem_MST18_telescoping.md"
+    lean_prop: "MST0_18"
+    statement: "exists A : Nat -> Nat, forall (T0 : BST) (H : List (Mode * Nat)) (n : Nat), let (E, sA, sB) := execHist {ledger := [], cursor := 0} T0 H n in sB <= 2 * sA + A n"
+    statement_sha256: "25f54f354ecedba510be013ce9f96ba55714cb627e44b49b88950a824e755346"
+    negation: "forall A : Nat -> Nat, exists (T0 : BST) (H : List (Mode * Nat)) (n : Nat), let (E, sA, sB) := execHist {ledger := [], cursor := 0} T0 H n in sB > 2 * sA + A n"
+    negation_sha256: "f624492af62f4f55dc7fddb470c02964ef2d4e72af67020d2e53ef1c7a1ad068"
+    document_sha256: "e9937b10d9397526f061f395704a75aa79b9b29f6ee7ea6ef7bd700019e5dd88"
+    parent_status: "BLOCKED"
+    owner_phase: 5
+    first_consumer: "MST0-19"
+    prerequisites: ["MST0-17-REVIEWED"]
+    child_namespace: "MST0-18/*"
+    proof_artifact: "math/proofs/MST0-18_proof.md"
+    formal_artifact: "lean/Proofs/Telescope.lean"
+    review_artifacts: ["math/reviews/MST0-18.PACKAGE.md", "math/reviews/MST0-18.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-18/"
+  MST0-19:
+    document: "math/theorem_MST19_bridge.md"
+    representation: blocked-node-record
+    statement_synthesized: false
+    negation_synthesized: false
+    lean_metadata: "MST0_19_blocked"
+    parent_status: "BLOCKED-on-18-plus-L2-L3-bytes"
+    owner_phase: 5
+    first_consumer: "Phase-18-decision-gate"
+    prerequisites: ["MST0-18-REVIEWED", "L2-bytes-frozen", "L3-bytes-frozen", "convention-match"]
+    child_namespace: "MST0-19/*"
+    l3_premise: {bytes: 1431066, sha256: E23EA8B58984B9A3530E8BF06AA028645DAD420B1AF280EEB407F4D2A4495A78}
+    l2_premise: {status: ABSENT}

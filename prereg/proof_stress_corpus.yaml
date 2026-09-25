@@ -1,1 +1,71 @@
-# STUB — PSC-L/P/B/K6/I/T/N complete machine-readable generator specs (exact interfaces/signatures, ranges, seeds, objectives, minimization, replay contracts); normative PSC definition; later implementations need conformance-harness green (STOP-17). Frozen Phase 1.
+# proof_stress_corpus.yaml — normative PSC definition, frozen Phase 1 (v0.4 sections 8, 19.4).
+# The PSC is not a holdout and never proves a theorem: survival only forces proof
+# discovery toward the hardest known configurations. Generator IMPLEMENTATIONS are
+# written at owner-phase execution and need conformance-harness green (STOP-17);
+# hash-excluded from v0.3 banks; independently generated per run.
+# deterministic RNG + canonical sorted outputs + replay certificates.
+doctrine: "survival-never-proof; no finite maximum premise (LOC-07, STOP-30/31)"
+master_seed: "sha256('SPLAY-AM-DECIDE-v0.4')"
+seed_derivation: "seed(family, index) = sha256(master_seed || family || index)"
+sizes: [16, 32, 64, 128, 256, 512, 1024, 2048+]
+attack_record_fields: [theorem_id, negation-predicate, generator-version, seed-or-symbolic-family, input-hash, exact-witness-if-found, objective-vector, best-finite-obstruction-metrics, replay-certificate, independent-checker-result, scientific-interpretation]
+families:
+  PSC-L:
+    name: LOCALITY_EXPLOSION
+    target: MST0-08U
+    interface: "gen_locality(seed, n, depth_span) -> AttackInput"
+    ranges: {n: sizes, depth_span: "1..n"}
+    objective: maximize-per-event-ledger-growth
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-P:
+    name: PRIMITIVE_PRESERVATION_EXHAUSTION
+    target: MST0-11
+    interface: "gen_preservation(seed, n, case_mix) -> AttackInput"
+    ranges: {n: sizes, case_mix: "ROOT/ZIG/LL/RR/LR/RL x T5/T6/T7-branches"}
+    objective: maximize-energy-drift-under-activation
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-B:
+    name: BOUNDARY_TORTURE
+    target: MST0-09
+    interface: "gen_boundary(seed, n, boundary_class) -> AttackInput"
+    ranges: {n: sizes, boundary_class: "nested/alternating/creation-rate/rank-gap/span/burden/burst/lifetime/reactivation/asymmetry/mirror/scale"}
+    objective: maximize-harmful-boundary-contribution
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-K6:
+    name: K6_SATURATION
+    target: MST0-14
+    interface: "gen_k6(seed, n, regret_class) -> AttackInput"
+    ranges: {n: sizes, regret_class: "positive-regret-magnitudes"}
+    objective: maximize-uncovered-regret
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-I:
+    name: DOUBLE_SPEND_APOCALYPSE
+    target: MST0-15
+    interface: "gen_double_spend(seed, n, decomposition_pair) -> AttackInput"
+    ranges: {n: sizes, decomposition_pair: "distinct-block-partitions-same-history"}
+    objective: exhibit-decomposition-dependent-accounting
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-T:
+    name: TELESCOPE_ENDPOINT_TORTURE
+    target: MST0-18
+    interface: "gen_telescope(seed, n, endpoint_class) -> AttackInput"
+    ranges: {n: sizes, endpoint_class: "negative-residual/large-additive/direction-flip"}
+    objective: maximize-endpoint-violation
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+  PSC-N:
+    name: NEGATIVE_OBSTRUCTION_LIFTING
+    target: negative-branch-candidacy
+    interface: "gen_obstruction(seed, m, family_class) -> AttackInput"
+    ranges: {m: "family-index-unbounded", family_class: "closed-form-legal-families"}
+    objective: maximize-splay-over-OPT-ratio
+    minimization: canonical-delta-debug-sorted
+    replay: independent-checker-plus-certificate
+REFUTE-MST0-17-interface: "pair-access search over legal executions (exact Fraction costs, seeded families, canonical minimization + inflation + independent replay) — an attack interface, not an 8th PSC family"
+implementations: PENDING-owner-phase-execution
+conformance: "STOP-17: later implementations need conformance-harness green"

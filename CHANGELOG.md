@@ -3,6 +3,7 @@
 All notable decisions recorded here; detail lives in `Path.md` (append-only).
 
 ## [Unreleased] — 2026-09-25
+- Changed (v1.5): 15-item repair completion — v0.4.6 amendment (F0–F5: authority, 28/27 sets, battlefield union, kernel hardening, chronology, effect) + WorkPlan v0.4.5 wiring/9+1/branch-wording/chronology/conditional-artifacts + Lean Frozen actual definitions with zero opaque + 10 theorem docs + fleshed prereg (battlefield/gates/threat/stop/corpus/bridge/policies/claims) + 2 sample-validated schemas + L3 bytes frozen (L2 absent, MST0-19 BLOCKED); Path R1-016–R1-019.
 - Changed (v1.4): unavailable-branch completion — v0.4.5 amendment (bound variants, blocked representation, verification wording) + WorkPlan E2-wiring; Path R1-015 (planning-only turn; scripts fail-closed).
 - Changed (v1.3): stack completion (v0.4.4 in header/stack/tree) + chained per-node Phase-5 readiness; Path R1-013–R1-014 (planning-only turn).
 - Changed (v1.2): freeze-authority release — v0.4.4 amendment (per-node readiness, status snapshot, 26-member bound set, empty axiom allowlist, verification chronology, unavailable representation) + WorkPlan updates; Path R1-009–R1-011 (planning-only turn; scripts fail-closed).

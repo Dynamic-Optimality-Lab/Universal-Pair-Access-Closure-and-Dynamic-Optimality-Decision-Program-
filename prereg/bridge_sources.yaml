@@ -1,1 +1,40 @@
-# STUB — L0-L4 exact bytes/versions/SHAs + hypothesis checklist. Populated with final L2/L3 bytes BEFORE FOUNDATION_FROZEN; Phase 02 verifies and writes only the separate freeze file. Frozen Phase 1.
+# bridge_sources.yaml — frozen Phase 1 (v0.4 sections 3, 19.6).
+# Either exact frozen L2/L3 artifact identities/bytes+hashes, or explicit
+# BRIDGE_SOURCE_UNAVAILABLE disposition with provenance + downstream block.
+# Phase 02 verifies bytes and writes only the separate freeze file.
+literature:
+  L0:
+    identity: "SPLAY-AM-MST-v0.3 final sealed release"
+    role: context
+    bytes: parent-bound
+    hash: PENDING-Phase-1-parent-contract
+  L1:
+    identity: "Sleator & Tarjan, Self-Adjusting Binary Search Trees, JACM 1985"
+    role: context
+    bytes: not-premise-bound
+  L2:
+    identity: "Levy & Tarjan, A New Path from Splay to Dynamic Optimality, SODA 2019"
+    role: theorem-premise
+    status: ABSENT
+    provenance: "SODA 2019 proceedings paywalled; no lawful open-access bytes obtainable from this environment on 2026-09-25 UTC"
+    bytes: none-frozen
+    hash: none
+  L3:
+    identity: "Levy & Tarjan, A Foundation for Proving Splay is Dynamically Optimal, arXiv:1907.06310 v1 (submitted 15 Jul 2019)"
+    role: theorem-premise
+    status: FROZEN
+    provenance: "lawful open-access download from https://arxiv.org/pdf/1907.06310v1.pdf on 2026-09-25 UTC; identity verified against arXiv abs metadata (title + authors + v1 date)"
+    path: "bridge_sources/L3_1907.06310_v1.pdf"
+    bytes: 1431066
+    sha256: E23EA8B58984B9A3530E8BF06AA028645DAD420B1AF280EEB407F4D2A4495A78
+    size_observation: "arXiv abs page lists v1 at 702 KB; bytes served at the v1 URL on 2026-09-25 are 1431066 bytes (magic %PDF-, trailer %%EOF present); Phase-02 second extraction confirms or disputes"
+hypothesis_checklist:
+  - exact-theorem-text-captured-and-hash-bound
+  - convention-match-audited-before-consumption
+  - independent-second-extraction-green
+  - L2-L3-non-conflation-recorded
+downstream_disposition:
+  freeze_variant: SOURCE_AVAILABLE-28
+  MST0-19: BLOCKED
+  on_L2_absence: "BRIDGE_BLOCKED_NO_CLAIM; no source-dependent statement synthesized (v0.4.5 E2); inventing Levy-Tarjan from prose forbidden"
+  MST0-19_first_consumer: Phase-18-decision-gate

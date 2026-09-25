@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/proof_attack.schema.json",
+  "title": "proof_attack",
+  "description": "Normative PSC attack record (v0.4 section 8.4). Open-world witness payload: unknown future witness shapes must validate (additionalProperties true at witness level); load-bearing identity/replay fields are mandatory. Frozen Phase 1.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "theorem_id": { "type": "string", "pattern": "^MST0-(08U|09|11|13|14|15|22|17|18|19)$" },
+    "negation_predicate": { "type": "string", "minLength": 1 },
+    "statement_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "negation_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "generator_version": { "type": "string", "minLength": 1 },
+    "seed": { "type": "string", "minLength": 1 },
+    "symbolic_parameter_family": { "type": ["string", "null"] },
+    "input_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "exact_witness": { "description": "Open-world witness payload (shape varies by family).", "type": ["object", "array", "null"] },
+    "objective_vector": { "type": "object" },
+    "best_finite_obstruction_metrics": { "type": "object" },
+    "replay_certificate": {
+      "type": "object",
+      "properties": {
+        "replay_input_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "checker_id": { "type": "string", "minLength": 1 },
+        "result": { "const": "REPRODUCED" }
+      },
+      "required": ["replay_input_hash", "checker_id", "result"],
+      "additionalProperties": true
+    },
+    "independent_checker_result": { "type": "string", "enum": ["AGREE", "DISAGREE"] },
+    "scientific_interpretation": { "type": "string" }
+  },
+  "required": ["schema_version", "theorem_id", "negation_predicate", "generator_version", "seed", "input_hash", "replay_certificate", "independent_checker_result"],
+  "additionalProperties": true
+}

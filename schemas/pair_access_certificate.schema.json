@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/pair_access_certificate.schema.json",
+  "title": "pair_access_certificate",
+  "description": "Normative MST0-17 refutation/verification certificate (v0.4 Phase-14 triple-artifact gate). ALL load-bearing fields mandatory; generic passes never refute. Frozen Phase 1.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "theorem_id": { "const": "MST0-17" },
+    "statement_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "negation_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "interface_conformance": {
+      "type": "object",
+      "properties": {
+        "conformance_harness": { "type": "string", "minLength": 1 },
+        "result": { "const": "GREEN" }
+      },
+      "required": ["conformance_harness", "result"],
+      "additionalProperties": false
+    },
+    "reconstruction_payload": {
+      "type": "object",
+      "properties": {
+        "n": { "type": "integer", "minimum": 1 },
+        "initial_tree": { "type": "string", "minLength": 1 },
+        "history_X": { "type": "string", "minLength": 1 },
+        "subsequence_Y": { "type": "string", "minLength": 1 },
+        "splay_cost_X": { "type": "string", "minLength": 1 },
+        "splay_cost_Y": { "type": "string", "minLength": 1 },
+        "energy_initial": { "type": "string", "minLength": 1 },
+        "energy_final": { "type": "string", "minLength": 1 },
+        "additive_term": { "type": "string", "minLength": 1 }
+      },
+      "required": ["n", "initial_tree", "history_X", "subsequence_Y", "splay_cost_X", "splay_cost_Y", "energy_initial", "energy_final", "additive_term"],
+      "additionalProperties": false
+    },
+    "block_partition_record": { "type": "string", "minLength": 1 },
+    "minimization_record": { "type": "string", "minLength": 1 },
+    "replay_certificate": {
+      "type": "object",
+      "properties": {
+        "replay_input_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "checker_id": { "type": "string", "minLength": 1 },
+        "result": { "const": "REPRODUCED" }
+      },
+      "required": ["replay_input_hash", "checker_id", "result"],
+      "additionalProperties": false
+    },
+    "independent_checker_result": { "type": "string", "enum": ["AGREE", "DISAGREE"] }
+  },
+  "required": ["schema_version", "theorem_id", "statement_sha256", "negation_sha256", "interface_conformance", "reconstruction_payload", "block_partition_record", "minimization_record", "replay_certificate", "independent_checker_result"],
+  "additionalProperties": false
+}

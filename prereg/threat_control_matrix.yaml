@@ -1,1 +1,123 @@
-# STUB — T001..T120 x control, machine-checkable from exact IDs. Frozen Phase 1; asserted exact at seal.
+# threat_control_matrix.yaml — T001..T120, titles verbatim from v0.4 section 23;
+# owners from WorkPlan section D. Status DECLARED pre-freeze; exact set asserted at seal.
+threats:
+  T001: {title: "parent v0.3 navigation hash mistaken for full sealed identity", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T002: {title: "parent FINAL_RESULT not verified from artifact", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T003: {title: "parent Path.md ignored despite implementation-reality dependence", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T004: {title: "MSTC-0002 reconstructed rather than imported by exact hash", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T005: {title: "MSTC-0002 field mutated under same calculus ID", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T006: {title: "sibling fresh failures omitted from lineage", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T007: {title: "consumed H3T re-unlocked or regenerated", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T008: {title: "finite H3T survival used as theorem premise", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T009: {title: "large-n survival used as theorem premise", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T010: {title: "parent author proof status treated as human REVIEWED", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T011: {title: "parent scoped-finite MST0-08 treated as universal REVIEWED", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T012: {title: "blocker DAG hand-edited to remove a difficult theorem", primary_owner_phase: 1, enforced_in: [1], rechecked_at_seal_7: true, status: DECLARED}
+  T013: {title: "new critical-path theorem silently invented after failure", primary_owner_phase: 1, enforced_in: [1], rechecked_at_seal_7: true, status: DECLARED}
+  T014: {title: "theorem statement weakened after refutation under same ID", primary_owner_phase: 1, enforced_in: [1], rechecked_at_seal_7: true, status: DECLARED}
+  T015: {title: "theorem negation incorrectly encoded", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T016: {title: "proof attack tests an easier negation than the theorem requires", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T017: {title: "counterexample generator shares proof implementation logic", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T018: {title: "clean-room checker shares a theorem-critical helper", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T019: {title: "exact witness minimized incorrectly", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T020: {title: "smallest-witness claim based on noncanonical order", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T021: {title: "Lean theorem differs from markdown theorem", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T022: {title: "Lean proof contains sorry/admit/axiom escape", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T023: {title: "imported axiom not declared in kernel manifest", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T024: {title: "code generator inserts unchecked theorem", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T025: {title: "formal proof binds wrong MSTC-0002 version", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T026: {title: "ROOT case omitted", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T027: {title: "ZIG-left or ZIG-right omitted", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T028: {title: "LL/RR omitted", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T029: {title: "LR/RL omitted", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T030: {title: "primitive transfer rule case omitted", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T031: {title: "preservation theorem proves only finite supports", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T032: {title: "locality theorem hides interval-size dependence", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T033: {title: "locality proof uses empirical max radius", primary_owner_phase: 1, enforced_in: [1, 2], rechecked_at_seal_7: true, status: DECLARED}
+  T034: {title: "locality attack fails to generate legal BSTs", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T035: {title: "boundary theorem redefines damage after counterexample", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T036: {title: "boundary source cost not identified", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T037: {title: "boundary proof assumes no reactivation", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T038: {title: "constant theorem quantifiers ordered incorrectly", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T039: {title: "C=2 depends on n through a helper definition", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T040: {title: "k=6 depends on finite panel", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T041: {title: "theorem-facing support uses cycle/state ID", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T042: {title: "theorem-facing proof uses holdout membership", primary_owner_phase: 2, enforced_in: [2], rechecked_at_seal_7: true, status: DECLARED}
+  T043: {title: "K6 saturation interprets k as six slots without proof", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T044: {title: "K6 attack fails to target actual frozen injection semantics", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T045: {title: "repayment proof uses future access", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T046: {title: "repayment proof spends latent credit illegally", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T047: {title: "repayment proof resurrects spent credit", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T048: {title: "repayment proof uses same credit twice within one KEEP", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T049: {title: "repayment proof uses same credit across multiple KEEP events", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T050: {title: "local paid amount exceeds injected mass without theorem source", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T051: {title: "proof ignores a positive-regret KEEP class", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T052: {title: "finite no-counterexample result called repayment theorem", primary_owner_phase: 3, enforced_in: [3], rechecked_at_seal_7: true, status: DECLARED}
+  T053: {title: "integrability inferred from local repayment", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T054: {title: "credit-use graph drops a transfer edge", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T055: {title: "credit-use graph conflates merge with duplication", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T056: {title: "credit split violates mass conservation", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T057: {title: "decomposition choice changes total payment", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T058: {title: "transfer cycle permits credit reuse", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T059: {title: "terminal energy can drift negative", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T060: {title: "initial energy normalization silently reset mid-execution", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T061: {title: "endpoint additive term absorbs unproved deficit", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T062: {title: "block partition double-counts an access", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T063: {title: "block partition omits an access", primary_owner_phase: 4, enforced_in: [4], rechecked_at_seal_7: true, status: DECLARED}
+  T064: {title: "MST0-17 toggled REVIEWED automatically from prerequisites", primary_owner_phase: 5, enforced_in: [5], rechecked_at_seal_7: true, status: DECLARED}
+  T065: {title: "Pair-Access theorem cites v0.3 finite survival", primary_owner_phase: 5, enforced_in: [5], rechecked_at_seal_7: true, status: DECLARED}
+  T066: {title: "telescope assumes E_m>=0 without proof", primary_owner_phase: 5, enforced_in: [5], rechecked_at_seal_7: true, status: DECLARED}
+  T067: {title: "telescope additive term depends on sequence length", primary_owner_phase: 5, enforced_in: [5], rechecked_at_seal_7: true, status: DECLARED}
+  T068: {title: "telescope direction reversed", primary_owner_phase: 5, enforced_in: [5], rechecked_at_seal_7: true, status: DECLARED}
+  T069: {title: "bridge source bytes not exact", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T070: {title: "bridge theorem version wrong", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T071: {title: "bridge Splay variant mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T072: {title: "bridge cost convention mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T073: {title: "bridge initial-tree convention mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T074: {title: "bridge subsequence definition mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T075: {title: "bridge additive term mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T076: {title: "bridge implication direction mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T077: {title: "bridge quantifier mismatch", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T078: {title: "external current literature silently replaces frozen source", primary_owner_phase: 1, enforced_in: [1, 5], rechecked_at_seal_7: true, status: DECLARED}
+  T079: {title: "a failed positive lemma is called DOC disproof", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T080: {title: "transfer residual used as Splay lower bound", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T081: {title: "Pair-Access counterexample used as Splay-vs-OPT counterexample without reduction", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T082: {title: "negative family defined instance-by-instance by solver", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T083: {title: "negative family legality unproved", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T084: {title: "Splay lower bound empirical only", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T085: {title: "competitor execution illegal under BST model", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T086: {title: "OPT upper bound inferred without explicit competitor", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T087: {title: "ratio grows finitely but divergence unproved", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T088: {title: "negative family relies on candidate ledger semantics", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T089: {title: "negative proof reuses failed positive theorem", primary_owner_phase: 6, enforced_in: [6], rechecked_at_seal_7: true, status: DECLARED}
+  T090: {title: "NO claim from resource exhaustion", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T091: {title: "YES claim from proof search timeout absence", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T092: {title: "human review generated by agent", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T093: {title: "human ACCEPT lacks theorem SHA binding", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T094: {title: "review ignores formal statement mismatch", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T095: {title: "review record lacks objections/dependency audit", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T096: {title: "theorem lifecycle jump UNPROVED->REVIEWED", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T097: {title: "REFUTED theorem consumed downstream", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T098: {title: "erratum overwrites prior REVIEWED artifact", primary_owner_phase: 2, enforced_in: [2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T099: {title: "proof mutant not caught", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T100: {title: "mutation suite lacks a known-killed control", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T101: {title: "proof attack seed changed after seeing failure", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T102: {title: "PSC definition adapted after theorem proof", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T103: {title: "PSC survival called fresh evidence", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T104: {title: "random generator nondeterminism changes best witness", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T105: {title: "parallel reduction changes canonical witness", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T106: {title: "floating-point sign determines theorem status", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T107: {title: "symbolic inequality delegated to approximate solver only", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T108: {title: "solver SAT accepted without exact replay", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T109: {title: "solver UNSAT accepted without certificate/independent proof", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T110: {title: "source quote/hypothesis extracted incorrectly", primary_owner_phase: 1, enforced_in: [1, 2, 3, 4, 5, 6], rechecked_at_seal_7: true, status: DECLARED}
+  T111: {title: "report omits a failed theorem attempt", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T112: {title: "counterexample deleted after proof repair", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T113: {title: "manifest omits Lean source or compiled proof artifact", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T114: {title: "archive excludes negative evidence", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T115: {title: "FINAL_RESULT hardcoded rather than derived", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T116: {title: "both YES and NO branches accidentally active", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T117: {title: "no-claim state mislabeled success", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T118: {title: "resource record incomplete", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T119: {title: "AI-assisted theorem edit not disclosed", primary_owner_phase: 7, enforced_in: [7], rechecked_at_seal_7: true, status: DECLARED}
+  T120: {title: "Phase 18 run before all required gates are resolved", primary_owner_phase: 6, enforced_in: [6, 7], rechecked_at_seal_7: true, status: DECLARED}

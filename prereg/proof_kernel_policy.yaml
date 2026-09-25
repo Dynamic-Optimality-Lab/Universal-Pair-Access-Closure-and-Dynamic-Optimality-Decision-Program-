@@ -1,1 +1,12 @@
-# STUB — Lean toolchain/manifest/axiom policy + 3-layer cert + FORMALIZATION_MISMATCH rule. Frozen Phase 1.
+# proof_kernel_policy.yaml — frozen Phase 1 (v0.4 section 5; hardening v0.4.6 F3).
+toolchain: "leanprover/lean4:v4.21.0 (elan identity + mathlib commit + lake-manifest hash pinned at Phase-1 execution)"
+frozen_modules: [lean/Frozen/SplayDefs.lean, lean/Frozen/MSTC0002Defs.lean, lean/Frozen/Statements.lean]
+mutable_modules: [lean/Proofs/Injection.lean, lean/Proofs/Locality.lean, lean/Proofs/Preservation.lean, lean/Proofs/Boundary.lean, lean/Proofs/Constants.lean, lean/Proofs/Repayment.lean, lean/Proofs/Integrability.lean, lean/Proofs/Composition.lean, lean/Proofs/Telescope.lean, lean/Proofs/Family.lean]
+axiom_policy:
+  CUSTOM_THEOREM_AXIOM_ALLOWLIST: []
+  rule: "no custom axiom may assert or imply any theorem-bearing property (v0.4.4 D4); '#print axioms' closure reported at Phase-1 execution; custom-theorem-axiom dependence invalidates Layer B"
+sorry_scan: "CI greps lean/ for sorry/admit/axiom/opaque-theorems; any hit fails closed"
+three_layer_certificate: [Layer-A-math-proofs, Layer-B-formal-kernel, Layer-C-human-review]
+mismatch_rule: FORMALIZATION_MISMATCH-fail-closed
+equivalence_rule: "Lean<->Python equivalence PROVED at Phase-03 execution; finite canary agreement is sanity-only and discharges nothing"
+markdown_lean_binding: "FORM-12 statement-hash binding in theorem_battlefield.yaml"

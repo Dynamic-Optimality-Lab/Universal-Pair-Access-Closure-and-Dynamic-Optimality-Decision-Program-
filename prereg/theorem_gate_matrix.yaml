@@ -1,1 +1,92 @@
-# STUB — per-node owner phase / first consumer / required REVIEWED / 4 artifacts / controls. Frozen Phase 1.
+# theorem_gate_matrix.yaml — frozen Phase 1 (v0.4 section 19.7).
+# required status REVIEWED for every critical node before downstream consumption.
+gates:
+  MST0-08U:
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-08U_proof.md"
+    formal_artifact: "lean/Proofs/Locality.lean"
+    review_artifacts: ["math/reviews/MST0-08U.PACKAGE.md", "math/reviews/MST0-08U.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-08U/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-09:
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-09_proof.md"
+    formal_artifact: "lean/Proofs/Boundary.lean"
+    review_artifacts: ["math/reviews/MST0-09.PACKAGE.md", "math/reviews/MST0-09.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-09/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-11:
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-11_proof.md"
+    formal_artifact: "lean/Proofs/Preservation.lean"
+    review_artifacts: ["math/reviews/MST0-11.PACKAGE.md", "math/reviews/MST0-11.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-11/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-13:
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-13_proof.md"
+    formal_artifact: "lean/Proofs/Injection.lean"
+    review_artifacts: ["math/reviews/MST0-13.PACKAGE.md", "math/reviews/MST0-13.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-13/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-14:
+    owner_phase: 3
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-14_proof.md"
+    formal_artifact: "lean/Proofs/Repayment.lean"
+    review_artifacts: ["math/reviews/MST0-14.PACKAGE.md", "math/reviews/MST0-14.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-14/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-15:
+    owner_phase: 4
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-15_proof.md"
+    formal_artifact: "lean/Proofs/Integrability.lean"
+    review_artifacts: ["math/reviews/MST0-15.PACKAGE.md", "math/reviews/MST0-15.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-15/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-22:
+    owner_phase: 2
+    first_consumer: "MST0-17"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-22_proof.md"
+    formal_artifact: "lean/Proofs/Constants.lean"
+    review_artifacts: ["math/reviews/MST0-22.PACKAGE.md", "math/reviews/MST0-22.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-22/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-17:
+    owner_phase: 5
+    first_consumer: "MST0-18"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-17_proof.md"
+    formal_artifact: "lean/Proofs/Composition.lean"
+    review_artifacts: ["math/reviews/MST0-17.PACKAGE.md", "math/reviews/MST0-17.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-17/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-18:
+    owner_phase: 5
+    first_consumer: "MST0-19"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-18_proof.md"
+    formal_artifact: "lean/Proofs/Telescope.lean"
+    review_artifacts: ["math/reviews/MST0-18.PACKAGE.md", "math/reviews/MST0-18.review.json"]
+    refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-18/"
+    controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
+  MST0-19:
+    owner_phase: 5
+    first_consumer: "Phase-18-decision-gate"
+    required_status: "REVIEWED"
+    proof_artifact: "math/proofs/MST0-19_proof.md"
+    formal_artifact: "python/formal_bridge/bridge_audit.py"
+    review_artifacts: ["math/reviews/MST0-19.PACKAGE.md", "math/reviews/MST0-19.review.json"]
+    controls: ["16-checkpoint-order", "premise-freeze-gates", "10-point-convention-checklist", "STOP-55..59"]

@@ -1,2 +1,18 @@
-# STUB — parent_contract.yaml frozen at Phase-1 execution (full-SHA pin, FINAL_RESULT/MANIFEST/archive/Path/WorkPlan/MSTC-0002/candidate-set/H3T/lifecycle/atlas hashes).
+# parent_contract.yaml — frozen at Phase-1 execution (v0.4 section 2; hash-verified copies in parent/).
+# Parent repo (read-only reference clone): Dynamic-Optimality-Lab/splay-multiscale-transfer.
 parent_full_sha: 353ee922b1cee0043afa46fe8929f42f7652e5bf
+parent_sealed_commit_expected: 353ee922b1cee0043afa46fe8929f42f7652e5bf
+mismatch_rule: PARENT_SEAL_MISMATCH-fail-closed
+pending_Phase-1-hashes:
+  V03_SEAL: PENDING-Phase-1-execution
+  V03_FINAL_RESULT: PENDING-Phase-1-execution
+  V03_MANIFEST: PENDING-Phase-1-execution
+  V03_ARCHIVE: PENDING-Phase-1-execution
+  V03_PATH_FINAL: PENDING-Phase-1-execution
+  V03_WORKPLAN_FINAL: PENDING-Phase-1-execution
+  V03_MSTC_0002: PENDING-Phase-1-execution
+  V03_THEOREM_STATUS: PENDING-Phase-1-execution
+  V03_COUNTEREXAMPLE_INDEX: PENDING-Phase-1-execution
+  BOOTSTRAP_MANIFEST: PENDING-Phase-1-execution
+holdout_commitments: UNLOCKED_ONCE
+parent_Path_role: audit-inheritance-never-premise

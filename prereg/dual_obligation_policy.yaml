@@ -1,1 +1,17 @@
-# STUB — simultaneous PROVE/REFUTE, canonical order, mutation policy, review schema, erratum, no-consumption-before-REVIEWED. Frozen Phase 1.
+# dual_obligation_policy.yaml — frozen Phase 1 (v0.4 sections 7, 19.3; dual gates v0.4.3 C1-C3).
+simultaneous_tracks: true
+canonical_order: REFUTE-first
+order_16_checkpoints: [VERIFY-HASHES, LOAD-contract, ASSERT-gates, ASSERT-binding, ASSERT-kernel, LOAD-theorem-plus-negation, REFUTE-first-or-parallel, PROOF, append-only-raw, formal-cert, independent-check, mutants, BUILD-HUMAN-REVIEW-PACKAGE, UPDATE-STATUS-ONLY-AFTER-HUMAN-VERDICT, APPEND-Path]
+gates:
+  REFUTE_READY: "foundation-checks + statement/negation binding + semantics + interface conformance (no upstream-REVIEWED requirement)"
+  PROVE_READY: "REFUTE_READY + prerequisite nodes REVIEWED (per-node v0.4.4 D1)"
+per_track_phase_readings: "C3: each track reads its own gate; a NOT_REACHED PROVE track never blocks its REFUTE sibling"
+mutation_policy:
+  operators_preregistered: [constant-swap-C-k, predicate-weakening-P_all, support-shift, injection-count-off-by-one, discharge-sign-flip, cost-convention-plus-one, endpoint-term-drop]
+  rule: "every operator applied >= 1 mutant per theorem + known-killed controls in tests/mutation/ (T099/T100 authoritative); surviving mutants block REVIEWED"
+review_schema:
+  package: "math/reviews/*.PACKAGE.md evidence, PENDING-HUMAN until verdict"
+  verdict: "math/reviews/*.review.json human verdict only; no assistant/review/formal substitution"
+erratum_policy: "REVIEWED overturned only by versioned erratum preserving old review + exact defect; downstream invalidated by dependency hash"
+no_consumption_before_REVIEWED: true
+lifecycle: "UNPROVED->PROVED->REVIEWED; UNPROVED->REFUTED; PROVED->REFUTED only if alleged proof broken before REVIEWED"

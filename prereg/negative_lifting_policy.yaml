@@ -1,1 +1,14 @@
-# STUB — dormant-until-exact-witness activation + DISPROVED cert requirements (closed-form/legality/g/f/divergence/replay/formal/review). Preserved exact obstruction only; bare REJECT never lifts. Frozen Phase 1.
+# negative_lifting_policy.yaml — frozen Phase 1 (v0.4 section 16).
+activation: dormant-until-exact-REFUTED
+activation_rule: "bare REJECT/BLOCKED without exact legal witness routes to POSITIVE_ROUTE_BLOCKED_UNRESOLVED_NO_CLAIM, never lifting; local residual or Pair-Access counterexample without reduction never lifts (T079-T081, STOP-60)"
+DISPROVED_certificate_requirements:
+  - closed-form-obstruction-family
+  - legality-proofs-T_m-and-X_m
+  - splay-lower-bound-g-of-m
+  - competitor-upper-bound-f-of-m
+  - divergence-proof-g-over-f-to-infinity
+  - independent-finite-prefix-replay
+  - ledger-independent-formal-proof
+  - hostile-human-review-ACCEPT
+preserved_object: "exact obstruction only; no speculative mining; otherwise NEGATIVE_BRANCH_NOT_ACTIVATED"
+decision_routing: "Phase-18 always reached once the campaign terminates, including REJECT/BLOCKED/no-claim endings; dormant lifting never blocks the final claim"
