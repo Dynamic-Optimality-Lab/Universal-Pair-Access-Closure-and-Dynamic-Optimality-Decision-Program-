@@ -3,6 +3,7 @@
 All notable decisions are recorded here. Tracker detail lives in `Path.md` (append-only).
 
 ## [Unreleased] — 2026-09-25
+- Changed (WP7): explicit `prereg_sha256.txt` manifest contract (pinned lines for WorkPlan/Path/spec/amendments/toolchain/schemas/PSC — B1 loophole closed without a new amendment); triple-artifact `MST0_17_REFUTED` gate (attack record AND PA certificate AND interface conformance); Path header artifacts truthfulness.
 - Added (WP6): `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule); `schemas/{proof_attack,pair_access_certificate}.schema.json` authored + sample endpoint-aware witness validated green (`artifacts/v04/freeze/WITNESS_SCHEMA_VALIDATION.json`).
 - Changed (WP6): `WorkPlan.md` v0.4-WP5 → v0.4-WP6 (amendment refs, stack wording, schema-validation notes).
 - Changed (WP5): `REFUTE(MST0-17)` negation now endpoint-aware (`lhs = Splay(Y,T)+E_m−E_0 > rhs = 2·Splay(X,T)+A(n)`, 15-field witness) + executable SHA-bind guard; `prereg/proof_stress_corpus.yaml` now complete (12-field specs × 7 PSC families + `REFUTE-MST0-17` interface, YAML-validated); Path headers carry living revision + amendment.

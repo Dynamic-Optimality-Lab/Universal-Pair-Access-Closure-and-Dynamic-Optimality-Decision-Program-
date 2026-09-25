@@ -2,10 +2,10 @@
 
 **Experiment:** `SPLAY-AM-DECIDE-v0.4`
 **Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule)
-**Plan:** `WorkPlan.md` (current revision v0.4-WP6; revision history WP1→WP2→WP3→WP4→WP5 preserved below)
+**Plan:** `WorkPlan.md` (current revision v0.4-WP7; revision history WP1→WP2→WP3→WP4→WP5→WP6 preserved below)
 **Rule for this file:** Every implementation step is appended here contemporaneously with deep detail matching `WorkPlan.md` granularity — scope, files made, code produced and how it was coded, benchmarks (and their training-disjointness), anti-overfitting actions, gates — plus an explicit verdict: **FOLLOWS WorkPlan §X** or **DEVIATION from WorkPlan §X (justified)**. A phase gate without a Path entry is not closed (`INV-097`). No entry is ever rewritten; corrections are new entries (erratum-preserving).
 **Current terminal status:** `PRE_FOUNDATION` (planning + skeleton done; `FOUNDATION_FROZEN` not yet claimed; no Phase 01+ theorem-facing execution has occurred — complies with `PRE_FREEZE_PARENT_PIN_REQUIRED`).
-**Repo state at last entry:** `impl/` on `main`, clean skeleton + docs; `artifacts/v04/` empty by design (only new results after this plan are present — stale-clearance verified).
+**Repo state at last entry:** `impl/` on `main`; `artifacts/v04/` contains only authorized Phase-1 foundation/freeze-validation artifacts (currently just `WITNESS_SCHEMA_VALIDATION.json` + `.gitkeep` placeholders); no Phase-01+ theorem-facing scientific results — that invariant is what stale-clearance protects.
 
 ---
 
@@ -228,5 +228,23 @@
 **Anti-overfitting.** Payload fields optional at the witness-object level by design (attack-survived `null` + other theorems unaffected); closed-world risk eliminated on the payload path; H3T untouched.
 **Status table delta.** WorkPlan v0.4-WP6, inside its own stack by B1 rule; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS WorkPlan v0.4-WP6 + v0.4.1 A2–A4 + v0.4.2 B1–B2. No deviation.
+
+## Entry 020 — 2026-09-25 UTC — Sixth review intake: 3 freeze-readiness items (WP6 → WP7) — FOLLOWS WorkPlan §13
+
+**Scope.** (1) Real: header still says `artifacts/v04/` empty though Entry 019 created the B2 validation record — factually stale (scientifically fine: Phase-1 validation artifact). (2) B1 rule needs teeth: if `prereg_sha256.txt` only hashes `prereg/`, it cannot seal WorkPlan bytes — require explicit pinned lines (WorkPlan/Path/spec/amendments/toolchain/schemas/PSC) in the manifest or a preregistered freeze manifest. (3) Generic attack schema is intentionally permissive — require the theorem-specific triple (attack record AND PA certificate AND interface contract) for `MST0_17_REFUTED`, with PA-schema load-bearing fields mandatory. All accepted; vehicle WP7. `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS reviewer order. No deviation.
+
+## Entry 021 — 2026-09-25 UTC — WP7 repairs: truthful header + manifest contract + triple gate (WorkPlan v0.4-WP7) — FOLLOWS WorkPlan v0.4-WP7
+
+**Scope.** Implement Entry-020 dispositions.
+**Files changed.**
+- `Path.md` header: repo-state line now reads “`artifacts/v04/` contains only authorized Phase-1 foundation/freeze-validation artifacts … no Phase-01+ theorem-facing scientific results”; Plan line → WP7.
+- `WorkPlan.md` → v0.4-WP7: §11 prereg paragraph gains the freeze-integrity contract (`prereg_sha256.txt` MUST pin every prereg file PLUS explicit `SHA256 <path>` lines for WorkPlan/Path/spec/both amendments/toolchain/manifest/schemas/PSC; missing line fails closed as `STOP-06`; B1’s “sealed by” means these lines). No new amendment needed — B1 delegates to the manifest, and the manifest’s content is living-plan business until freeze. Phase-5 exit gains the triple-artifact `REFUTED` gate (attack record with full payload AND PA certificate with all load-bearing fields AND interface conformance; `X`/`Y`/paired-execution mandatory via `witness_ref`-bound witness; generic-pass alone never refutes).
+- `CHANGELOG.md`: WP7 lines.
+**Code/how.** `Edit` per item; stale header line eliminated (remaining phrase matches are Entry-015 namespace text, still true, plus this sentence — history preserved).
+**Benchmarks.** None.
+**Anti-overfitting.** Manifest closes the provenance loophole before any evidence exists; triple gate blocks permissive-schema refutations; H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP7, inside its own stack by B1 + manifest contract; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP7 + v0.4.1 A2–A4 + v0.4.2 B1–B2. No deviation.
 
 **End of Path entries so far (append-only below this line).**
