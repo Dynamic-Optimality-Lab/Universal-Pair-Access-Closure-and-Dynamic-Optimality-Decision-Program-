@@ -240,8 +240,8 @@ def check_spec_freeze(log):
 
 
 def check_prereg_inventory(log):
-    """STEP-10: prereg source-file inventory (freeze itself pending PHASE 04)."""
-    print("STEP-10: inventorying prereg sources (freeze pending PHASE 04)")
+    """STEP-10: prereg inventory pre-freeze; manifest-line verification post-freeze."""
+    print("STEP-10: checking prereg inventory / manifest binding")
     names = ["experiment_v0.4.yaml", "parent_contract.yaml", "theorem_battlefield.yaml",
              "theorem_gate_matrix.yaml", "dual_obligation_policy.yaml",
              "proof_kernel_policy.yaml", "proof_stress_corpus.yaml",
@@ -254,10 +254,25 @@ def check_prereg_inventory(log):
         if not p.exists():
             raise Phase00Error("prereg/%s missing" % name)
         detail[name] = sha256_file(p)
-    if (REPO_ROOT / "prereg" / "prereg_sha256.txt").exists():
-        raise Phase00Error("prereg_sha256.txt already exists before freeze")
+    mpath = REPO_ROOT / "prereg" / "prereg_sha256.txt"
+    if not mpath.exists():
+        log.append({"step": "STEP-10", "name": "prereg_inventory", "status": "PASS",
+                    "detail": "13 sources recorded, manifest correctly absent (freeze pending)"})
+        return
+    rows = mpath.read_text(encoding="utf-8").splitlines()
+    by_path = {}
+    for ln in rows:
+        parts = ln.split()
+        if len(parts) != 2:
+            raise Phase00Error("malformed manifest line")
+        by_path[parts[1]] = parts[0].lower()
+    if "prereg/prereg_sha256.txt" in by_path:
+        raise Phase00Error("manifest hashes itself")
+    for name in names:
+        if by_path.get("prereg/%s" % name) != detail[name]:
+            raise Phase00Error("manifest mismatch: prereg/%s" % name)
     log.append({"step": "STEP-10", "name": "prereg_inventory", "status": "PASS",
-                "detail": "%d sources recorded, manifest correctly absent" % len(detail)})
+                "detail": "13 payload lines verified against manifest"})
 
 
 def check_theorem_ledger(log):

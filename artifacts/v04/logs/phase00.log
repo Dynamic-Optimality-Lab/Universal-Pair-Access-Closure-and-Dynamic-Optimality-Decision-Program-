@@ -1,0 +1,14 @@
+PHASE00 run 2026-09-25T17:24:34Z
+STEP-00 parent_head PASS
+STEP-01 final_result PASS
+STEP-02 candidate_set PASS
+STEP-03 h3t_state PASS
+STEP-04 obligation_status PASS
+STEP-05 ledger PASS
+STEP-06 seal_files PASS
+STEP-07 parent_docs PASS
+STEP-08 pin_doc PASS
+STEP-09 spec_freeze PASS
+STEP-10 prereg_inventory PASS
+STEP-11 theorem_ledger PASS
+STEP-12 downstream_docs PASS

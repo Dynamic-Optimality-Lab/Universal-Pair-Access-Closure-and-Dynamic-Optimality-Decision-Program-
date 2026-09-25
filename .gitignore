@@ -13,6 +13,16 @@ artifacts/v04/seal/*
 !artifacts/v04/counterexamples/pair_access/.gitkeep
 !artifacts/v04/proof_attacks/pair_access/
 !artifacts/v04/proof_attacks/pair_access/.gitkeep
+# Tracked freeze evidence (small verification/cert records; heavy outputs stay ignored)
+!artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md
+!artifacts/v04/freeze/WITNESS_SCHEMA_VALIDATION.json
+!artifacts/v04/freeze/PHASE00_PARENT_PIN.json
+!artifacts/v04/freeze/PHASE01_SURVIVOR_BINDING.json
+!artifacts/v04/freeze/PHASE02_BRIDGE_SOURCES_FREEZE.json
+!artifacts/v04/freeze/SUPERSEDED_PRE_FREEZE.json
+!artifacts/v04/freeze/FOUNDATION_FROZEN.json
+!artifacts/v04/logs/phase00.log
+!artifacts/v04/logs/phase01.log
 __pycache__/
 *.pyc
 .venv/

@@ -1,1 +1,72 @@
-# STUB — STOP-01..STOP-70 x owner/control. Frozen Phase 1; asserted exact at seal.
+# stop_control_matrix.yaml — STOP-01..STOP-70, each owned with executable/manual control.
+stops:
+  STOP-01: {owner: Phase-1, control: PHASE00-STEP-00-seal-check}
+  STOP-02: {owner: Phase-1, control: full-SHA-assert}
+  STOP-03: {owner: Phase-1, control: read-only-import-hashes}
+  STOP-04: {owner: Phase-1, control: PHASE01-STEP-01-hash-bind}
+  STOP-05: {owner: Phase-1, control: field-assert-k-C-predicate}
+  STOP-06: {owner: Phase-1, control: prereg_sha256-line-assert-at-freeze}
+  STOP-07: {owner: Phase-1, control: DAG-rederivation-assert}
+  STOP-08: {owner: Phase-1, control: no-bank-content-read}
+  STOP-09: {owner: Phase-1, control: no-bank-regeneration}
+  STOP-10: {owner: Phase-1, control: finite-never-premise-INV-014}
+  STOP-11: {owner: Phase-1, control: unavailable-source-never-consumed}
+  STOP-12: {owner: Phase-5, control: version-match-BR-02}
+  STOP-13: {owner: Phase-1, control: toolchain-pin-assert}
+  STOP-14: {owner: Phase-1, control: sorry-admit-scan-FORM-02}
+  STOP-15: {owner: Phase-1, control: statement-SHA-guard}
+  STOP-16: {owner: Phase-1, control: negation-SHA-guard}
+  STOP-17: {owner: Phase-1, control: PSC-conformance-harness}
+  STOP-18: {owner: Phase-1, control: generator-knows-negation-only}
+  STOP-19: {owner: Phase-1, control: cleanroom-share-nothing}
+  STOP-20: {owner: Phase-1, Phase-2, Phase-3, Phase-4, control: exact-arithmetic-only}
+  STOP-21: {owner: Phase-1, Phase-2, Phase-3, Phase-4, control: SAT-exact-replay}
+  STOP-22: {owner: Phase-1, Phase-2, Phase-3, Phase-4, control: UNSAT-certificate}
+  STOP-23: {owner: Phase-1, Phase-2, Phase-3, Phase-4, control: canonical-post-sort}
+  STOP-24: {owner: Phase-1, Phase-2, Phase-3, Phase-4, control: counterexamples-append-only}
+  STOP-25: {owner: Phase-2, Phase-3, Phase-4, Phase-5, control: no-weakening-same-ID}
+  STOP-26: {owner: Phase-2, Phase-3, Phase-4, Phase-5, control: child-lemma-registration-only}
+  STOP-27: {owner: Phase-2, Phase-3, Phase-4, Phase-5, control: REVIEWED-before-consumption}
+  STOP-28: {owner: Phase-2, control: all-splay-cases-manual-plus-suite}
+  STOP-29: {owner: Phase-2, control: all-ledger-rules-manual-plus-suite}
+  STOP-30: {owner: Phase-2, control: no-finite-maximum-premise}
+  STOP-31: {owner: Phase-2, control: interval-dependence-explicit}
+  STOP-32: {owner: Phase-2, control: damage-definition-frozen}
+  STOP-33: {owner: Phase-2, control: source-cost-mandatory}
+  STOP-34: {owner: Phase-2, control: review-package-SHA-match}
+  STOP-35: {owner: Phase-2, control: human-only-review}
+  STOP-36: {owner: Phase-2, control: quantifier-order-check}
+  STOP-37: {owner: Phase-2, control: constant-dependence-scan}
+  STOP-38: {owner: Phase-3, control: actual-k-semantics-REP-03}
+  STOP-39: {owner: Phase-3, control: all-positive-regret-classes-REP-01}
+  STOP-40: {owner: Phase-3, control: no-future-information}
+  STOP-41: {owner: Phase-3, control: no-illegal-latent-use}
+  STOP-42: {owner: Phase-3, control: no-spent-reuse}
+  STOP-43: {owner: Phase-3, control: payment-source-proof}
+  STOP-44: {owner: Phase-4, control: local-not-global}
+  STOP-45: {owner: Phase-4, control: graph-complete}
+  STOP-46: {owner: Phase-4, control: double-spend-blocks}
+  STOP-47: {owner: Phase-4, control: split-merge-conservation}
+  STOP-48: {owner: Phase-4, control: decomposition-independence}
+  STOP-49: {owner: Phase-4, control: terminal-lower-bound}
+  STOP-50: {owner: Phase-5, control: exact-once-partition}
+  STOP-51: {owner: Phase-5, control: no-finite-premise-PA}
+  STOP-52: {owner: Phase-5, control: endpoint-theorem-present}
+  STOP-53: {owner: Phase-5, control: additive-length-independent}
+  STOP-54: {owner: Phase-5, control: additive-bridge-compatible}
+  STOP-55: {owner: Phase-5, control: variant-match}
+  STOP-56: {owner: Phase-5, control: cost-match}
+  STOP-57: {owner: Phase-5, control: tree-match}
+  STOP-58: {owner: Phase-5, control: subsequence-match}
+  STOP-59: {owner: Phase-5, control: direction-quantifier-match}
+  STOP-60: {owner: Phase-6, control: local-failure-never-DOC}
+  STOP-61: {owner: Phase-6, control: closed-form-only}
+  STOP-62: {owner: Phase-6, control: symbolic-lower-only}
+  STOP-63: {owner: Phase-6, control: legal-competitor-only}
+  STOP-64: {owner: Phase-6, control: divergence-proved}
+  STOP-65: {owner: Phase-6, control: exactly-one-branch}
+  STOP-66: {owner: Phase-6, control: gates-before-decision}
+  STOP-67: {owner: Phase-7, control: failed-artifacts-retained}
+  STOP-68: {owner: Phase-7, control: manifest-complete}
+  STOP-69: {owner: Phase-7, control: deterministic-rebuild}
+  STOP-70: {owner: [Phase-6, Phase-7], control: exhaustion-never-YES-NO}

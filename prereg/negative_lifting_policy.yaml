@@ -1,1 +1,9 @@
-# STUB — dormant-until-REFUTED activation + DISPROVED cert requirements (closed-form/legality/g/f/divergence/replay/formal/review). Frozen Phase 1.
+# negative_lifting_policy.yaml — dormant-until-exact-obstruction (v0.4.1 A2).
+activation: preserved-exact-theorem-obstruction-or-witness-only
+bare-REJECT-or-BLOCKED-without-witness: routes-to-POSITIVE_ROUTE_BLOCKED_UNRESOLVED_NO_CLAIM-never-lifting
+no_speculative_mining_when: BRIDGE_READY_FOR_DECISION
+family_requirements: [closed-form-tree-family, closed-form-access-family, legality-proof, symbolic-splay-lower-bound, explicit-legal-competitor-upper-bound, ratio-divergence, finite-prefix-independent-replay, formal-theorem, human-review]
+OPT_rule: explicit-competitor-upper-bound-suffices-exact-OPT-unneeded
+forbidden: [transfer-residual-as-splay-lower-bound, pair-access-counterexample-without-reduction, solver-defined-instance-family, failed-ledger-dependence]
+DISPROVED_requires: REVIEWED-closed-form-real-Splay-competitor-divergence-theorem
+independence: checkable-without-trusting-failed-calculus

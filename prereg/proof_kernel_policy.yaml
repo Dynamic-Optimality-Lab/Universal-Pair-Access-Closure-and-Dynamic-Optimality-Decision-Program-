@@ -1,1 +1,11 @@
-# STUB — Lean toolchain/manifest/axiom policy + 3-layer cert + FORMALIZATION_MISMATCH rule. Frozen Phase 1.
+# proof_kernel_policy.yaml — Lean 4 formal kernel (toolchain pinned; agreement pending Phase-03 execution).
+assistant: Lean-4-single-frozen-toolchain
+toolchain_file: lean-toolchain
+manifest_file: lake-manifest.json
+axiom_rule: every-custom-axiom-declared-in-manifest
+forbidden_in_theorem_critical: [untracked-axiom, sorry, admit, unsafe-escape, proof-hole, oracle-without-certificate]
+certificate_layers: [A-human-proof, B-lean-or-kernel-certificate, C-hostile-refutation-of-negation]
+PROVED_requires: [A-complete, B-complete, C-no-counterexample]
+REVIEWED_requires: human-ACCEPT-auditing-statement-dependencies-cases-formal-binding-objections
+mismatch_rule: FORMALIZATION_MISMATCH-is-not-proof
+core_objects: [key-sets, BST-validity, bottom-up-Splay, ROOT-ZIG-LL-RR-LR-RL, cost-depth-plus-1, KEEP-DELETE, subsequence, rotation-trace-refinement, ledger-state, credit-support-mass, T5-T6-T7, energy-flow, block-partition, all-positive-theorem-statements]

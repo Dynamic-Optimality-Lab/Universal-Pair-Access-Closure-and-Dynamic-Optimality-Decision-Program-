@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "detail": "13 checks",
+      "name": "phase00_rerun",
+      "status": "PASS",
+      "step": "STEP-F-00"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_FINAL_RESULT.json",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_MANIFEST.sha256",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_ARCHIVE.sha256",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_PATH_FINAL.md",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_WORKPLAN_FINAL.md",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "CRLF folded to LF sealed bytes",
+      "name": "crlf-fold-V03_THEOREM_STATUS.json",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "10 files materialized",
+      "name": "parent_package",
+      "status": "PASS",
+      "step": "STEP-F-01"
+    },
+    {
+      "detail": "40 artifacts hash-matched",
+      "name": "downstream_identities",
+      "status": "PASS",
+      "step": "STEP-F-02"
+    },
+    {
+      "detail": "0 jumps, 0 pointerless, 26 bound",
+      "name": "lifecycle_legality",
+      "status": "PASS",
+      "step": "STEP-F-03"
+    },
+    {
+      "detail": "L3 frozen, L2 unavailable-recorded",
+      "name": "bridge_manifest",
+      "status": "PASS",
+      "step": "STEP-F-04"
+    },
+    {
+      "detail": "13 sources normative",
+      "name": "prereg_content",
+      "status": "PASS",
+      "step": "STEP-F-05"
+    },
+    {
+      "detail": "sha256=caabf00f171f052434735dafbd0853bb172ac69b773c1d9ca70e9dda6bc9dda7",
+      "name": "path_snapshot",
+      "status": "PASS",
+      "step": "STEP-F-06"
+    },
+    {
+      "detail": "45 lines",
+      "name": "manifest",
+      "status": "PASS",
+      "step": "STEP-F-07"
+    },
+    {
+      "detail": "45 lines byte-verified",
+      "name": "manifest_verify",
+      "status": "PASS",
+      "step": "STEP-F-08"
+    },
+    {
+      "detail": "60457 snapshot bytes are a live prefix",
+      "name": "prefix_verify",
+      "status": "PASS",
+      "step": "STEP-F-09"
+    },
+    {
+      "detail": "6 checks",
+      "name": "phase01_rerun",
+      "status": "PASS",
+      "step": "STEP-F-00B"
+    }
+  ],
+  "experiment": "SPLAY-AM-DECIDE-v0.4",
+  "gate": "FOUNDATION_FROZEN",
+  "gates_closed_here": [
+    "FOUNDATION_FROZEN"
+  ],
+  "gates_evidence_ready": [
+    "SURVIVOR_IDENTITY_VERIFIED",
+    "BATTLEFIELD_VERIFIED"
+  ],
+  "no_theorem_facing_before": "all-pending-execution-gates-green",
+  "pending_execution_gates": [
+    "BRIDGE_SOURCES_VERIFICATION-PHASE02",
+    "FORMAL_KERNEL_FROZEN-PHASE03",
+    "PSC_DUAL_FREEZE-PHASE04",
+    "proof-mutant-suite-execution",
+    "PSC-implementation-conformance",
+    "lean-toolchain-compile-agreement"
+  ],
+  "scope": "freeze-contract-inputs-immutable: parent-package, bridge-bytes(L3)/L2-block-record, prereg-content, manifest, snapshot, PHASE-00/01-evidence",
+  "utc": "2026-09-25T17:19:16Z"
+}

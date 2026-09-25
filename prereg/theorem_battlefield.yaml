@@ -1,2 +1,101 @@
-# STUB — 10 nodes 08U/09/11/13/14/15/22/17/18/19 with statement/negation hashes, owner phases, first consumers, REVIEWED gates, child namespaces, forbidden premises. Frozen Phase 1.
-obligations: [MST0-08U, MST0-09, MST0-11, MST0-13, MST0-14, MST0-15, MST0-22, MST0-17, MST0-18, MST0-19]
+# theorem_battlefield.yaml — frozen 10-node critical set (statement hashes recomputed
+# from math/ canonical blocks by the freeze script; values below are authoritative).
+canonical_block_rule: single-line STATEMENT_<ID> / NEGATION_<ID> line in math/theorem_<name>.md; sha256 over UTF-8 bytes of that line
+nodes:
+  MST0-08U:
+    statement_sha256: 51d3ac144a38ebedaf7cc582e2e926cebcd3813f269dd5faf2297cd3b07233a9
+    negation_sha256: e63b3e14d1da51f8a88406f2513c37a8f859373991899f26c3d03ff54ece48d8
+    parent_status: REVIEWED-scoped-finite-universal-gap-open
+    owner_phase: Phase-2
+    first_consumer: MST0-14
+    required_status: REVIEWED
+    prerequisites: [MSTC-0002-record]
+    lifting_eligible: true
+  MST0-09:
+    statement_sha256: c9b2cc43e940c7e4734a56bae685c3c60d44dee35c1d1ae988c5361dd35ac030
+    negation_sha256: ab9f8da1aba59bbf83fc6b185caae574b4c4b99d2190f4bb86735231e5b39530
+    parent_status: UNPROVED
+    owner_phase: Phase-2
+    first_consumer: MST0-14
+    required_status: REVIEWED
+    prerequisites: [MSTC-0002-record]
+    lifting_eligible: true
+  MST0-11:
+    statement_sha256: 5bb12e4f5a3bd75c2524bf46074baf45a8b6f2e51fc463710ecb3b35907f16ea
+    negation_sha256: 85bc63565b2a55d3e994913d84767e5a8a6acac8db2772c91254f2af4a2f642b
+    parent_status: UNPROVED
+    owner_phase: Phase-2
+    first_consumer: MST0-14
+    required_status: REVIEWED
+    prerequisites: [MSTC-0002-record]
+    lifting_eligible: true
+  MST0-13:
+    statement_sha256: 4e26c086d88c934b198d1a49b79f34c2d12b17a7599c0ace006b05f5650fe75f
+    negation_sha256: 89ed551f2efff1d5e21d309a555c6412214a3eed37c3b3323ba8da3ae0662f3c
+    parent_status: PROVED-author-claim-human-review-pending
+    owner_phase: Phase-2
+    first_consumer: MST0-17
+    required_status: REVIEWED
+    prerequisites: [parent-import, MSTC-0002-record]
+    review_gates: [MST0_13_REVIEWED, MST0_13_REJECTED, MST0_13_BLOCKED]
+    reject_is_not_refuted: true
+    lifting_eligible: true
+  MST0-14:
+    statement_sha256: 76349110b021301e0e67bbea70081ef637aae9ed4d12f2a46e26c7faa253d1d6
+    negation_sha256: c2a989b1bda4d9c0bf2a48204dcf0cecf73b2938b7e1a0ac2d06e8d9faa41994
+    parent_status: UNPROVED
+    owner_phase: Phase-3
+    first_consumer: MST0-15
+    required_status: REVIEWED
+    prerequisites: [MST0-08U, MST0-09, MST0-11, MST0-13, MST0-22]
+    lifting_eligible: true
+  MST0-15:
+    statement_sha256: be9b9d4dcd19a41cae8e2deae03e1c7e560e9179d832e935bc25476f3c50d1e2
+    negation_sha256: 80858e70bfb1ead1438e1bf689ef470aff0e550739c932bb977dc4e109d6e415
+    parent_status: UNPROVED
+    owner_phase: Phase-4
+    first_consumer: MST0-17
+    required_status: REVIEWED
+    prerequisites: [MST0-08U, MST0-09, MST0-11, MST0-13, MST0-14, MST0-22]
+    lifting_eligible: true
+  MST0-22:
+    statement_sha256: b02d685004d79d94d6ac18dde931839b25b43c6fe3aeb671e1b681c5115ce1a5
+    negation_sha256: 25364c05b9092b9012ab74fe50a9b9d35a9d56e071ecefb25862c040aa194733
+    parent_status: UNPROVED
+    owner_phase: Phase-2
+    first_consumer: MST0-17
+    required_status: REVIEWED
+    prerequisites: [MSTC-0002-record]
+    lifting_eligible: true
+  MST0-17:
+    statement_sha256: c84df541e9c05c513aa12ef947e8868f06d5736c3a13a776c5a04e8372c886c3
+    negation_sha256: 245a295f74809fce9a899afddb9ae3ed60d20a67ad7c99394989a3fbffd31177
+    parent_status: BLOCKED
+    owner_phase: Phase-5
+    first_consumer: MST0-18
+    required_status: REVIEWED
+    prerequisites: [MST0-08U, MST0-09, MST0-11, MST0-13, MST0-14, MST0-15, MST0-22]
+    refutation_interface: REFUTE-MST0-17
+    refutation_gate: triple-artifact
+    lifting_eligible: true
+  MST0-18:
+    statement_sha256: 547b342fa40d5773f895045f9bdc5d49f2dff56b943b55eb8aec4e27ba47fcce
+    negation_sha256: 8de27d5828f7a2cf4631b3c60ca6c2bd0df9f6f92a2c05d307cb9b313e8fc48f
+    parent_status: BLOCKED
+    owner_phase: Phase-5
+    first_consumer: MST0-19
+    required_status: REVIEWED
+    prerequisites: [MST0-17]
+    lifting_eligible: true
+  MST0-19:
+    statement_sha256: 0cd3a4f40fdb9b02090f72c4e19e4631c3d239c5969eafa8705c2a8ae18ba735
+    negation_sha256: 70485298b58a4db53d6b48e6676308eca88ba2811ab7507104514bb9e345c7f2
+    parent_status: BLOCKED
+    owner_phase: Phase-5
+    first_consumer: Phase-18-decision
+    required_status: REVIEWED
+    prerequisites: [MST0-18, bridge-sources]
+    blocked_vs_refuted: mismatch-blocks-never-refutes
+    lifting_eligible: true
+allowed_child_lemmas: {namespace_per_node: true, versioned: true, no_parent_relaxation: true, artifacts_retained: true, no_calculus_alteration: true}
+forbidden_premises: [finite-survival, holdout-pass, unreviewed-theorem, unpinned-source, future-information]
