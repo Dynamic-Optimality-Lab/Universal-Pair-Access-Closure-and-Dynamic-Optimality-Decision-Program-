@@ -1,0 +1,1 @@
+"""python/audit/lifecycle.py (STUB) — lifecycle transition checker (UNPROVED->PROVED->REVIEWED / UNPROVED->REFUTED only); see WorkPlan phase owner. No theorem-facing execution before FOUNDATION_FROZEN."""
