@@ -8,6 +8,7 @@ artifacts/v04/audits/*
 artifacts/v04/logs/*
 artifacts/v04/seal/*
 !artifacts/v04/*/.gitkeep
+!artifacts/v04/*/*/.gitkeep
 __pycache__/
 *.pyc
 .venv/

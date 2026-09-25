@@ -165,4 +165,22 @@
 **Status table delta.** WorkPlan v0.4-WP3; theorem ledger unchanged (all `UNPROVED`/`BLOCKED`); Phase 1 still STARTED (planning), Phases 2–7 PENDING; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS WorkPlan v0.4-WP3 (§§1,3,11,12,13) + v0.4.1 A2–A4. No deviation.
 
+## Entry 013 — 2026-09-25 UTC — Third review intake: 2 pre-freeze blockers + 3 cleanups (WP3 → WP4) — FOLLOWS WorkPlan §13
+
+**Scope.** Intake follow-up review: amendment issues resolved; remaining gates are (1) BLOCKER — `REFUTE(MST0-17)` lacks dedicated search/schema/replay/namespace precision; (2) BLOCKER — PSC “skeletons now, full implementations later” contradicts freeze-before-attacks; cleanups (a) MST0-19 BLOCKED-vs-REFUTED, (b) “disjoint by construction” overclaim, (c) “created verbatim” tree wording vs amendment file. All accepted; fix vehicle WP4 below. No theorem work; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS reviewer order (fix before freeze). No deviation.
+
+## Entry 014 — 2026-09-25 UTC — WP4 repairs: REFUTE(MST0-17) + PSC spec-freeze + 3 cleanups (WorkPlan v0.4-WP4) — FOLLOWS WorkPlan v0.4-WP4
+
+**Scope.** Implement Entry-013 dispositions.
+**Files made/changed.**
+- `WorkPlan.md` → v0.4-WP4: Phase-5 coverage (exact `REFUTE(MST0-17)` negation `∃T,X,Y≼X: Splay(Y,T) > 2·Splay(X,T)+A(n)`, MST0-19 BLOCKED-vs-REFUTED rule), files (`pair_access_search.py`, `cleanroom/pair_access_check.py`, `proof_attacks/{pair_access,telescope}/`, `counterexamples/pair_access/`, `PA-06` hardening on top of spec-minimum `PA-01..05`), code (`pair_access_search` evaluator + witness record + canonical minimization + inflation + clean-room agreement; bridge mismatch → BLOCKED never refutation), benchmarks (“independently generated” + hash-exclusion), exit (`MST0_17_REFUTED` routing, BLOCKED levels); Phase-1 PSC freezer (complete machine-readable specs normative, skeletons placeholder-only, conformance harness + `NOT_CONFORMED` guards, `STOP-17`); §2.1 generator list (+ `pair_access_search.py`, spec+conformance); §2.2 (§26.1 schedules under frozen spec) + Phases 2/3/4 (“disjoint…” → “independently generated” + hash-exclusion); §3 tree (“§18 layout implemented completely, plus explicit amendment artifact”); §11 prereg (battlefield incl. REFUTE-17 namespace, corpus spec+conformance, lifting witness-only, bridge pre-freeze).
+- New stubs: `python/proof_attack/pair_access_search.py` (negation-bound evaluator spec), `python/cleanroom/pair_access_check.py`, `artifacts/v04/{counterexamples,proof_attacks}/pair_access/.gitkeep` (namespaces; no fake witnesses).
+- `prereg/proof_stress_corpus.yaml`: spec-normative wording + conformance requirement. `CHANGELOG.md`: WP4 lines. No new schema file (witness reuses `proof_attack.schema.json` + `pair_access_certificate.schema.json` evaluation; 17-schema count preserved).
+**Code/how.** `Read` (Phase-5/§11/§2) + `Edit` per item + `Write` ×2 stubs + `New-Item` namespaces + `py_compile` green; `Select-String` re-grep: “disjoint” 0 live overclaims, “created verbatim” 0, “exactly six” live, `pair_access_search` wired.
+**Benchmarks.** None executed (plan + stubs only).
+**Anti-overfitting.** REFUTE-17 survival never proof; PSC spec frozen before implementations; bare mismatch never refutation; overlap never claimed by prose; H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP4; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP4 + v0.4.1 A2–A4. No deviation.
+
 **End of Path entries so far (append-only below this line).**

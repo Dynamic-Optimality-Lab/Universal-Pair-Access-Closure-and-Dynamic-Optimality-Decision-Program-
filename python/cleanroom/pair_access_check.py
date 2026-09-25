@@ -1,0 +1,1 @@
+# python/cleanroom/pair_access_check.py (STUB) — share-nothing second implementation of the MST0-17 refutation evaluator (frozen calculus + triple only, no shared helpers with proof_attack/). Must agree on every witness (STOP-19). No execution before FOUNDATION_FROZEN.
