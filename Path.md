@@ -2,7 +2,7 @@
 
 **Experiment:** `SPLAY-AM-DECIDE-v0.4`
 **Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule)
-**Plan:** `WorkPlan.md` (current revision v0.4-WP7; revision history WP1→WP2→WP3→WP4→WP5→WP6 preserved below)
+**Plan:** `WorkPlan.md` (current revision v0.4-WP8; revision history WP1→WP2→WP3→WP4→WP5→WP6→WP7 preserved below)
 **Rule for this file:** Every implementation step is appended here contemporaneously with deep detail matching `WorkPlan.md` granularity — scope, files made, code produced and how it was coded, benchmarks (and their training-disjointness), anti-overfitting actions, gates — plus an explicit verdict: **FOLLOWS WorkPlan §X** or **DEVIATION from WorkPlan §X (justified)**. A phase gate without a Path entry is not closed (`INV-097`). No entry is ever rewritten; corrections are new entries (erratum-preserving).
 **Current terminal status:** `PRE_FOUNDATION` (planning + skeleton done; `FOUNDATION_FROZEN` not yet claimed; no Phase 01+ theorem-facing execution has occurred — complies with `PRE_FREEZE_PARENT_PIN_REQUIRED`).
 **Repo state at last entry:** `impl/` on `main`; `artifacts/v04/` contains only authorized Phase-1 foundation/freeze-validation artifacts (currently just `WITNESS_SCHEMA_VALIDATION.json` + `.gitkeep` placeholders); no Phase-01+ theorem-facing scientific results — that invariant is what stale-clearance protects.
@@ -246,5 +246,22 @@
 **Anti-overfitting.** Manifest closes the provenance loophole before any evidence exists; triple gate blocks permissive-schema refutations; H3T untouched.
 **Status table delta.** WorkPlan v0.4-WP7, inside its own stack by B1 + manifest contract; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS WorkPlan v0.4-WP7 + v0.4.1 A2–A4 + v0.4.2 B1–B2. No deviation.
+
+## Entry 022 — 2026-09-25 UTC — Seventh review intake: freeze-contract bug with two faces (WP7 → WP8) — FOLLOWS WorkPlan §13
+
+**Scope.** (A) `prereg_sha256.txt` cannot hash itself: WP7’s “hash every prereg file + pinned lines” literally includes the manifest → impossible `H(manifest containing H(manifest))`. (B) Living `Path.md` cannot stay byte-equal to a freeze hash while remaining append-only forever — every post-freeze entry would stale it. Both accepted as freeze blockers (mathematics unaffected). Fix vehicle WP8: explicit `PREREG_PAYLOAD_FILES` (13) ∪ `FREEZE_BOUND_FILES` hashed (manifest excluded) + immutable `PATH_AT_FOUNDATION_FREEZE.md` snapshot pinned instead of the living Path + prefix-verification rule. `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS reviewer order. No deviation.
+
+## Entry 023 — 2026-09-25 UTC — WP8 repairs: self-hash-free manifest + Path snapshot (WorkPlan v0.4-WP8) — FOLLOWS WorkPlan v0.4-WP8
+
+**Scope.** Implement Entry-022 dispositions.
+**Files changed.**
+- `WorkPlan.md` → v0.4-WP8: §11 manifest contract rewritten (exact hashed set named, self-hash excluded, snapshot rule with prefix verification, `STOP-06` fail-closed); §0 §19 bullet (13 payload + manifest-itself enumeration); version line. No new amendment — B1 delegates sealing mechanics to the manifest, whose exact content is living-plan business until freeze.
+- `CHANGELOG.md`: WP8 lines. `Path.md` header Plan line → WP8.
+**Code/how.** `Edit` per item; paren-balance re-verified on touched bullet; `run_phase00.py` still exits 2 `NOT_FROZEN`.
+**Benchmarks.** None.
+**Anti-overfitting.** Contract satisfiable by construction now (no impossible hash, no frozen-living conflict); H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP8, bound by B1 + manifest contract; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP8 + v0.4.1 A2–A4 + v0.4.2 B1–B2. No deviation.
 
 **End of Path entries so far (append-only below this line).**

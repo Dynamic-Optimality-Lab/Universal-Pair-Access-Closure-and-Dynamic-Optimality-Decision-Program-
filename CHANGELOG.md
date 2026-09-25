@@ -3,6 +3,7 @@
 All notable decisions are recorded here. Tracker detail lives in `Path.md` (append-only).
 
 ## [Unreleased] — 2026-09-25
+- Changed (WP8): manifest contract fixed — `PREREG_PAYLOAD_FILES ∪ FREEZE_BOUND_FILES` (manifest never self-hashes) + `PATH_AT_FOUNDATION_FREEZE.md` snapshot pinned instead of living Path (append-only preserved).
 - Changed (WP7): explicit `prereg_sha256.txt` manifest contract (pinned lines for WorkPlan/Path/spec/amendments/toolchain/schemas/PSC — B1 loophole closed without a new amendment); triple-artifact `MST0_17_REFUTED` gate (attack record AND PA certificate AND interface conformance); Path header artifacts truthfulness.
 - Added (WP6): `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule); `schemas/{proof_attack,pair_access_certificate}.schema.json` authored + sample endpoint-aware witness validated green (`artifacts/v04/freeze/WITNESS_SCHEMA_VALIDATION.json`).
 - Changed (WP6): `WorkPlan.md` v0.4-WP5 → v0.4-WP6 (amendment refs, stack wording, schema-validation notes).
