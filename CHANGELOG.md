@@ -3,6 +3,7 @@
 All notable decisions are recorded here. Tracker detail lives in `Path.md` (append-only).
 
 ## [Unreleased] — 2026-09-25
+- Added (WP-0): full `scripts/run_phase00.py` (13 STEP checks, fail-closed, `PHASE00_PASS`), `tests/test_phase00_stress.py` (repeatability/tamper/missing/wrong-commit); `tests/test_foundation.py` now 8 real tests; `artifacts/v04/freeze/PHASE00_PARENT_PIN.json` + `logs/phase00.log`; Path Entries 024–026 (spec PHASE 00 COMPLETE; Phase 1 otherwise STARTED; `FOUNDATION_FROZEN` not claimed).
 - Changed (WP8): manifest contract fixed — `PREREG_PAYLOAD_FILES ∪ FREEZE_BOUND_FILES` (manifest never self-hashes) + `PATH_AT_FOUNDATION_FREEZE.md` snapshot pinned instead of living Path (append-only preserved).
 - Changed (WP7): explicit `prereg_sha256.txt` manifest contract (pinned lines for WorkPlan/Path/spec/amendments/toolchain/schemas/PSC — B1 loophole closed without a new amendment); triple-artifact `MST0_17_REFUTED` gate (attack record AND PA certificate AND interface conformance); Path header artifacts truthfulness.
 - Added (WP6): `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.2_AMENDMENT.md` (B1 living-revision binding, B2 witness-schema rule); `schemas/{proof_attack,pair_access_certificate}.schema.json` authored + sample endpoint-aware witness validated green (`artifacts/v04/freeze/WITNESS_SCHEMA_VALIDATION.json`).
