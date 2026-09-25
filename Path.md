@@ -1,8 +1,8 @@
 # SPLAY-AM-DECIDE-v0.4 Path — implementation tracker
 
 **Experiment:** `SPLAY-AM-DECIDE-v0.4`
-**Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim from `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.md`)
-**Plan:** `WorkPlan.md` (v0.4-WP1, 7 phases covering spec PHASE 00–19)
+**Normative spec:** `IMPLEMENTATION_SPEC_v0.4.md` (root, 85,888 bytes, copied verbatim) + ratified `SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.1_AMENDMENT.md` (A2 REJECT!=REFUTED, A3 six outcomes, A4 bridge order)
+**Plan:** `WorkPlan.md` (current revision v0.4-WP5; revision history WP1→WP2→WP3→WP4 preserved below)
 **Rule for this file:** Every implementation step is appended here contemporaneously with deep detail matching `WorkPlan.md` granularity — scope, files made, code produced and how it was coded, benchmarks (and their training-disjointness), anti-overfitting actions, gates — plus an explicit verdict: **FOLLOWS WorkPlan §X** or **DEVIATION from WorkPlan §X (justified)**. A phase gate without a Path entry is not closed (`INV-097`). No entry is ever rewritten; corrections are new entries (erratum-preserving).
 **Current terminal status:** `PRE_FOUNDATION` (planning + skeleton done; `FOUNDATION_FROZEN` not yet claimed; no Phase 01+ theorem-facing execution has occurred — complies with `PRE_FREEZE_PARENT_PIN_REQUIRED`).
 **Repo state at last entry:** `impl/` on `main`, clean skeleton + docs; `artifacts/v04/` empty by design (only new results after this plan are present — stale-clearance verified).
@@ -188,5 +188,25 @@
 **Scope.** Post-push check showed `artifacts/v04/{counterexamples,proof_attacks}/pair_access/.gitkeep` untracked: git cannot re-include a file inside an excluded parent dir, so the generic `!artifacts/v04/*/*/.gitkeep` line was insufficient while `artifacts/v04/counterexamples/*` excluded the `pair_access/` dir itself.
 **Fix.** `.gitignore` now explicitly un-ignores both dirs and their `.gitkeep` files. Namespaces (`pair_access/` counterexamples + proof-attacks, empty by design — no fake witnesses) commit in this fixup.
 **Verdict.** FOLLOWS WorkPlan §3 (empty-by-design namespaces). No deviation; Entry-014 claims now fully versioned.
+
+## Entry 016 — 2026-09-25 UTC — Fourth review intake: 1 HARD blocker + 1 verification item + 2 header cleanups + 1 hardening (WP4 → WP5) — FOLLOWS WorkPlan §13
+
+**Scope.** Intake follow-up review: (1) HARD — WP4 `REFUTE(MST0-17)` targeted the endpoint-free inequality, but frozen MST0-17 is the composition inequality with `E_m−E_0`; attacking the downstream form lets a negative endpoint term mask a missed violation. (2) Path header still says WP1 though plan is WP4. (3) Header omits normative v0.4.1 amendment. (4) Verify PSC specs are genuinely complete 12-field semantics, not conformance-declaring stubs. (5) Hardening: bind refutation executables to theorem/negation SHAs. All accepted; vehicle WP5 below. No theorem work; `FOUNDATION_FROZEN` unclaimed.
+**Verdict.** FOLLOWS reviewer order (fix #1 before freeze; verify #4). No deviation.
+
+## Entry 017 — 2026-09-25 UTC — WP5 repairs: endpoint-aware negation + living headers + complete PSC + SHA guard (WorkPlan v0.4-WP5) — FOLLOWS WorkPlan v0.4-WP5
+
+**Scope.** Implement Entry-016 dispositions.
+**Files made/changed.**
+- `WorkPlan.md` → v0.4-WP5: Phase-5 coverage (exact negation `∃n,T,X,Y≼X,ledger: Splay(Y,T)+E_m−E_0 > 2·Splay(X,T)+A(n)` with `lhs/rhs` definitions + 15-field payload list + MST0-18 separation note); `pair_access_search` bullet (endpoint-aware evaluator, full payload, SHA-guard abort); new SHA-bind guard bullet (every refutation executable aborts unless loaded statement/negation SHAs equal `theorem_battlefield[ID]` SHAs; evaluator derived from versioned obligation; `STOP-15/16`); §12-C (exactly-7-families + interface note); version line.
+- `python/proof_attack/pair_access_search.py`: stub rewritten to endpoint-aware negation + 15-field payload + SHA-guard (the prose drift that caused this blocker is now a startup failure by construction).
+- `prereg/proof_stress_corpus.yaml`: REPLACED stub with complete machine-readable specs — YAML-validated: exactly 7 families (`PSC-L/P/B/K6/I/T/N`) + 1 `refutation_interfaces/REFUTE-MST0-17` entry (not an 8th family), all carrying the 12 required fields (domain, constructors, ranges, seeds, objectives, symbolic domains, minimization, canonical order, replay, independent-check, allowed freedom, forbidden changes); conformance harness section with `NOT_CONFORMED` guards + `STOP-17`. Verification: `yaml.safe_load` + field-presence check green (missing: NONE).
+- `Path.md` headers: Plan → “current revision v0.4-WP5; history preserved below”; normative line + v0.4.1 amendment. Old entries untouched (provenance intact).
+- `CHANGELOG.md`: WP5 lines.
+**Code/how.** `Read` (Phase-5/Path headers/stubs) + `Edit` per item + `Write` (YAML) + `Bash` YAML validation (`safe_load`, family keys, 12-field presence); PSC-N mis-nesting under `refutation_interfaces` caught by validation and repaired (swap + duplicate removal, re-validated 7+1).
+**Benchmarks.** None executed (plan + specs + stubs only).
+**Anti-overfitting.** Endpoint omission class eliminated by SHA derivation; PSC behavior frozen before implementations; H3T untouched.
+**Status table delta.** WorkPlan v0.4-WP5; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
+**Verdict.** FOLLOWS WorkPlan v0.4-WP5 + v0.4.1 A2–A4. No deviation.
 
 **End of Path entries so far (append-only below this line).**
