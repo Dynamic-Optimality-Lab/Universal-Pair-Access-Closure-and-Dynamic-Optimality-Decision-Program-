@@ -183,4 +183,10 @@
 **Status table delta.** WorkPlan v0.4-WP4; ledger unchanged; Phase 1 STARTED, rest PENDING; `FOUNDATION_FROZEN` not claimed.
 **Verdict.** FOLLOWS WorkPlan v0.4-WP4 + v0.4.1 A2–A4. No deviation.
 
+## Entry 015 — 2026-09-25 UTC — Fixup: nested .gitkeep exclusion (WP4 follow-up) — FOLLOWS WorkPlan §3
+
+**Scope.** Post-push check showed `artifacts/v04/{counterexamples,proof_attacks}/pair_access/.gitkeep` untracked: git cannot re-include a file inside an excluded parent dir, so the generic `!artifacts/v04/*/*/.gitkeep` line was insufficient while `artifacts/v04/counterexamples/*` excluded the `pair_access/` dir itself.
+**Fix.** `.gitignore` now explicitly un-ignores both dirs and their `.gitkeep` files. Namespaces (`pair_access/` counterexamples + proof-attacks, empty by design — no fake witnesses) commit in this fixup.
+**Verdict.** FOLLOWS WorkPlan §3 (empty-by-design namespaces). No deviation; Entry-014 claims now fully versioned.
+
 **End of Path entries so far (append-only below this line).**

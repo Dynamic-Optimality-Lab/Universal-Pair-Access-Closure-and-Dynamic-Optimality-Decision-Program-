@@ -9,6 +9,10 @@ artifacts/v04/logs/*
 artifacts/v04/seal/*
 !artifacts/v04/*/.gitkeep
 !artifacts/v04/*/*/.gitkeep
+!artifacts/v04/counterexamples/pair_access/
+!artifacts/v04/counterexamples/pair_access/.gitkeep
+!artifacts/v04/proof_attacks/pair_access/
+!artifacts/v04/proof_attacks/pair_access/.gitkeep
 __pycache__/
 *.pyc
 .venv/
