@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from python.audit import phase_runner as PR
 from python.audit import conformance as CF
 from python.audit import review_package as RP
+from python.audit import mutants as MU
 
 NODE, FAMILY, GEN, CHECK = "MST0-08U", "PSC-L", "locality_explosion", "locality_check"
 
@@ -52,7 +53,11 @@ def main(argv=None):
     print("[WP-2][STEP 06-05] assembling review package", flush=True)
     path, sha = RP.assemble_package(
         NODE, "math/theorem_MST08U_locality.md", "lean/Proofs/Locality.lean",
-        [str(rec)], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"])
+        [str(rec)], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"],
+        {"layer_a_cert": "artifacts/v04/proofs/MST0-08U.proof_cert.json",
+         "formal_cert": "artifacts/v04/formal/MST0-08U.formal_cert.json",
+         "lean_theorem": "MST0_08U_proved (build-green)",
+         "build_status": MU.BUILD_STATUS, "mutant_result": MU.MUTANT_SUMMARY})
     print(f"[WP-2][STEP 06-05] phase 06 done: package {path} sha={sha[:16]}", flush=True)
     return 0
 

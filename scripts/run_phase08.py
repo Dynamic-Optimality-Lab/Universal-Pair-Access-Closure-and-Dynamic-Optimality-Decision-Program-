@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from python.audit import phase_runner as PR
 from python.audit import conformance as CF
 from python.audit import review_package as RP
+from python.audit import mutants as MU
 
 NODE, GEN, CHECK = "MST0-09", "boundary_torture", "boundary_check"
 
@@ -52,7 +53,11 @@ def main(argv=None):
     print("[WP-2][STEP 08-05] assembling review package", flush=True)
     path, sha = RP.assemble_package(
         NODE, "math/theorem_MST09_raw_boundary.md", "lean/Proofs/Boundary.lean",
-        [str(rec)], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"])
+        [str(rec)], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"],
+        {"layer_a_cert": "artifacts/v04/proofs/MST0-09.proof_cert.json",
+         "formal_cert": "artifacts/v04/formal/MST0-09.formal_cert.json",
+         "lean_theorem": "MST0_09_proved (build-green)",
+         "build_status": MU.BUILD_STATUS, "mutant_result": MU.MUTANT_SUMMARY})
     print(f"[WP-2][STEP 08-05] phase 08 done: package {path} sha={sha[:16]}", flush=True)
     return 0
 

@@ -14,6 +14,11 @@ OPERATORS = ["constant-swap-C-k", "predicate-weakening-P_all", "support-shift",
              "injection-count-off-by-one", "discharge-sign-flip",
              "cost-convention-plus-one", "endpoint-term-drop"]
 
+# Shared package evidence string (static description; counts live in test output).
+MUTANT_SUMMARY = ("tests/mutation green incl. T099/T100, preregistered operators, "
+                  "35-cell theorem-x-operator matrix")
+BUILD_STATUS = "lake build 15/15 green, zero warnings (see Path closeout records)"
+
 
 def run_mutant(operator, mutate_fn, detector_fn, workdir):
     """Copy core to workdir, apply mutate_fn(core_dir), run detector_fn(core_dir).

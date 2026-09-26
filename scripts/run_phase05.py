@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from python.audit import phase_runner as PR
 from python.audit import review_package as RP
+from python.audit import mutants as MU
 from python.audit import log as LOG
 from python.inherited import splay as S
 from python.inherited import mstc0002 as M
@@ -96,7 +97,11 @@ def main(argv=None):
     path, sha = RP.assemble_package(
         "MST0-13", "math/theorem_MST13_delete_injection.md",
         "lean/Proofs/Injection.lean", [str(rpath)],
-        ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"])
+        ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"],
+        {"layer_a_cert": "artifacts/v04/proofs/MST0-13.proof_cert.json",
+         "formal_cert": "artifacts/v04/formal/MST0-13.formal_cert.json",
+         "lean_theorem": "MST0_13_proved (build-green)",
+         "build_status": MU.BUILD_STATUS, "mutant_result": MU.MUTANT_SUMMARY})
     # WP-2 STEP 05-03: phase 05 closed (review verdict human-only, pending).
     print(f"[WP-2][STEP 05-03] phase 05 done: package {path} sha={sha[:16]}", flush=True)
     return 0

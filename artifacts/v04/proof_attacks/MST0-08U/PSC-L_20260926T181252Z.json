@@ -1,0 +1,35 @@
+{
+  "best_finite_obstruction_metrics": {
+    "bound": 6,
+    "events_scanned": 59684,
+    "max_growth": 6
+  },
+  "exact_witness": null,
+  "generator_version": "PSC-L/1.0",
+  "independent_checker_result": "AGREE",
+  "input_hash": "71f71f240757a32d55f38810f4717b99d4ff953c817a0c5ba91f09bce1eb8ae8",
+  "negation_predicate": "frozen negation of MST0-08U (battlefield canonical Negation line)",
+  "objective_vector": {
+    "best_arg": [
+      16,
+      0,
+      "alternating",
+      2,
+      "RL",
+      1,
+      16
+    ],
+    "best_growth": 6,
+    "maximize": "per-event-ledger-growth"
+  },
+  "replay_certificate": {
+    "checker_id": "cleanroom/locality_check/1.0",
+    "replay_input_hash": "1dc97da75d0f3f4d151cd0907c7ff44057ab8b5e69fca1c414a862eed245e463",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "PSC-L ran to completion; no event exceeded the universal per-event bound",
+  "seed": "seed-range-0..7/sizes-[16, 32, 64, 128, 256, 512, 1024]",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-08U"
+}

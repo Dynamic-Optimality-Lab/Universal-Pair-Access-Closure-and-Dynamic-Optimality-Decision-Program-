@@ -356,6 +356,21 @@
 
 **End of Path entries so far (append-only below this line).**
 
+## Entry R1-029 — WP-2 review closure: surgical compliance + human ACCEPT ×5 → five REVIEWED — FOLLOWS mandate
+
+**Scope.** Mutation-matrix closure, ending repair, cert/package regeneration, Injection decoupling, runner completeness, verification, human-verdict recording, lawful transitions. No science/frozen-statement/constant/redesign/WP-3 changes.
+**Fixes.**
+1. Mutations: `tests/mutation/test_matrix_35.py` — 7 operators × 5 nodes = 35 cells (per-node full-sensitivity batteries) + clean-core control: 36/36 green. T099/T100 standing green.
+2. Endings: full latent-divergence audit — working files (CRLF, hash == manifest/battlefield) vs repo blobs (LF, stale stat-cache hid it). Root fix: index refresh via rm/add cycle stages exact working bytes; `git diff --ignore-cr-at-eol` proves zero textual change across all 98 renormalized files. `.gitattributes -text` makes it permanent. Verifier `theorem-identity` + phase gates caught the one live instance (08U tamper-restore cycle) before commit.
+3. Certs: all 5 proof certs regenerated (Layer-A docs postdated them) + 5 formal certs; 10/10 schema-valid. Packages regenerated with full structure (13 carries sweep record + JSONL).
+4. Injection.lean decoupled (Boundary import removed; local energy/fold lemmas; identical theorem); build 15/15 zero warnings; axioms closure unchanged (same core-only footprint — equivalence evidence).
+5. Runners emit complete packages (certs/build/mutants/scan refs via shared constants); all 5 rerun green; structure asserted 5/5.
+**Verification.** lake build green; contract_closure CLOSED (35 checks incl. PENDING-gate + proved-theorems 5/5); pytest 106/106 (10+12+9+4+26+9+36); manifest recompute == recorded (57); tamper red-team standing; fresh-checkout equivalence restored by renormalization (repo bytes == working bytes post-commit).
+**Human verdicts (supplied by reviewer/user, transcribed only after all-green).** ACCEPT ×5, each schema-valid, bound to theorem/statement/proof/formal/package hashes with human attestation. Zero inferred verdicts.
+**Transitions (lawful, G2 human-ACCEPT row, history preserved).** All five: truth PROVED→REVIEWED, prove PROVED_PENDING_REVIEW→REVIEWED, refute stays NO_WITNESS.
+**Terminal.** MST0-08U/09/11/13/22 = REVIEWED. WP-2 = COMPLETE. MST0-14 PROVE_READY: FALSE — PROVE needs REFUTE_READY, which needs the PSC-K6 conformant implementation (WP-3 owner-phase work, nonexistent); upstream REVIEWEDs complete everything WP-2 owed downstream.
+**Commit/push/tree.** Single commit, pushed, remote HEAD verified == local, tree clean (SHAs in final response).
+
 ## Entry R1-028 — WP-2 review-gate compliance cleanup (surgical; no science/frozen-statement/proof changes) — FOLLOWS mandate
 
 **Scope.** Formal certs, package regeneration (incl. 13 run records), 22 dataflow scan + artifact, 2 stale-prose fixes. No theorem mathematics, frozen statements, proved results, reviews, or WP-3 touched.
@@ -364,7 +379,7 @@
 2. Packages: all 5 regenerated via extended assembler (Layer-A cert + Layer-B cert + theorem/build status + attack/scan evidence + mutant result + run records); 13 now carries its sweep record + JSONL. Zero `.review.json` created/touched.
 3. 22 scan: rewritten as backward-slice dataflow (required/active_pool/discharge/energy + C/K literals; transitive call resolution; forbidden-inflow empty) + Lean dependency-cone check (C/K literal bodies; helper bodies free of forbidden tokens; quantifier order) → `MST0-22.scan.json` (CLEAN) + 24-field run record (SCAN-CLEAN). Mere mention never flags (bare-`n` recorded, not a hit).
 4. Stale prose: Preservation.lean C1 docstring (open→reused-below); Layer-A 11doc 24→20 combos with ROOT-vacuous + shared-ZIG-label wording.
-**Verification.** lake build 15/15 zero warnings; contract_closure CLOSED (34 checks); pytest 70/70 (10+12+9+4+26+9); 12/12 schemas valid (incl. 10 certs); manifest recompute == recorded (57); tamper red-team standing; PARENT-10 refined form green.
+**Verification.** lake build 15/15 zero warnings; contract_closure CLOSED (36 checks); pytest 106/106 (10+12+9+4+26+9+36); 12/12 schemas valid (incl. 10 certs); manifest recompute == recorded (57); tamper red-team standing; PARENT-10 refined form green.
 **Deviations.** None. Inter-Proofs import (Injection→Boundary) documented prior turn; `.gitignore` extended for cert/scan evidence (WorkPlan hygiene rule).
 **Verdict.** THEOREM_FORMALIZATION_OPEN = 0; REVIEW_GATE_INTERNAL_GAPS = 0; INTERNAL_REMAINING = NONE; EXTERNAL_REMAINING = HUMAN_REVIEW_ONLY. WP-2 = BLOCKED_EXTERNAL.
 **Commit/push/tree.** This entry + fixes committed once, pushed, remote HEAD verified == local, tree clean (SHAs in final response).

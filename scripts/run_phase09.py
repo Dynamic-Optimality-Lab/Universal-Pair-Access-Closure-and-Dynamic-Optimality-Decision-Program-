@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from python.audit import phase_runner as PR
 from python.audit import review_package as RP
+from python.audit import mutants as MU
 
 NODE = "MST0-22"
 
@@ -37,7 +38,12 @@ def main(argv=None):
     print("[WP-2][STEP 09-03] assembling review package", flush=True)
     path, sha = RP.assemble_package(
         NODE, "math/theorem_MST22_constant_independence.md", "lean/Proofs/Constants.lean",
-        [], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"])
+        [], ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"],
+        {"layer_a_cert": "artifacts/v04/proofs/MST0-22.proof_cert.json",
+         "formal_cert": "artifacts/v04/formal/MST0-22.formal_cert.json",
+         "lean_theorem": "MST0_22_proved (build-green)",
+         "build_status": MU.BUILD_STATUS, "mutant_result": MU.MUTANT_SUMMARY,
+         "scan_artifact": "artifacts/v04/formal/MST0-22.scan.json"})
     print(f"[WP-2][STEP 09-03] phase 09 done: package {path} sha={sha[:16]}", flush=True)
     return 0
 

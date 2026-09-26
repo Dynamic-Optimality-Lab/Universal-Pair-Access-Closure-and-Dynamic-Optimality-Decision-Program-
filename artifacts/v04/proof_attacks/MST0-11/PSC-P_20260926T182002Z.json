@@ -1,0 +1,128 @@
+{
+  "best_finite_obstruction_metrics": {
+    "cases_covered_count": 20,
+    "events_scanned": 153708,
+    "violations": 0
+  },
+  "exact_witness": null,
+  "generator_version": "PSC-P/1.0",
+  "independent_checker_result": "AGREE",
+  "input_hash": "77c5cb3645dec7bd393d64679c923fc1b08bb0cc575a16c6977da63305c2f07b",
+  "negation_predicate": "frozen negation of MST0-11 (battlefield canonical Negation line)",
+  "objective_vector": {
+    "cases_covered": [
+      [
+        "LL",
+        "DELETE",
+        false
+      ],
+      [
+        "LL",
+        "DELETE",
+        true
+      ],
+      [
+        "LL",
+        "KEEP",
+        false
+      ],
+      [
+        "LL",
+        "KEEP",
+        true
+      ],
+      [
+        "LR",
+        "DELETE",
+        false
+      ],
+      [
+        "LR",
+        "DELETE",
+        true
+      ],
+      [
+        "LR",
+        "KEEP",
+        false
+      ],
+      [
+        "LR",
+        "KEEP",
+        true
+      ],
+      [
+        "RL",
+        "DELETE",
+        false
+      ],
+      [
+        "RL",
+        "DELETE",
+        true
+      ],
+      [
+        "RL",
+        "KEEP",
+        false
+      ],
+      [
+        "RL",
+        "KEEP",
+        true
+      ],
+      [
+        "RR",
+        "DELETE",
+        false
+      ],
+      [
+        "RR",
+        "DELETE",
+        true
+      ],
+      [
+        "RR",
+        "KEEP",
+        false
+      ],
+      [
+        "RR",
+        "KEEP",
+        true
+      ],
+      [
+        "ZIG",
+        "DELETE",
+        false
+      ],
+      [
+        "ZIG",
+        "DELETE",
+        true
+      ],
+      [
+        "ZIG",
+        "KEEP",
+        false
+      ],
+      [
+        "ZIG",
+        "KEEP",
+        true
+      ]
+    ],
+    "max_drift": 0,
+    "maximize": "energy-drift-under-activation"
+  },
+  "replay_certificate": {
+    "checker_id": "cleanroom/preservation_check/1.0",
+    "replay_input_hash": "41f320879917562d084da524c6d37a668176cc9476685381f81c9a7b9cdd6e4c",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "PSC-P ran to completion; every clause held on all covered cases",
+  "seed": "seed-range-0..5/sizes-[16, 32, 64, 128, 256, 512, 1024]",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-11"
+}
