@@ -1,0 +1,52 @@
+{
+  "best_finite_obstruction_metrics": {
+    "dimensions": [
+      "alternation",
+      "crossings",
+      "delete-bursts",
+      "long-lived",
+      "mirror",
+      "nested",
+      "orientation",
+      "provenance",
+      "rank-gap",
+      "recurrent",
+      "roles",
+      "scale",
+      "simultaneous"
+    ],
+    "steps_scanned": 3810,
+    "worst_residual": 0
+  },
+  "exact_witness": null,
+  "generator_version": "PSC-K6/1.0/shard-C",
+  "independent_checker_result": "AGREE",
+  "input_hash": "98dac374dffb93ca3d3980b72054e548fb0aa8eb62579d2b0fc356e92030ff98",
+  "negation_predicate": "frozen negation of MST0-14 (battlefield canonical Negation line)",
+  "objective_vector": {
+    "maximize": "residual-required-minus-paid",
+    "shard": "C",
+    "worst_arg": [
+      1024,
+      0,
+      "alternation",
+      "alternating",
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "worst_residual": 0
+  },
+  "replay_certificate": {
+    "checker_id": "cleanroom/repayment_check/1.0",
+    "replay_input_hash": "766c65deaad90add7844206c55426f1014873698dec1faa2dc47e582b33373cd",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "K6 war shard C complete; every legal KEEP paid in full",
+  "seed": "seed-range-0..5/sizes-[1024]/dims-13",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-14"
+}

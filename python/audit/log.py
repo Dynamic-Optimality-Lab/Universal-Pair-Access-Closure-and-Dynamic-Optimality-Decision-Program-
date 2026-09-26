@@ -43,7 +43,7 @@ def _battlefield():
     return yaml.safe_load((IMPL / "prereg/theorem_battlefield.yaml").read_text(encoding="utf-8"))
 
 
-def base_record(theorem_id, track, command):
+def base_record(theorem_id, track, command, phase="WP-2"):
     """Static-field scaffold for one run record (timing/outputs filled by caller)."""
     import re
     nodes = _battlefield()["nodes"]
@@ -62,7 +62,7 @@ def base_record(theorem_id, track, command):
         deps.append(_sha_file("lean/Frozen/Statements.lean"))
     return {
         "experiment_id": "SPLAY-AM-DECIDE-v0.4",
-        "phase": "WP-2",
+        "phase": phase,
         "UTC timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "local commit": _git_head(),
         "parent v0.3 commit": PARENT_PIN,
@@ -102,14 +102,15 @@ class Timer:
         tracemalloc.stop()
 
 
-def emit_run_record(record):
+def emit_run_record(record, records_path=None):
     """Append one record; key set must equal FIELDS exactly (fail-closed)."""
     if sorted(record.keys()) != sorted(FIELDS):
         raise ValueError(f"run-record field mismatch: {sorted(record.keys())}")
     ordered = {k: record[k] for k in FIELDS}
-    with open(RECORDS, "a", encoding="utf-8") as f:
+    target = Path(records_path) if records_path else RECORDS
+    with open(target, "a", encoding="utf-8") as f:
         f.write(json.dumps(ordered, sort_keys=False) + "\n")
-    # WP-2 STEP LOG-01: run record appended (forensic reconstruction pointer).
-    print(f"[WP-2][STEP LOG-01] appended run record {record['current theorem ID']}/"
+    # WP-2/WP-3 STEP LOG-01: run record appended (forensic reconstruction pointer).
+    print(f"[{record['phase']}][STEP LOG-01] appended run record {record['current theorem ID']}/"
           f"{record['prove/refute track']}/{record['scientific status']}", flush=True)
     return ordered

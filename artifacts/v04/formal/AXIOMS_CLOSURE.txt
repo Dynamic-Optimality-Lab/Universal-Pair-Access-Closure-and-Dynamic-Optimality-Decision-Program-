@@ -17,3 +17,5 @@
 'MST0_09_proved' depends on axioms: [propext, Quot.sound]
 'MST0_11_proved' depends on axioms: [propext, Quot.sound]
 'MST0_13_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MST0_14_paid_identity' depends on axioms: [propext, Quot.sound]
+'rep_pay_aux' depends on axioms: [propext, Quot.sound]

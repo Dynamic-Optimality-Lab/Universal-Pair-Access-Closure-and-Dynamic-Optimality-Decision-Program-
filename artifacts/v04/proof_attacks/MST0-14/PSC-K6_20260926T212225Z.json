@@ -1,0 +1,52 @@
+{
+  "best_finite_obstruction_metrics": {
+    "dimensions": [
+      "alternation",
+      "crossings",
+      "delete-bursts",
+      "long-lived",
+      "mirror",
+      "nested",
+      "orientation",
+      "provenance",
+      "rank-gap",
+      "recurrent",
+      "roles",
+      "scale",
+      "simultaneous"
+    ],
+    "steps_scanned": 15240,
+    "worst_residual": 0
+  },
+  "exact_witness": null,
+  "generator_version": "PSC-K6/1.0/shard-A",
+  "independent_checker_result": "AGREE",
+  "input_hash": "84d1661a4bc16ac86d0b21f24bfac1f57259469373560adf30085827d7665d6e",
+  "negation_predicate": "frozen negation of MST0-14 (battlefield canonical Negation line)",
+  "objective_vector": {
+    "maximize": "residual-required-minus-paid",
+    "shard": "A",
+    "worst_arg": [
+      16,
+      0,
+      "alternation",
+      "alternating",
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "worst_residual": 0
+  },
+  "replay_certificate": {
+    "checker_id": "cleanroom/repayment_check/1.0",
+    "replay_input_hash": "ef3009627ba07e3eed4254053db35641da650a51f134fe91e795a8a6582c7642",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "K6 war shard A complete; no positive residual",
+  "seed": "seed-range-0..5/sizes-[16, 32, 64, 128]/dims-13",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-14"
+}

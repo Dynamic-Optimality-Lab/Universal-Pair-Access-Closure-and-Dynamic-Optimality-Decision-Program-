@@ -68,8 +68,19 @@
       "truth": "REVIEWED"
     },
     "MST0-14": {
-      "prove_track": "NOT_READY",
-      "refute_track": "NOT_READY",
+      "last_transition": {
+        "new_prove": "RUNNING",
+        "new_refute": "NO_WITNESS",
+        "new_truth": "UNPROVED",
+        "previous_prove": "NOT_READY",
+        "previous_refute": "NOT_READY",
+        "previous_truth": "UNPROVED",
+        "review": "none",
+        "trigger": "WP-3 K6 war 4 shards NO_WITNESS AGREE + Layer-A skeleton + Lean mechanism identity; sufficiency proof open",
+        "utc": "2026-09-27T03:30:00Z"
+      },
+      "prove_track": "RUNNING",
+      "refute_track": "NO_WITNESS",
       "truth": "UNPROVED"
     },
     "MST0-15": {

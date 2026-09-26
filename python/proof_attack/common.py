@@ -10,6 +10,7 @@ import hashlib
 import json
 import sys
 import time
+from functools import lru_cache
 from pathlib import Path
 
 # Vine inputs reach depth 1024; recursive core needs headroom (linear frames).
@@ -31,6 +32,9 @@ def sha_text(s):
     return hashlib.sha256(s.encode("utf-8")).hexdigest()
 
 
+# Shape builders are pure functions of (n, seed): memoized so campaigns and
+# checkers never rebuild identical trees (same inputs, less recomputation).
+@lru_cache(maxsize=None)
 def shape_vine_right(n):
     from python.inherited import splay as S
     t = S.LEAF
@@ -49,6 +53,7 @@ def _insert_desc(t, k):
     return S.node(kk, l, _insert_desc(r, k))
 
 
+@lru_cache(maxsize=None)
 def shape_vine_left(n):
     from python.inherited import splay as S
     t = S.LEAF
@@ -57,6 +62,7 @@ def shape_vine_left(n):
     return t
 
 
+@lru_cache(maxsize=None)
 def shape_balanced(n):
     from python.inherited import splay as S
 
@@ -68,6 +74,7 @@ def shape_balanced(n):
     return build(list(range(1, n + 1)))
 
 
+@lru_cache(maxsize=None)
 def shape_seeded(n, seed):
     import random
     rng = random.Random(seed)
@@ -81,6 +88,7 @@ def shape_seeded(n, seed):
     return t
 
 
+@lru_cache(maxsize=None)
 def shape_alternating(n):
     from python.inherited import splay as S
     order = []

@@ -17,6 +17,7 @@ SPECS = {
     "locality_explosion": {"family": "PSC-L", "gen": "gen_locality", "params": ["seed", "n", "depth_span"]},
     "primitive_exhaust": {"family": "PSC-P", "gen": "gen_preservation", "params": ["seed", "n", "case_mix"]},
     "boundary_torture": {"family": "PSC-B", "gen": "gen_boundary", "params": ["seed", "n", "boundary_class"]},
+    "k6_saturation": {"family": "PSC-K6", "gen": "gen_k6", "params": ["seed", "n", "regret_class"]},
 }
 
 
@@ -59,6 +60,8 @@ def check_module(modname):
 
 
 def _canon_key(gen_name, p):
+    if gen_name == "gen_k6":
+        return (str(p[0]), str(p[1]), str(p[3]))
     if gen_name == "gen_boundary":
         if p[0] == "access":
             return (0, str(p[1]), int(p[3]), "", "")
@@ -72,4 +75,4 @@ def _canon_key(gen_name, p):
 
 def _probe_arg(gen_name):
     return {"gen_locality": "edge", "gen_preservation": "all",
-            "gen_boundary": "scale"}[gen_name]
+            "gen_boundary": "scale", "gen_k6": "positive"}[gen_name]
