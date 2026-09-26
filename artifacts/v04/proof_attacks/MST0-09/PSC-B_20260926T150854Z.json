@@ -1,0 +1,52 @@
+{
+  "best_finite_obstruction_metrics": {
+    "best_history_energy_informational_only": 192,
+    "classes": [
+      "alternating",
+      "asymmetry",
+      "burden",
+      "burst",
+      "creation-rate",
+      "lifetime",
+      "mirror",
+      "nested",
+      "rank-gap",
+      "reactivation",
+      "scale",
+      "span"
+    ],
+    "events_scanned": 55550,
+    "max_event_growth": 6
+  },
+  "exact_witness": null,
+  "generator_version": "PSC-B/1.0",
+  "independent_checker_result": "AGREE",
+  "input_hash": "180732c5e7eaa7155a101f510350aca4410145251da18fdf2a010f4e632cbd1f",
+  "negation_predicate": "frozen negation of MST0-09 (battlefield canonical Negation line)",
+  "objective_vector": {
+    "best_arg": [
+      16,
+      0,
+      "alternating",
+      "alternating",
+      8,
+      "RL"
+    ],
+    "best_event_growth": 6,
+    "best_ratio": 6.0,
+    "maximize": [
+      "per-event-growth",
+      "growth-per-event-ratio"
+    ]
+  },
+  "replay_certificate": {
+    "checker_id": "cleanroom/boundary_check/1.0",
+    "replay_input_hash": "1d247d39e23aed25bb41dd79eb5e230e90e5faf0ac96a7fdee4cead86fc0766e",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "PSC-B ran to completion; no event exceeded the per-event bound",
+  "seed": "seed-range-0..5/sizes-[16, 32, 64, 128, 256, 512, 1024]/classes-12",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-09"
+}

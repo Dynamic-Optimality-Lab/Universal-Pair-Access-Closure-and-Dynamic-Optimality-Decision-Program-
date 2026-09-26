@@ -356,6 +356,32 @@
 
 **End of Path entries so far (append-only below this line).**
 
+## Entry R1-025 — WP-2 execution record (N=2): entry PASS, campaigns, proofs, mutants — FOLLOWS WorkPlan §5
+
+**Binding.** CURRENT_PHASE = WP-2 (§5, spec PHASE 05–09); PREVIOUS_PHASE = WP-1.
+**Entry gate (WP-2-REQ-001).** WP-1 revalidated fresh on current tree: contract_closure CLOSED + 57/57 green + manifest stable + run_state RUN_VALID + snapshots intact. R1-021 contract (WP-2-REQ-001..023) re-verified against v1.7 bytes (§5 substance unchanged since). Entry: PASS. WP-2 begun lawfully.
+**Implementation (all with WP-2 STEP logs; inventory in R1-026).**
+- Audit backbone: `audit/log.py` (canonical 24-field JSONL writer, exact key-set assert), `audit/conformance.py` (STOP-17 harness: interface/seed/order/size checks), `audit/review_package.py` (PACKAGE.md assembler, never writes verdicts), `audit/mutants.py` (scratch-copy mutant runner), `audit/phase_runner.py` (checkpoints 01–08 gates).
+- Attacks: `proof_attack/common.py` (corpus seed derivation, 5 shapes, minimizer, record writer) + `locality_explosion.py` (PSC-L) + `primitive_exhaust.py` (PSC-P, 6-clause checker) + `boundary_torture.py` (PSC-B, 12 classes, event/history metric split).
+- Cleanroom (frozen-core-only imports): `locality_check.py`, `preservation_check.py`, `boundary_check.py`, `constants_scan.py` (dependence + quantifier-order support scan).
+- Orchestrators: `scripts/run_phase05..09.py` (real; gates + conformance + campaign + checker + package; `--check-only` for CI).
+**Campaigns (evidence).** PSC-L: NO_WITNESS, max growth 6, checker AGREE. PSC-P: NO_WITNESS, 0 violations, 20/20 case/mode/side combos, checker AGREE. PSC-B: NO_WITNESS, event max 6, checker AGREE (hist energy 192 informational). REFUTE(13) sweep: NO_WITNESS, worst residual −6. Determinism: PSC-L rerun byte-identical content. Records: 6× 24-field JSONL (`artifacts/v04/logs/WP2_RUN_RECORDS.jsonl`, tracked); attack JSONs tracked under `proof_attacks/*/*.json`.
+**Layer-A proofs (human, real mathematics).** 08U (uniform picks bound), 11 (six clauses), 09 (fold bound + source law), 22 (literals + C-linkage + uniformity), 13 (transport + key lemma + hostile checklist). Truth stays UNPROVED (no human ACCEPT).
+**Lean banked (build green, zero warnings).** `MST0_22_proved`, `MST0_08U_proved`, `MST0_09_proved` (fold induction), T5/T7/site/energy helpers, `MST0_11_flow_identity` lemma. OPEN: 11-full conjunction (positional drop-facts), 13 cost-lemma (trace-length induction) — prove tracks record openness honestly.
+**Mutants.** 5 operators + WP2-case-label + T099 (weak-statement hash-gate) + T100 (C3 known-killed): 9/9 killed, zero false positives. Detector gaps found + repaired mid-turn (growth/C4/label pairings; left-vine oracle).
+**Packages/statuses.** 5 PACKAGE.md (evidence, PENDING-HUMAN; zero .review.json fabricated). Lawful transitions: 08U/09/22 prove→PROVED_PENDING_REVIEW + truth→PROVED; 11 prove→RUNNING; refutes→NO_WITNESS (08U/09/11/22/13); 13 truth→PROVED (transported claim, note retained); all with last_transition records (trigger/utc/review:none).
+**Stress/redteam.** Malformed records exit 2 (4 checkers); tampered doc → phase abort exit 2 (restored + reverified); lifecycle zero REVIEWED-without-ACCEPT rows; recursion-limit hardening (deep vines); canonical-order + unicode-quantifier conformance bugs found + fixed by harness/tests.
+**Deviations.** None from contract. `SOURCE_AVAILABLE-28` label retained (frozen); mixed CRLF/LF working bytes stable under `-text` (hashes bind actual bytes).
+**Failures repaired.** RecursionError→limit; metric category error (event/history split); str-sort→canonical order; unicode quantifier check; wrong-vine oracle; 4 mispaired mutant detectors; verifier integrity-abort split (stubs vs --check-only); tamper-restore ending repair (CRLF restore, hash-verified).
+
+## Entry R1-026 — WP-2 closeout: exit matrix + compliance audit + verdict — FOLLOWS protocol §§12–15
+
+**Exit matrix (reconstructed from §5).** EXIT-01 08U REVIEWED-or-REFUTED → FAIL (truth PROVED, refute NO_WITNESS; REVIEWED needs human ACCEPT: BLOCKED_EXTERNAL). EXIT-02 11 → FAIL (prove RUNNING + human missing: BLOCKED_EXTERNAL). EXIT-03 09 → FAIL (human missing: BLOCKED_EXTERNAL). EXIT-04 22 → FAIL (human missing: BLOCKED_EXTERNAL). EXIT-05 13 reviewer gate → gate taken (package + sweep), verdict pending: BLOCKED_EXTERNAL. EXIT-06 G2 dispositions → PASS (defined; zero misrouted verdicts). EXIT-07 suites green → PASS (campaigns + checkers + scan all green). EXIT-08 threats → PASS (evidence + T099/T100). EXIT-09 first-REFUTED routing → NOT_APPLICABLE (no REFUTED; conditional rule intact).
+**Compliance audit (WorkPlan vs repo vs Path vs tests vs artifacts).** Requirements checked: 23 contract + 5 files + 5 suites + 4 Lean theorems + 9 mutants + 6 run records + 5 packages + lifecycle legality. Gaps found: 0 hidden (all known opens listed). Open formal work (not hidden): 11-full conjunction, 13 transport formalization. Stale stubs outside WP-2 scope only (Phases 3+). Line numbers: STEP inventory — log.py:113; phase_runner.py:24,27,36,42,44,53; common.py: none; locality_explosion.py:72,99; primitive_exhaust.py:105,132; boundary_torture.py:125,151; locality_check.py:80,82,88,108; preservation_check.py:96,98,104,133; boundary_check.py:116,118,124,148; constants_scan.py:27,31,51; run_phase05.py:54,57,60,93,95,100; run_phase06.py:23,26,29,32,35,40,43,49,52,56; run_phase07.py:23,26,29,32,35,40,43,49,52,56; run_phase08.py:23,26,29,32,35,40,43,49,52,56; run_phase09.py:23,26,29,34,37,41 (comments on preceding lines; verified against committed bytes).
+**Remaining execution-owned.** Human ACCEPT/REJECT/BLOCKED ×5 (blocks REVIEWED); 11-full + 13-Lean formalization; T099/T100 owner-phase suites are green here.
+**Final verdict.** WP-2 = BLOCKED_EXTERNAL (binding constraint: human verdicts; open formals listed, none hidden). Never COMPLETE. Phases 3+ not begun.
+**Commit/push/tree.** This entry + all WP-2 work committed once, pushed, remote HEAD verified == local, tree clean (SHAs in final response).
+
 ## Entry R1-024 — WP-1 foundation placeholder repair (v0.4.8 supersession): 11 PENDING-Phase-1-* closed with verified values — FOLLOWS v0.4.8 H1–H3
 
 **Scope.** Replace all eleven foundation-owned `PENDING-Phase-1-*` fields (10× `parent_contract.yaml` + L0 `bridge_sources.yaml`) via versioned supersession; preserve old freeze; regenerate affected manifest/records; fail-closed verifier check; rerun WP-1 closure. No science/PSC/review/downstream changes.

@@ -10,6 +10,9 @@ artifacts/v04/seal/*
 !artifacts/v04/*/*/.gitkeep
 !artifacts/v04/formal/AXIOMS_CLOSURE.txt
 !artifacts/v04/audits/WP1_THREAT_STOP_INV_EXIT.json
+!artifacts/v04/logs/WP2_RUN_RECORDS.jsonl
+!artifacts/v04/proof_attacks/*/
+!artifacts/v04/proof_attacks/*/*.json
 __pycache__/
 *.pyc
 .venv/

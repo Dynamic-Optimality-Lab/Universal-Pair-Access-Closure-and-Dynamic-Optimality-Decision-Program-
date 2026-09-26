@@ -291,12 +291,24 @@ abs_hits = [str(f) for f in frozen_text_files
 check("fresh-checkout-paths", not abs_hits, f"{abs_hits[:3]}")
 
 # ---------- V16: integrity-abort cannot emit outcomes ----------
+# Unimplemented phases stay fail-closed stubs (exit 2). Implemented WP-2 phases
+# (05-09) must pass gates in --check-only mode; full campaigns run under
+# run_phase scripts with hash-gate aborts (red-teamed live; see Path R1-025).
 stub_fail = []
-for s in sorted(IMPL.glob("scripts/run_phase*.py")) + [IMPL / "scripts/reproduce_all_v0.4.py"]:
+for s in sorted(IMPL.glob("scripts/run_phase0[0-4].py")) + \
+        sorted(IMPL.glob("scripts/run_phase1[0-9].py")) + \
+        [IMPL / "scripts/reproduce_all_v0.4.py"]:
     r = subprocess.run([sys.executable, str(s)], capture_output=True, timeout=60)
     if r.returncode == 0:
         stub_fail.append(s.name)
-check("integrity-abort", not stub_fail, f"zero-exit={stub_fail}")
+check("integrity-abort-stubs", not stub_fail, f"zero-exit={stub_fail}")
+impl_fail = []
+for s in sorted(IMPL.glob("scripts/run_phase0[5-9].py")):
+    r = subprocess.run([sys.executable, str(s), "--check-only"],
+                       capture_output=True, text=True, timeout=120)
+    if r.returncode != 0 or "CHECK-ONLY-OK" not in r.stdout:
+        impl_fail.append(s.name)
+check("integrity-abort-implemented", not impl_fail, f"gate-fail={impl_fail}")
 
 print("---")
 if FAILURES:

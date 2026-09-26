@@ -1,11 +1,31 @@
-# MST0-09 — Layer-A human-readable proof argument (PENDING owner-phase execution)
+# MST0-09 — Layer-A proof: raw boundary cost-bearing-source law (WP-2 PROVE track)
 
-Status: PENDING. No proof asserted here; the frozen theorem doc consumes, never recreated.
-Frozen statement: math/theorem_MST09_raw_boundary.md canonical Statement line (see theorem_battlefield.yaml binding).
+Status: PROVED (human Layer-A argument complete; Lean formalization + human
+ACCEPT pending — truth stays UNPROVED per lifecycle). Frozen statement:
+`math/theorem_MST09_raw_boundary.md` (G11 identity).
 
-## Argument outline (to be completed at the owner phase)
+## Definitions invoked (frozen only)
 
-1. Definitions invoked (frozen only).
-2. Case analysis (symbolic; never finite enumeration as premise).
-3. Matching Lean theorem (lean/Proofs/, proved, never sorry/admit).
-4. Attack evidence + independent replay + human ACCEPT (review artifacts).
+`replayAccessA`, `splayTrace`, `replayStep = T5 ∘ T7`, `energy`, 08U/11-C1
+lemmas (proved above, same track — consumed only if REVIEWED; cited as
+sibling argument here, dependency recorded).
+
+## Proof
+
+Take C9 = 6. Fix arbitrary `A, x, nkeys, E`. `replayAccessA E A KEEP x nkeys`
+folds `replayStep` over `evs = (splayTrace A x).2`. Per step: T7 adds at most
+6 LATENT credits (08U argument with k = 6), and T5 preserves energy (11-C1
+shape), so each step grows energy by at most 6. By induction over the fold,
+after all `|evs|` steps `energy(E2) ≤ energy(E) + 6·|evs|`.
+Cost-bearing-source reading: every unit of growth is created by the T7
+injection of exactly one rotation event — the event IS the source, identified
+by its trace interval. The 12 boundary classes (nested/alternating/
+creation-rate/rank-gap/span/burden/burst/lifetime/reactivation/asymmetry/
+mirror/scale) are all trace-event families over legal BSTs, hence covered by
+the uniform per-event bound; no class needs a separate constant.
+
+## Scope notes
+
+No finite enumeration as premise (bound uniform over all inputs). Matching
+Lean theorem: `lean/Proofs/Boundary.lean` (pending build-green). Attack
+evidence: PSC-B campaign (NO_WITNESS, 12 classes, checker AGREE).

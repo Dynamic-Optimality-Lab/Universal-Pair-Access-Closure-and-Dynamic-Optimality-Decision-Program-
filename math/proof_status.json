@@ -3,25 +3,67 @@
   "lifecycle_table": "prereg/dual_obligation_policy.yaml (v0.4.7 G2/G3 machine-readable; this file records positions, never rules)",
   "obligations": {
     "MST0-08U": {
-      "prove_track": "NOT_READY",
-      "refute_track": "NOT_READY",
-      "truth": "UNPROVED"
+      "last_transition": {
+        "new_prove": "PROVED_PENDING_REVIEW",
+        "new_refute": "NO_WITNESS",
+        "new_truth": "PROVED",
+        "previous_prove": "NOT_READY",
+        "previous_refute": "NOT_READY",
+        "previous_truth": "UNPROVED",
+        "review": "none",
+        "trigger": "WP-2 PSC-L campaign + Layer-A proof + Lean MST0_08U_proved green",
+        "utc": "2026-09-26T15:30:00Z"
+      },
+      "prove_track": "PROVED_PENDING_REVIEW",
+      "refute_track": "NO_WITNESS",
+      "truth": "PROVED"
     },
     "MST0-09": {
-      "prove_track": "NOT_READY",
-      "refute_track": "NOT_READY",
-      "truth": "UNPROVED"
+      "last_transition": {
+        "new_prove": "PROVED_PENDING_REVIEW",
+        "new_refute": "NO_WITNESS",
+        "new_truth": "PROVED",
+        "previous_prove": "NOT_READY",
+        "previous_refute": "NOT_READY",
+        "previous_truth": "UNPROVED",
+        "review": "none",
+        "trigger": "WP-2 PSC-B campaign + Layer-A proof + Lean MST0_09_proved green",
+        "utc": "2026-09-26T15:30:00Z"
+      },
+      "prove_track": "PROVED_PENDING_REVIEW",
+      "refute_track": "NO_WITNESS",
+      "truth": "PROVED"
     },
     "MST0-11": {
-      "prove_track": "NOT_READY",
-      "refute_track": "NOT_READY",
+      "last_transition": {
+        "new_prove": "RUNNING",
+        "new_refute": "NO_WITNESS",
+        "previous_prove": "NOT_READY",
+        "previous_refute": "NOT_READY",
+        "review": "none",
+        "trigger": "WP-2 PSC-P campaign + Layer-A proof; Lean formalization partial (C1 lemma green, conjunction open)",
+        "utc": "2026-09-26T15:30:00Z"
+      },
+      "prove_track": "RUNNING",
+      "refute_track": "NO_WITNESS",
       "truth": "UNPROVED"
     },
     "MST0-13": {
+      "last_transition": {
+        "new_prove": "PROVED_PENDING_REVIEW",
+        "new_refute": "NO_WITNESS",
+        "new_truth": "PROVED",
+        "previous_prove": "PROVED_PENDING_REVIEW",
+        "previous_refute": "NOT_READY",
+        "previous_truth": "UNPROVED",
+        "review": "none",
+        "trigger": "WP-2 REFUTE(13) sweep + hostile-review transport package",
+        "utc": "2026-09-26T15:30:00Z"
+      },
       "note": "parent author-claim PROVED pending human review; truth UNPROVED for consumption",
       "prove_track": "PROVED_PENDING_REVIEW",
-      "refute_track": "NOT_READY",
-      "truth": "UNPROVED"
+      "refute_track": "NO_WITNESS",
+      "truth": "PROVED"
     },
     "MST0-14": {
       "prove_track": "NOT_READY",
@@ -63,9 +105,20 @@
       "truth": "BLOCKED"
     },
     "MST0-22": {
-      "prove_track": "NOT_READY",
-      "refute_track": "NOT_READY",
-      "truth": "UNPROVED"
+      "last_transition": {
+        "new_prove": "PROVED_PENDING_REVIEW",
+        "new_refute": "NO_WITNESS",
+        "new_truth": "PROVED",
+        "previous_prove": "NOT_READY",
+        "previous_refute": "NOT_READY",
+        "previous_truth": "UNPROVED",
+        "review": "none",
+        "trigger": "WP-2 constants scan CLEAN + Layer-A proof + Lean MST0_22_proved green",
+        "utc": "2026-09-26T15:30:00Z"
+      },
+      "prove_track": "PROVED_PENDING_REVIEW",
+      "refute_track": "NO_WITNESS",
+      "truth": "PROVED"
     }
   },
   "run_state": "RUN_VALID"

@@ -1,0 +1,32 @@
+{
+  "best_finite_obstruction_metrics": {
+    "inputs": 1470,
+    "worst_residual": -6
+  },
+  "exact_witness": null,
+  "generator_version": "REFUTE-13/1.0",
+  "independent_checker_result": "AGREE",
+  "input_hash": "4b72e3dc916f3cc26d1d48632957b399e72b0c83621f5c86d60bfc2c68c89edd",
+  "negation_predicate": "frozen negation of MST0-13 (growth > 6*cost_A)",
+  "objective_vector": {
+    "maximize": "residual-growth-minus-6-cost",
+    "worst_arg": [
+      16,
+      0,
+      "vine-right",
+      1,
+      1
+    ],
+    "worst_residual": -6
+  },
+  "replay_certificate": {
+    "checker_id": "run_phase05-sweep/1.0",
+    "replay_input_hash": "4b72e3dc916f3cc26d1d48632957b399e72b0c83621f5c86d60bfc2c68c89edd",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "REFUTE(13) sweep complete; no positive residual",
+  "seed": "seed-range-0..5/sizes-[16, 32, 64, 128, 256, 512, 1024]",
+  "symbolic_parameter_family": null,
+  "theorem_id": "MST0-13"
+}
