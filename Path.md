@@ -284,4 +284,43 @@
 **Anti-overfitting.** Zero verdicts; H3T untouched; finite≠proof intact (canary labeled diagnostic; equivalence Phase-03-owned); no evidence beyond binding hashes; Lean compile pending toolchain (execution-owned, recorded).
 **Verdict.** Finite-state closure + theorem identity CLOSED at contract level with machine verification. FOLLOWS WorkPlan v1.6. No deviation.
 
+## Entry R1-021 — WP-2 phase binding (N=2): contract compilation + WP-1 revalidation + entry verdict — FOLLOWS phase protocol §§0–3
+
+**Binding.** CURRENT_PHASE = WP-2 (WorkPlan §5: upstream blockers 13/08U/11/09/22, spec PHASE 05–09). PREVIOUS_PHASE = WP-1 (§4: foundation freeze). N resolved once; used consistently below.
+
+**WP-2 CONTRACT (compiled before implementation; immutable for WP-2; Implementation→Contract).**
+- WP-2-REQ-001 entry predicate: WP-1 VERIFIED_COMPLETE (FOUNDATION_FROZEN + 7 gates + PARENT-01..10 + FORM-01..12 + prereg_sha256 + living-Path prefix verified).
+- WP-2-REQ-002 scope: close/exact-refute 13/08U/11/09/22, simultaneous PROVE+REFUTE + 3-layer certs; exact REFUTED freezes later phases + activates Phase 6; never implies DOC false.
+- WP-2-REQ-003 files: `math/proofs/MST0-{13,08U,11,09,22}_proof.md`, `math/reviews/*.{PACKAGE.md,review.json}` (human verdicts only), versioned `proof_status.json`, `lean/Proofs/{Injection,Locality,Preservation,Boundary,Constants}.lean` + formal certs, `python/proof_attack/{locality_explosion,primitive_exhaust,boundary_torture}.py`, `python/cleanroom/{locality_check,preservation_check,boundary_check,constants_scan}.py`, `python/audit/{review_package,mutants}.py`.
+- WP-2-REQ-004 dirs: `artifacts/v04/{attack,counterexample,proof,audit}` content dirs; `tests/{injection,locality,preservation,boundary,constants,mutation}/` suites.
+- WP-2-REQ-005 locations: Layer-A in `math/proofs/`; evidence in `math/reviews/`; certs with artifacts; attacks under `artifacts/v04/proof_attacks/`.
+- WP-2-REQ-006 formats: canonical JSON per frozen schemas (`proof_attack`, `locality_witness`, `preservation_case`, `boundary_witness`, `review_record`, `proof_certificate`, `formal_certificate`, `theorem_obligation`); markdown Layer-A; human-only `.review.json`.
+- WP-2-REQ-007 compression/sharding: spec §26 (sizes 16..1024+, sharded/compressed PSC batteries with logical-stream hashes; 11-field resource-failure records).
+- WP-2-REQ-008 manifest/hash: startup SHA-guard (document + statement + negation vs battlefield); theorem-file immutability executable; proof cert binds statement/negation/dependency hashes.
+- WP-2-REQ-009 semantics: exact BST/Splay core; PSC-L/P/B negation-derived; symbolic proofs (10 preservation obligations; boundary 11 dimensions with source-cost identification; constants dataflow vs CONST_FORBIDDEN_DEPENDENCIES + quantifier check; 13 formalization: rotation-count≤cost, T7-bound, T5-conservation, T6-inapplicability, case completeness, granularity, endpoints) + hostile review.
+- WP-2-REQ-010 independent verification: INDEPENDENT_AGREEMENT = [final_tree, search_path, rotation_case_sequence, local_neighborhoods, canonical_event_serialization] + [replay_certificate, independent_checker_result, minimization_record, hash_equality]; clean-room share-nothing; deterministic post-sort; k=2 kill-replay sensitivity control. Tuple not shortened.
+- WP-2-REQ-011 named tests (exact meanings, no invented numbered IDs — §5 enumerates suites, not numbers): WP-2-TEST-INJ (injection review battery green), -LOC (locality explosion green), -PRES (preservation cases green), -BND (boundary torture green), -CONST (constants scan green), -MUT (delete-case/mutate-rule/alter-support/weaken-quantifier/relax-C-k all rejected; T099/T100 + known-killed via tests/mutation).
+- WP-2-REQ-012 mutations: the five listed operators introduced and rejected (expected detector = phase suites + mutants suite; expected failure = closed FAIL).
+- WP-2-REQ-013 stress: symbolic+brute 16..1024; missing-case detector STOP-28/29; PSC batteries; corrupted-hash/missing-artifact/stale-artifact negatives.
+- WP-2-REQ-014 obligations: 08U/11/09/22 REVIEWED-or-REFUTED; 13 reviewer gate (REVIEWED→terminal allowed; REJECTED/BLOCKED→blockage record).
+- WP-2-REQ-015 review/status: human ACCEPT/REJECT/BLOCKED only (never agents/prefabricated); G2 dispositions; exact REFUTED → NOT_REACHED + Phase 6.
+- WP-2-REQ-016 threats: T008–T011, T015–T042 controlled.
+- WP-2-REQ-017 stops: STOP-20..37 armed (Phase-2-enforced: 20–24, 25–27, 28–37) + STOP-27/30/31 enforced.
+- WP-2-REQ-018 invariants: INV-041..051 owned; INV-015..040 refute/errata enforcement; INV-014 cross-phase; holding asserted at seal.
+- WP-2-REQ-019 anti-overfitting: LOC-07/STOP-30/31; n-independence proved; STOP-32/33; STOP-25; STOP-27; survival≠theorem; k=2 control; v0.3-bank disjointness.
+- WP-2-REQ-020 logging: 24-field append-only run records (spec §27); exact commands + exit codes + input/output hashes.
+- WP-2-REQ-021 Path: contemporaneous per-step entries + closeout with log inventory (final line numbers).
+- WP-2-REQ-022 exit: 08U/11/09/22 REVIEWED-or-REFUTED (formal+review+replay+mutants); 13 gate; G2 REJECT/BLOCKED dispositions; INJ/LOC/PRES/BND/CONST green; threats controlled; first REFUTED → NOT_REACHED + Phase 6.
+- WP-2-REQ-023 commit/push: factual message; push; remote + clean-tree verified; no unrelated files.
+- Step-logging (§5 of protocol): no WP-2 STEP logs this cycle — theorem-facing implementation is entry-barred (see verdict); zero logs is compliant, not an omission.
+
+**WP-1 REVALIDATION (fresh; old outputs not cited).**
+- Checklist vs state: parent/ — was README-only, now bootstrapped (see repairs); bridge_sources ✓ (R1-017..020); prereg 13 + battlefield/gates ✓; Lean Frozen ✓ + Proofs stubs ✓; python core ✓ (R1-020); math docs ✓; schemas 17 ✓; tests dirs exist but PARENT/FORM suites absent; scripts stubs exit 2 (re-ran: 21/21 exit 2); freeze outputs absent (correct pre-freeze); prereg_sha256 absent (correct pre-freeze); Lean configs were stubs, now real-but-compile-unverified.
+- Repairs performed (lawful pre-freeze WP-1 scope): (1) `parent/` bootstrap — 9 V03 files + BOOTSTRAP_MANIFEST: parent-ref HEAD verified == pin `353ee92`; candidate_set == `8FD3…2A00`; MSTC-0002 fields (id/predicate-Keep+Delete/k=6/C=2) bound; status table mechanically parsed (≥20 rows); atlas kill records from sealed JSON. (2) `lakefile.lean` real (dependency-free, srcDir lean). (3) `lake-manifest.json` minimal real. (4) `lean-toolchain` pin line only.
+- Still open (execution-owned, unrepairable in-turn): freeze-ceremony outputs (FOUNDATION_FROZEN.json, PATH/PROOF_STATUS snapshots, PHASE02 file, WITNESS_SCHEMA_VALIDATION.json, prereg_sha256.txt — written BY freeze); Lean install + `lake build` + `#print axioms`; PARENT-01..10 + FORM-01..12 suites; PSC implementations + STOP-17 conformance; bridge second extraction + theorem-text capture.
+- WP-1 exit (§4 line 86): 7 gates unclaimed; PARENT/FORM suites absent; threats merely DECLARED; prereg_sha256 absent. Verdict: PREVIOUS_PHASE = INCOMPLETE.
+
+**WP-2 ENTRY GATE.** WP-2-REQ-001 requires WP-1 VERIFIED_COMPLETE: FALSE (FOUNDATION_FROZEN unclaimed; gates unclosed). Entry-gate soundness demonstrated: `run_phase05..09.py` all exit 2 (refuse theorem-facing execution pre-freeze). Verdict: WP-2 = BLOCKED on WP-1 entry gate (blockers enumerated above; no human-fabrication; no weakening). No WP-2 implementation begun per protocol §2.5. Step-log inventory: none (see WP-2-REQ-023 note). Compliance gaps in WP-2 scope: 0 (nothing begun, nothing misclaimed).
+**Commit/push:** this entry + WP-1 repairs committed and pushed (see log); tree verified clean.
+
 **End of Path entries so far (append-only below this line).**

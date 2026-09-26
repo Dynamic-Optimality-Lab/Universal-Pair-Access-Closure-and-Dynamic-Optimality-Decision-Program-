@@ -1,2 +1,1 @@
 leanprover/lean4:v4.21.0
-# STUB — exact toolchain + elan identity + mathlib commit + lake-manifest hash pinned at Phase-1 execution. No theorem-critical Lean execution before then.

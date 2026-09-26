@@ -1,0 +1,118 @@
+{
+  "extraction": "mechanical markdown-table parse (rows starting '| MST0-')",
+  "final_obligations_map": {
+    "BLOCKED": 3,
+    "NOT_APPLICABLE": 3,
+    "PROVED": 4,
+    "REVIEWED": 10,
+    "UNPROVED": 6
+  },
+  "obligations": {
+    "MST0-01 parent transport": {
+      "evidence": "MST0-01.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-02 rotation refinement": {
+      "evidence": "MST0-02.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-03 L6 translation": {
+      "evidence": "MST0-03.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-04 snapshot legitimacy": {
+      "evidence": "MST0-04.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-05 heavy path": {
+      "evidence": "MST0-05.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-06 zig-zig pairing": {
+      "evidence": "MST0-06.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-07 zig-zag bends": {
+      "evidence": "MST0-07.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-08 reference locality": {
+      "evidence": "MST0-08.review.json:ACCEPT (scoped finite; universal blocked)",
+      "status": "REVIEWED"
+    },
+    "MST0-09 raw boundary law": {
+      "evidence": "conjecture record + WP-5/WP-6 outcome addendum",
+      "status": "UNPROVED"
+    },
+    "MST0-10 ledger determinism": {
+      "evidence": "MST0-10.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-11 transfer preservation": {
+      "evidence": "SETUP document (no universal proof)",
+      "status": "UNPROVED"
+    },
+    "MST0-12 signed lower bound": {
+      "evidence": "MST0-12.not_applicable.json (Branch B never activated)",
+      "status": "NOT_APPLICABLE"
+    },
+    "MST0-13 DELETE injection": {
+      "evidence": "theorem doc + review package (human review requested)",
+      "status": "PROVED"
+    },
+    "MST0-14 KEEP repayment": {
+      "evidence": "status record (sibling fresh kills; survivor finite only)",
+      "status": "UNPROVED"
+    },
+    "MST0-15 integrability": {
+      "evidence": "status record (prerequisites unproved)",
+      "status": "UNPROVED"
+    },
+    "MST0-16 block partition": {
+      "evidence": "MST0-16.review.json:ACCEPT",
+      "status": "REVIEWED"
+    },
+    "MST0-17 Pair Access": {
+      "evidence": "MST0-17.BLOCKED (13 pending review; 14/15 unproved)",
+      "status": "BLOCKED"
+    },
+    "MST0-18 telescoping": {
+      "evidence": "MST0-18.BLOCKED (17 blocked)",
+      "status": "BLOCKED"
+    },
+    "MST0-19 bridge": {
+      "evidence": "MST0-19.BLOCKED (18 blocked; L2/L3 bytes pending)",
+      "status": "BLOCKED"
+    },
+    "MST0-20 fixed-b guard": {
+      "evidence": "MST0-20.not_applicable.json (no such inference attempted)",
+      "status": "NOT_APPLICABLE"
+    },
+    "MST0-21 negative family": {
+      "evidence": "MST0-21.not_applicable.json (family never activated)",
+      "status": "NOT_APPLICABLE"
+    },
+    "MST0-22 constant independence": {
+      "evidence": "WP-5 setup record",
+      "status": "UNPROVED"
+    },
+    "MST0-23 finite-integrability guard": {
+      "evidence": "guard-held record + package (human review requested)",
+      "status": "PROVED"
+    },
+    "MST0-24 branch scope": {
+      "evidence": "scope record + package (human review requested)",
+      "status": "PROVED"
+    },
+    "MST0-25 holdout scope": {
+      "evidence": "WP-5 setup record",
+      "status": "UNPROVED"
+    },
+    "MST0-26 literature scope": {
+      "evidence": "scope record + package (human review requested)",
+      "status": "PROVED"
+    }
+  },
+  "source": "parent-ref/THEOREM_STATUS_REPORT.md",
+  "source_sha256": "cf2cee958d0275754472e76d805ed8c8f8c3b7d75fc7833b9747edf34a82bc41"
+}

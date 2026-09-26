@@ -1,0 +1,16 @@
+{
+  "ancestor_commit": "6de1ca2a595e8895f54794f3a211fe6ee1a95a80",
+  "firewalls_H3T": "UNLOCKED_ONCE/unlocks=1",
+  "head_verified": true,
+  "parent_full_sha": "353ee922b1cee0043afa46fe8929f42f7652e5bf",
+  "repo_head_at_seal": "94197b89acdf9f06865e2ebfe3579105ff2c6c9e",
+  "seal_files": {
+    "V03_ARCHIVE.sha256": "b5ab0848647ee6a0c20cc2f37293a7591bd6a091a24660c6b2f2103a25d6983c",
+    "V03_FINAL_RESULT.json": "7ce226cadadf077c49dd0179046a4d23348a5f99edc6648de7ddbdabc300abee",
+    "V03_MANIFEST.sha256": "907e2a37ac569104b93703e283a2a165497050675d03e2d76750c0c2a3890614"
+  },
+  "standing": [
+    "MSTC-0002"
+  ],
+  "terminal_claim": "TRANSFER_CALCULUS_SURVIVES_FINITE_TESTS"
+}

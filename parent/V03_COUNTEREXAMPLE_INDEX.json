@@ -1,0 +1,23 @@
+{
+  "killed_fresh": [
+    {
+      "calculus_id": "MSTC-0001",
+      "max_residual": [
+        8,
+        1
+      ],
+      "verdict": "FRESH_H3T_FAIL"
+    },
+    {
+      "calculus_id": "MSTC-0003",
+      "max_residual": [
+        23,
+        1
+      ],
+      "verdict": "FRESH_H3T_FAIL"
+    }
+  ],
+  "note": "atlas is prose (WP-4 draft, append-only); machine-readable kill records below transcribed from sealed FINAL_RESULT.json",
+  "source": "parent-ref/COUNTEREXAMPLE_ATLAS.md",
+  "source_sha256": "d7f48d735124dd125a052f29c5eebb3e2d06d41b07f25a4b29eaeb67416a0e69"
+}
