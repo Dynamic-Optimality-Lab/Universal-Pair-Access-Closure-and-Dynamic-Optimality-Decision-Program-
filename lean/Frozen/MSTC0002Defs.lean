@@ -135,23 +135,25 @@ def replayAccessA (E : Engine) (A : BST) (m : Mode) (x nkeys : Nat)
   (E2, A2, a)
 
 /-- Replay a KEEP access on side B with mate cost a: activate per rotation,
-    then discharge positive regret once (terminal-edge convention). -/
-def replayAccessB (E : Engine) (B : BST) (x nkeys a : Nat)
+    then discharge positive regret once (terminal-edge convention).
+    B-side needs no site parameters (T5-only, case-independent). -/
+def replayAccessB (E : Engine) (B : BST) (x a : Nat)
     : Engine × BST × Nat × Nat :=
   let y := splayCost B x
   let (B2, evs) := splayTrace B x
-  let E2 := evs.foldl (fun E ev => T5activate E .KEEP) E
+  let E2 := evs.foldl (fun E _ => T5activate E .KEEP) E
   let need := required y a
   let (ledger, paid) := discharge E2.ledger need
   ({ ledger := ledger, cursor := E2.cursor }, B2, y, paid)
 
-/-- Paired-execution loop: structural recursion on the history. -/
+/-- Paired-execution loop: structural recursion on the history.
+    Returns final engine, both trees, and summed costs. -/
 def execLoop : Engine → BST → BST → Nat → List (Mode × Nat) → Nat → Nat
-    → Engine × Nat × Nat
-  | E, _, _, _, [], sA, sB => (E, sA, sB)
+    → Engine × BST × BST × Nat × Nat
+  | E, A, B, _, [], sA, sB => (E, A, B, sA, sB)
   | E, A, B, n, (.KEEP, x) :: rest, sA, sB =>
     let (E1, A2, a) := replayAccessA E A .KEEP x n
-    let (E2, B2, y, _) := replayAccessB E1 B x n a
+    let (E2, B2, y, _) := replayAccessB E1 B x a
     execLoop E2 A2 B2 n rest (sA + a) (sB + y)
   | E, A, B, n, (.DELETE, x) :: rest, sA, sB =>
     let (E1, A2, a) := replayAccessA E A .DELETE x n
@@ -162,7 +164,8 @@ def execLoop : Engine → BST → BST → Nat → List (Mode × Nat) → Nat →
     and summed Splay costs. -/
 def execHist (E : Engine) (T0 : BST) (H : List (Mode × Nat)) (n : Nat)
     : Engine × Nat × Nat :=
-  execLoop E T0 T0 n H 0 0
+  let (E2, _, _, sA, sB) := execLoop E T0 T0 n H 0 0
+  (E2, sA, sB)
 
 /-- Paired execution exposing intermediate trees (history-partition
     consistency for MST0-15 D5). -/
@@ -176,7 +179,7 @@ def execSuffices : Engine → BST → BST → List (Mode × Nat) → Nat → Boo
   | _, _, _, [], _ => true
   | E, A, B, (.KEEP, x) :: rest, n =>
     let (E1, A2, a) := replayAccessA E A .KEEP x n
-    let (E2, B2, _, paid) := replayAccessB E1 B x n a
+    let (E2, B2, _, paid) := replayAccessB E1 B x a
     let need := required (splayCost B x) a
     (paid == need) && execSuffices E2 A2 B2 rest n
   | E, A, B, (.DELETE, x) :: rest, n =>

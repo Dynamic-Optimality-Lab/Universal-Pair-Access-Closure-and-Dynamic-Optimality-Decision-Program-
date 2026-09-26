@@ -1,4 +1,3 @@
-artifacts/v04/freeze/*
 artifacts/v04/formal/*
 artifacts/v04/proof_attacks/*
 artifacts/v04/counterexamples/*
@@ -9,8 +8,11 @@ artifacts/v04/logs/*
 artifacts/v04/seal/*
 !artifacts/v04/*/.gitkeep
 !artifacts/v04/*/*/.gitkeep
+!artifacts/v04/formal/AXIOMS_CLOSURE.txt
+!artifacts/v04/audits/WP1_THREAT_STOP_INV_EXIT.json
 __pycache__/
 *.pyc
 .venv/
+.lake/
 *.tar.zst
 parent-ref/

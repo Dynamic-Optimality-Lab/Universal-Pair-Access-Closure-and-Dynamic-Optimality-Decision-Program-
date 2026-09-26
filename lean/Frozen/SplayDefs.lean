@@ -69,7 +69,7 @@ def descendAcc : BST → Nat → Ctx → Option (BST × Ctx)
     else descendAcc r x (.rightOf k l acc)
 
 /-- Descend with an empty initial context. -/
-def descend (T : BST) (x : Nat) : Option (BST × Ctx) :=
+def BST.descend (T : BST) (x : Nat) : Option (BST × Ctx) :=
   descendAcc T x .top
 
 /-- Plug a focused subtree back into its context (dead-branch use only). -/

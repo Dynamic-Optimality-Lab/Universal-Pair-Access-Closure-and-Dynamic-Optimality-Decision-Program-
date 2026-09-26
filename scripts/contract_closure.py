@@ -57,8 +57,16 @@ missing = sorted(f for f in expected_existing if not (IMPL / f).exists())
 check("bound-set-derived", not missing, f"missing={missing}")
 check("bound-count-asserted", len(expected_existing) == 42, f"count={len(expected_existing)}")
 # 42 on-disk pre-freeze + 2 freeze snapshots = 44 available (43 unavailable); G1.
-check("bound-snapshots-pending", not (IMPL / "artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md").exists()
-      and not (IMPL / "artifacts/v04/freeze/PROOF_STATUS_AT_FOUNDATION_FREEZE.json").exists())
+ps_run = json.loads((IMPL / "math/proof_status.json").read_text(encoding="utf-8")).get("run_state")
+if ps_run == "RUN_VALID":
+    check("bound-snapshots-present",
+          (IMPL / "artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md").exists()
+          and (IMPL / "artifacts/v04/freeze/PROOF_STATUS_AT_FOUNDATION_FREEZE.json").exists()
+          and (IMPL / "prereg/prereg_sha256.txt").exists()
+          and (IMPL / "artifacts/v04/freeze/FOUNDATION_FROZEN.json").exists())
+else:
+    check("bound-snapshots-pending", not (IMPL / "artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md").exists()
+          and not (IMPL / "artifacts/v04/freeze/PROOF_STATUS_AT_FOUNDATION_FREEZE.json").exists())
 
 # ---------- V3: exact node set = 10 ----------
 bf = load_yaml("prereg/theorem_battlefield.yaml")
@@ -184,10 +192,19 @@ for n in nine:
     st = next(l[len("- Statement: "):] for l in doc.splitlines() if l.startswith("- Statement: "))
     if st != bf["nodes"][n]["statement"]:
         ok_id = False
+    if hashlib.sha256((IMPL / bf["nodes"][n]["document"]).read_bytes()).hexdigest() != bf["nodes"][n]["document_sha256"]:
+        ok_id = False
+    if hashlib.sha256(st.encode("utf-8")).hexdigest() != bf["nodes"][n]["statement_sha256"]:
+        ok_id = False
     prop = "MST0_" + n.replace("MST0-", "")
     if prop not in lean_bodies or norm(lean_bodies[prop]) != st:
         ok_id = False
 check("theorem-identity", ok_id)
+m19 = bf["nodes"]["MST0-19"]
+check("theorem-identity-19",
+      hashlib.sha256((IMPL / m19["document"]).read_bytes()).hexdigest() == m19["document_sha256"]
+      and hashlib.sha256(m19["blocked_record"].encode("utf-8")).hexdigest() == m19["blocked_record_sha256"]
+      and norm(lean_bodies["MST0_19_blocked"]) == m19["blocked_record"])
 # identifier resolution against Frozen definitions
 defined = set()
 for f in ["lean/Frozen/SplayDefs.lean", "lean/Frozen/MSTC0002Defs.lean"]:

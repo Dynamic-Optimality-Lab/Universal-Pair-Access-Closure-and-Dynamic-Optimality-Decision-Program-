@@ -1,0 +1,15 @@
+{
+  "samples": {
+    "pair_access_certificate": {
+      "bad": "REJECTED",
+      "good": "ACCEPTED",
+      "schema_sha256": "65b32f1c179bdec8ee0d140170721184d10518c7e87ae066b4c595e69226f769"
+    },
+    "proof_attack": {
+      "bad": "REJECTED",
+      "good": "ACCEPTED",
+      "schema_sha256": "25aada26349089423c4e02b54988cdc1bd20dddd9c169dcb4274373075b6e654"
+    }
+  },
+  "validator": "jsonschema Draft202012"
+}

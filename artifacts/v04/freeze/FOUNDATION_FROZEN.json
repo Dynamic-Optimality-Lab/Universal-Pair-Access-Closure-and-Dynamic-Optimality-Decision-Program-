@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-09-26",
+  "gates": [
+    "contract-closure",
+    "parent-suite",
+    "form-suite",
+    "canary",
+    "attacks",
+    "exit-evidence",
+    "ratified-stable",
+    "no-prefreeze-science",
+    "bridge-binding"
+  ],
+  "manifest": "prereg/prereg_sha256.txt",
+  "manifest_members": 56,
+  "manifest_sha256": "83c8690f877d5a5cbdd960925251ec8432accd6a5bc4e8a3087e76681d5f6a38",
+  "run_state": "RUN_VALID"
+}

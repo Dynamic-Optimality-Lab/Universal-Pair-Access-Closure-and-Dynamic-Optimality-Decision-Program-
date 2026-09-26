@@ -89,11 +89,11 @@ def replay_access_A(engine, A, mode, x, nkeys):
         e = replay_step(e, True, mode, ev, x, nkeys)
     return (e, A2, a)
 
-def replay_access_B(engine, B, x, nkeys, a):
+def replay_access_B(engine, B, x, a):
     y = S.splay_cost(B, x)
     B2, evs = S.splay_trace(B, x)
     e = engine
-    for ev in evs:
+    for _ev in evs:
         e = t5activate(e, "KEEP")
     need = required(y, a)
     ledger, paid = discharge(e[0], need)
@@ -104,7 +104,7 @@ def exec_loop(engine, A, B, n, H, sA, sB):
     for mode, x in H:
         if mode == "KEEP":
             e1, A2, a = replay_access_A(e, a_tree, mode, x, n)
-            e2, B2, y, _paid = replay_access_B(e1, b_tree, x, n, a)
+            e2, B2, y, _paid = replay_access_B(e1, b_tree, x, a)
             e, a_tree, b_tree = e2, A2, B2
             sA, sB = sA + a, sB + y
         else:
@@ -127,7 +127,7 @@ def exec_suffices(engine, A, B, H, n):
         if mode == "KEEP":
             a = S.splay_cost(a_tree, x)
             e1, A2, _a = replay_access_A(e, a_tree, mode, x, n)
-            e2, B2, _y, paid = replay_access_B(e1, b_tree, x, n, a)
+            e2, B2, _y, paid = replay_access_B(e1, b_tree, x, a)
             if paid != required(S.splay_cost(b_tree, x), a):
                 return False
             e, a_tree, b_tree = e2, A2, B2

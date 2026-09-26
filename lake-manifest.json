@@ -1,1 +1,5 @@
-{"name":"splay_am_decide","version":"0.4.0","packages":[]}
+{"version": "1.1.0",
+ "packagesDir": ".lake/packages",
+ "packages": [],
+ "name": "splay_am_decide",
+ "lakeDir": ".lake"}

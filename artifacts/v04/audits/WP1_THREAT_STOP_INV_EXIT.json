@@ -1,0 +1,413 @@
+{
+  "threats": {
+    "T001": {
+      "title": "parent v0.3 navigation hash mistaken for full sealed identity",
+      "status": "CONTROLLED",
+      "control": "PARENT-01 full-SHA test"
+    },
+    "T002": {
+      "title": "parent FINAL_RESULT not verified from artifact",
+      "status": "CONTROLLED",
+      "control": "PARENT-02 byte equality"
+    },
+    "T003": {
+      "title": "parent Path.md ignored despite implementation-reality dependence",
+      "status": "CONTROLLED",
+      "control": "PARENT-04 byte equality"
+    },
+    "T004": {
+      "title": "MSTC-0002 reconstructed rather than imported by exact hash",
+      "status": "CONTROLLED",
+      "control": "PARENT-05 + FORM-08"
+    },
+    "T005": {
+      "title": "MSTC-0002 field mutated under same calculus ID",
+      "status": "CONTROLLED",
+      "control": "PARENT-05 + FORM-08 + survivor_binding mutation_allowed=false"
+    },
+    "T006": {
+      "title": "sibling fresh failures omitted from lineage",
+      "status": "CONTROLLED",
+      "control": "PARENT-07 kill records"
+    },
+    "T007": {
+      "title": "consumed H3T re-unlocked or regenerated",
+      "status": "CONTROLLED",
+      "control": "PARENT-08 + no holdout dirs"
+    },
+    "T012": {
+      "title": "blocker DAG hand-edited to remove a difficult theorem",
+      "status": "CONTROLLED",
+      "control": "F2 union + verifier node-set-10 + PARENT-09"
+    },
+    "T013": {
+      "title": "new critical-path theorem silently invented after failure",
+      "status": "CONTROLLED",
+      "control": "node-set equality asserted before theorem-facing runs"
+    },
+    "T014": {
+      "title": "theorem statement weakened after refutation under same ID",
+      "status": "CONTROLLED",
+      "control": "theorem-identity check + per-doc banned weakenings"
+    },
+    "T015": {
+      "title": "theorem negation incorrectly encoded",
+      "status": "CONTROLLED",
+      "control": "G11 canonical negations hashed in battlefield"
+    },
+    "T016": {
+      "title": "proof attack tests an easier negation than the theorem requires",
+      "status": "CONTROLLED",
+      "control": "canonical negation lines + startup SHA-guard rule"
+    },
+    "T017": {
+      "title": "counterexample generator shares proof implementation logic",
+      "status": "ARMED",
+      "control": "corpus share-nothing interfaces frozen; zero implementations present"
+    },
+    "T018": {
+      "title": "clean-room checker shares a theorem-critical helper",
+      "status": "ARMED",
+      "control": "clean-room share-nothing rule frozen; checkers pending owner phases"
+    },
+    "T019": {
+      "title": "exact witness minimized incorrectly",
+      "status": "ARMED",
+      "control": "canonical minimization orders frozen in corpus; no witnesses yet"
+    },
+    "T020": {
+      "title": "smallest-witness claim based on noncanonical order",
+      "status": "ARMED",
+      "control": "canonical order frozen (INV-039); no claims recorded"
+    },
+    "T021": {
+      "title": "Lean theorem differs from markdown theorem",
+      "status": "CONTROLLED",
+      "control": "FORM-12 + verifier theorem-identity"
+    },
+    "T022": {
+      "title": "Lean proof contains sorry/admit/axiom escape",
+      "status": "CONTROLLED",
+      "control": "FORM-02 + clean lake build"
+    },
+    "T023": {
+      "title": "imported axiom not declared in kernel manifest",
+      "status": "CONTROLLED",
+      "control": "FORM-03 + AXIOMS_CLOSURE 14/14 axiom-free + D4 empty allowlist"
+    },
+    "T024": {
+      "title": "code generator inserts unchecked theorem",
+      "status": "CONTROLLED",
+      "control": "build-from-source; explicit imports; no codegen in pipeline"
+    },
+    "T025": {
+      "title": "formal proof binds wrong MSTC-0002 version",
+      "status": "CONTROLLED",
+      "control": "FORM-08 field binding incl. version pins"
+    },
+    "T026": {
+      "title": "ROOT case omitted",
+      "status": "CONTROLLED",
+      "control": "Lean total match (compiler-enforced) + canary root accesses + agree samples"
+    },
+    "T069": {
+      "title": "bridge source bytes not exact",
+      "status": "CONTROLLED",
+      "control": "independent second extraction hash-match + PHASE02 freeze file"
+    }
+  },
+  "stops": {
+    "STOP-01": {
+      "title": "parent v0.3 not finally sealed",
+      "status": "ARMED",
+      "control": "PARENT-01/02/03 + freeze gate asserts seal"
+    },
+    "STOP-02": {
+      "title": "parent full commit/hash mismatch",
+      "status": "ARMED",
+      "control": "PARENT-01 full-SHA gate"
+    },
+    "STOP-03": {
+      "title": "parent scientific artifact mutated",
+      "status": "ARMED",
+      "control": "PARENT-02/03/04 byte gates"
+    },
+    "STOP-04": {
+      "title": "MSTC-0002 hash mismatch",
+      "status": "ARMED",
+      "control": "PARENT-05/06 + survivor_binding gates"
+    },
+    "STOP-05": {
+      "title": "MSTC-0002 field mutation",
+      "status": "ARMED",
+      "control": "FORM-08 + mutation policy gates"
+    },
+    "STOP-06": {
+      "title": "prereg hash mismatch",
+      "status": "SATISFIED",
+      "control": "prereg_sha256 ceremony + startup SHA-guard rule"
+    },
+    "STOP-07": {
+      "title": "blocker DAG mismatch",
+      "status": "ARMED",
+      "control": "PARENT-09 + node-set gate"
+    },
+    "STOP-08": {
+      "title": "v0.3 H3T re-unlock attempted",
+      "status": "ARMED",
+      "control": "PARENT-08 + no-holdout-dirs gate"
+    },
+    "STOP-09": {
+      "title": "consumed holdout regenerated",
+      "status": "ARMED",
+      "control": "PARENT-08 gate"
+    },
+    "STOP-10": {
+      "title": "finite parent survival used as theorem premise",
+      "status": "ARMED",
+      "control": "forbidden_claims + doctrine; zero claims recorded"
+    },
+    "STOP-11": {
+      "title": "bridge premise source unavailable but consumed",
+      "status": "CONTROLLED",
+      "control": "disposition + gate-19 N/A + MST0-19 BLOCKED"
+    },
+    "STOP-12": {
+      "title": "bridge source version mismatch",
+      "status": "CONTROLLED",
+      "control": "L3 v1 pin + hash; L2 absence recorded"
+    },
+    "STOP-13": {
+      "title": "Lean toolchain drift",
+      "status": "CONTROLLED",
+      "control": "FORM-01 pin + clean build"
+    },
+    "STOP-14": {
+      "title": "undeclared axiom/sorry/admit",
+      "status": "CONTROLLED",
+      "control": "FORM-02/03 + CI scan + AXIOMS_CLOSURE"
+    },
+    "STOP-15": {
+      "title": "formal statement mismatch",
+      "status": "CONTROLLED",
+      "control": "FORM-12 + identity check"
+    },
+    "STOP-16": {
+      "title": "theorem negation mismatch",
+      "status": "ARMED",
+      "control": "battlefield negation hashes + startup guard (fires at owner phases)"
+    },
+    "STOP-17": {
+      "title": "PSC changed after attack starts",
+      "status": "ARMED",
+      "control": "corpus conformance clause; zero implementations present"
+    },
+    "STOP-18": {
+      "title": "proof attack reads proof internals improperly",
+      "status": "ARMED",
+      "control": "share-nothing interfaces frozen; attacks pending"
+    },
+    "STOP-19": {
+      "title": "clean-room checker shares critical implementation",
+      "status": "ARMED",
+      "control": "share-nothing rule frozen; checkers pending"
+    }
+  },
+  "invariants": {
+    "INV-001": {
+      "title": "parent is final sealed v0.3",
+      "status": "HOLDING",
+      "control": "PARENT-01/02/03"
+    },
+    "INV-002": {
+      "title": "full parent commit, not short navigation hash, is authoritative",
+      "status": "HOLDING",
+      "control": "PARENT-01"
+    },
+    "INV-003": {
+      "title": "parent artifacts read-only",
+      "status": "HOLDING",
+      "control": "bootstrap + git-tracked, no post-copy writes"
+    },
+    "INV-004": {
+      "title": "MSTC-0002 imported by exact hash",
+      "status": "HOLDING",
+      "control": "PARENT-05 + FORM-08"
+    },
+    "INV-005": {
+      "title": "MSTC-0002 predicate remains P_all",
+      "status": "HOLDING",
+      "control": "FORM-08"
+    },
+    "INV-006": {
+      "title": "MSTC-0002 k remains 6",
+      "status": "HOLDING",
+      "control": "FORM-08 + K_frozen literal"
+    },
+    "INV-007": {
+      "title": "MSTC-0002 C remains 2",
+      "status": "HOLDING",
+      "control": "FORM-08 + C_frozen literal"
+    },
+    "INV-008": {
+      "title": "candidate mutation requires new experiment ID",
+      "status": "HOLDING",
+      "control": "forbidden_claims + non-goals; no mutations recorded"
+    },
+    "INV-009": {
+      "title": "ordinary bottom-up Splay unchanged",
+      "status": "HOLDING",
+      "control": "agreement 58/58 (diagnostic scale)"
+    },
+    "INV-010": {
+      "title": "cost remains depth+1",
+      "status": "HOLDING",
+      "control": "FORM-05"
+    },
+    "INV-011": {
+      "title": "Pair-Access KEEP/DELETE unchanged",
+      "status": "HOLDING",
+      "control": "FORM-06/07"
+    },
+    "INV-012": {
+      "title": "v0.3 H3T never re-unlocked",
+      "status": "HOLDING",
+      "control": "PARENT-08"
+    },
+    "INV-013": {
+      "title": "sibling fresh failures retained",
+      "status": "HOLDING",
+      "control": "PARENT-07"
+    },
+    "INV-014": {
+      "title": "finite survival never theorem premise",
+      "status": "HOLDING",
+      "control": "doctrine; zero claims recorded"
+    },
+    "INV-015": {
+      "title": "blocker set exactly 08U/09/11/13/14/15/22/17/18/19",
+      "status": "HOLDING",
+      "control": "node-set-10 check"
+    },
+    "INV-016": {
+      "title": "newly discovered child lemmas versioned",
+      "status": "HOLDING",
+      "control": "child-lemma rule; zero child lemmas exist"
+    },
+    "INV-017": {
+      "title": "child lemma may not weaken parent theorem silently",
+      "status": "HOLDING",
+      "control": "rule frozen; nothing to violate"
+    },
+    "INV-018": {
+      "title": "exact theorem negation frozen",
+      "status": "HOLDING",
+      "control": "battlefield negation hashes"
+    },
+    "INV-019": {
+      "title": "prove/refute tracks both retained",
+      "status": "HOLDING",
+      "control": "lifecycle table + gate matrix structure"
+    },
+    "INV-020": {
+      "title": "exact refutation beats finite survival",
+      "status": "HOLDING",
+      "control": "G5 + P3 precedence (rule)"
+    },
+    "INV-021": {
+      "title": "formal toolchain frozen",
+      "status": "HOLDING",
+      "control": "FORM-01"
+    },
+    "INV-022": {
+      "title": "no sorry/admit in theorem-critical proofs",
+      "status": "HOLDING",
+      "control": "FORM-02 + clean build"
+    },
+    "INV-023": {
+      "title": "every axiom declared",
+      "status": "HOLDING",
+      "control": "FORM-03 + AXIOMS_CLOSURE"
+    },
+    "INV-024": {
+      "title": "formal statement hash-bound to math statement",
+      "status": "HOLDING",
+      "control": "FORM-09/12"
+    },
+    "INV-025": {
+      "title": "executable/formal survivor semantics audited",
+      "status": "HOLDING",
+      "control": "agreement 58/58 (diagnostic)"
+    },
+    "INV-026": {
+      "title": "human proof and formal proof both required for PROVED",
+      "status": "HOLDING",
+      "control": "lifecycle + review schema; zero PROVED transitions"
+    },
+    "INV-027": {
+      "title": "human ACCEPT required for REVIEWED",
+      "status": "HOLDING",
+      "control": "lifecycle; zero REVIEWED"
+    },
+    "INV-028": {
+      "title": "AI cannot author human ACCEPT",
+      "status": "HOLDING",
+      "control": "review schema provenance; zero verdicts"
+    },
+    "INV-029": {
+      "title": "theorem SHA bound in review",
+      "status": "HOLDING",
+      "control": "review_record schema + battlefield hashes"
+    },
+    "INV-030": {
+      "title": "objections retained",
+      "status": "HOLDING",
+      "control": "reviews dirs + erratum policy; none recorded"
+    },
+    "INV-031": {
+      "title": "REVIEWED dependencies required before consumption",
+      "status": "HOLDING",
+      "control": "gate matrix; zero consumption"
+    },
+    "INV-032": {
+      "title": "REFUTED theorem cannot be consumed",
+      "status": "HOLDING",
+      "control": "lifecycle; zero REFUTED"
+    },
+    "INV-033": {
+      "title": "errata preserve old artifacts",
+      "status": "HOLDING",
+      "control": "G3 policy; no errata yet"
+    },
+    "INV-034": {
+      "title": "PSC frozen before theorem attack",
+      "status": "HOLDING",
+      "control": "corpus frozen; zero attacks run"
+    },
+    "INV-035": {
+      "title": "PSC never called proof",
+      "status": "HOLDING",
+      "control": "corpus doctrine + G10"
+    },
+    "INV-036": {
+      "title": "attack generator knows negation, not proof internals",
+      "status": "HOLDING",
+      "control": "corpus interfaces; zero generators built"
+    },
+    "INV-037": {
+      "title": "clean-room checker shares no theorem-critical helpers",
+      "status": "HOLDING",
+      "control": "share-nothing rule; zero checkers built"
+    },
+    "INV-038": {
+      "title": "exact arithmetic controls signs",
+      "status": "HOLDING",
+      "control": "Python ints + Lean Nat/Int; required=max(w,0)"
+    },
+    "INV-039": {
+      "title": "canonical witness order frozen",
+      "status": "HOLDING",
+      "control": "corpus minimization orders; no witnesses yet"
+    }
+  }
+}
