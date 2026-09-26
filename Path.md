@@ -356,6 +356,21 @@
 
 **End of Path entries so far (append-only below this line).**
 
+## Entry R1-030 — WP-2 surgical review closure: genuine 35-cell matrix + ACCEPT recorded — FOLLOWS mandate
+
+**Scope.** Matrix repair (theorem-specific batteries), ending renormalization completion, cert/package regeneration, Injection decoupling, runner completeness, verification, human-verdict transcription, lawful transitions. No science/statement/constant/redesign/WP-3 changes.
+**Fixes.**
+1. Matrix: `test_matrix_35.py` rewritten with `BATTERIES = {08U,09,11,13,22}` — mechanism checks per node (growth/fold/clauses/residual+nospent/literals) + shared frozen-core integrity (cost/predicate/trace/support/K/required). 12 initial survivors honestly failed (orthogonal faults invisible to narrow checks); repaired by adding K/required checks to integrity core + growth probes to 11/13 (documented as lemma-needs, not renaming). 36/36 green (35 cells + control). T099/T100 standing.
+2. Endings: working files already correct; repo blobs renormalized via index refresh (98 files, `git diff --ignore-cr-at-eol` proves zero textual change); `.gitattributes -text` permanent. Fresh blobs hash to frozen values 5/5 post-commit (verified).
+3. Certs/packages: all 5 proof certs regenerated (docs postdated them); 5 formal certs; 10/10 schema-valid; 5 packages complete-structure (13 carries sweep record).
+4. Injection decoupled (Boundary import removed; local energy/fold lemmas; identical theorem + identical axiom footprint); build 15/15 clean.
+5. Runners emit complete packages (shared MUTANT_SUMMARY/BUILD_STATUS constants, no string drift); all 5 rerun green.
+**Metadata.** 13 note historicized (pending-language preserved as history); AI_USE.md rewritten (AI-assisted proofs/formalization + transcribed human ACCEPTs; verdicts originated by user). Prior count check: R1-029's "36 checks" verified correct (no correction needed).
+**Verification.** build green; verifier CLOSED (36); pytest 106/106 (10+12+9+4+26+9+36); manifest stable (57); tamper red-team standing; PARENT-10 refined form green.
+**Human verdicts (user-supplied, transcribed post-green).** ACCEPT ×5, schema-valid, hash-bound, human attestation. Transitions: 5× truth→REVIEWED + prove→REVIEWED, history preserved.
+**Terminal.** MST0-08U/09/11/13/22 = REVIEWED. WP-2 = COMPLETE. MST0-14 PROVE_READY: FALSE (needs K6-conformant REFUTE_READY; WP-3 work).
+**Commit/push/tree.** Single commit, pushed, remote HEAD verified == local, tree clean (SHAs in final response).
+
 ## Entry R1-029 — WP-2 review closure: surgical compliance + human ACCEPT ×5 → five REVIEWED — FOLLOWS mandate
 
 **Scope.** Mutation-matrix closure, ending repair, cert/package regeneration, Injection decoupling, runner completeness, verification, human-verdict recording, lawful transitions. No science/frozen-statement/constant/redesign/WP-3 changes.
