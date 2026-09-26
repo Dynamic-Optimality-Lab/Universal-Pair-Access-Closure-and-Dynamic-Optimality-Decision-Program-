@@ -1,0 +1,55 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/bridge_audit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "10-point bridge convention audit (Phase-16).",
+  "properties": {
+    "checklist": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "MATCH",
+              "MISMATCH"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "item",
+          "result"
+        ],
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array"
+    },
+    "disposition": {
+      "enum": [
+        "BRIDGE_READY_FOR_DECISION",
+        "BLOCKED",
+        "BRIDGE_BLOCKED_NO_CLAIM"
+      ],
+      "type": "string"
+    },
+    "reconstruction_ref": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "checklist",
+    "reconstruction_ref",
+    "disposition"
+  ],
+  "title": "bridge_audit",
+  "type": "object"
+}

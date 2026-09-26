@@ -1,0 +1,54 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/review_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Human review record (G5 attestation binding for REFUTED).",
+  "properties": {
+    "artifact_hashes": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "attestation": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "node": {
+      "pattern": "^MST0-(08U|09|11|13|14|15|22|17|18|19)$",
+      "type": "string"
+    },
+    "package_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reviewer_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "verdict": {
+      "enum": [
+        "ACCEPT",
+        "REJECT",
+        "BLOCKED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "node",
+    "package_hash",
+    "verdict",
+    "reviewer_id",
+    "attestation",
+    "artifact_hashes"
+  ],
+  "title": "review_record",
+  "type": "object"
+}

@@ -58,19 +58,19 @@ inductive Ctx where
   | rightOf : Nat → BST → Ctx → Ctx
 
 /-- Descend to the node holding x; return its subtree and ancestor context.
-    Returns none iff x is absent. -/
-def descend : BST → Nat → Option (BST × Ctx)
-  | .leaf, _ => none
-  | .node k l r, x =>
-    if x = k then some (.node k l r, .top)
-    else if x < k then
-      match descend l x with
-      | none => none
-      | some (sub, ctx) => some (sub, .leftOf k r ctx)
-    else
-      match descend r x with
-      | none => none
-      | some (sub, ctx) => some (sub, .rightOf k l ctx)
+    Returns none iff x is absent. The context is parent-first: the outermost
+    frame is the parent, `.top` marks the root end. (A root-first order here
+    would rotate the wrong pair in `splayWithT`; parent-first is load-bearing.) -/
+def descendAcc : BST → Nat → Ctx → Option (BST × Ctx)
+  | .leaf, _, _ => none
+  | .node k l r, x, acc =>
+    if x = k then some (.node k l r, acc)
+    else if x < k then descendAcc l x (.leftOf k r acc)
+    else descendAcc r x (.rightOf k l acc)
+
+/-- Descend with an empty initial context. -/
+def descend (T : BST) (x : Nat) : Option (BST × Ctx) :=
+  descendAcc T x .top
 
 /-- Plug a focused subtree back into its context (dead-branch use only). -/
 def plug : Ctx → BST → BST

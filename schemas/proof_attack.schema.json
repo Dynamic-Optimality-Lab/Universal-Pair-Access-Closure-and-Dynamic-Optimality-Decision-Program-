@@ -28,7 +28,19 @@
       "additionalProperties": true
     },
     "independent_checker_result": { "type": "string", "enum": ["AGREE", "DISAGREE"] },
-    "scientific_interpretation": { "type": "string" }
+    "scientific_interpretation": { "type": "string" },
+    "refutation_review": {
+      "description": "G5 human refutation validation (required for REFUTED transitions; optional otherwise).",
+      "type": "object",
+      "properties": {
+        "reviewer_id": { "type": "string", "minLength": 1 },
+        "attestation": { "type": "string", "minLength": 1 },
+        "theorem_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "witness_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      },
+      "required": ["reviewer_id", "attestation", "theorem_hash", "witness_hash"],
+      "additionalProperties": true
+    }
   },
   "required": ["schema_version", "theorem_id", "negation_predicate", "generator_version", "seed", "input_hash", "replay_certificate", "independent_checker_result"],
   "additionalProperties": true

@@ -1,17 +1,114 @@
-# dual_obligation_policy.yaml — frozen Phase 1 (v0.4 sections 7, 19.3; dual gates v0.4.3 C1-C3).
+# dual_obligation_policy.yaml — frozen Phase 1 (v0.4 s7/s19.3; dual gates v0.4.3 C1-C3;
+# lifecycle closure v0.4.7 G2/G3; checkpoint automaton v0.4.7 G4; REFUTED rule v0.4.7 G5;
+# outer states v0.4.7 G7). MACHINE-READABLE: scripts/contract_closure.py loads this file
+# and asserts transition totality, checkpoint shape, and branch legality.
 simultaneous_tracks: true
 canonical_order: REFUTE-first
-order_16_checkpoints: [VERIFY-HASHES, LOAD-contract, ASSERT-gates, ASSERT-binding, ASSERT-kernel, LOAD-theorem-plus-negation, REFUTE-first-or-parallel, PROOF, append-only-raw, formal-cert, independent-check, mutants, BUILD-HUMAN-REVIEW-PACKAGE, UPDATE-STATUS-ONLY-AFTER-HUMAN-VERDICT, APPEND-Path]
-gates:
-  REFUTE_READY: "foundation-checks + statement/negation binding + semantics + interface conformance (no upstream-REVIEWED requirement)"
-  PROVE_READY: "REFUTE_READY + prerequisite nodes REVIEWED (per-node v0.4.4 D1)"
-per_track_phase_readings: "C3: each track reads its own gate; a NOT_REACHED PROVE track never blocks its REFUTE sibling"
+
+# --- G4: explicit 16 checkpoints (03/08 split, never compressed) ---
+checkpoints:
+  - {id: "01", name: VERIFY-HASHES}
+  - {id: "02", name: LOAD-CONTRACT}
+  - {id: "03", name: ASSERT-COMPUTE-REFUTE_READY}
+  - {id: "04", name: LOAD-SEMANTICS}
+  - {id: "05", name: ASSERT-BINDING}
+  - {id: "06", name: ASSERT-KERNEL}
+  - {id: "07", name: LOAD-THEOREM-PLUS-NEGATION}
+  - {id: "08", name: ASSERT-COMPUTE-PROVE_READY}
+  - {id: "09", name: REFUTE-FIRST-OR-PARALLEL}
+  - {id: "10", name: PROOF}
+  - {id: "11", name: APPEND-ONLY-RAW}
+  - {id: "12", name: FORMAL-CERT}
+  - {id: "13", name: INDEPENDENT-CHECK}
+  - {id: "14", name: MUTANTS}
+  - {id: "15", name: BUILD-HUMAN-REVIEW-PACKAGE}
+  - {id: "16", name: UPDATE-STATUS-ONLY-AFTER-HUMAN-VERDICT-THEN-APPEND-PATH}
+
+# --- G4: branch-safe automaton (lawful branches; corrupt-contract aborts, G7) ---
+automaton:
+  - {at: "03", if: "REFUTE_READY", then: RUN-REFUTATION-09}
+  - {at: "03", if: "not-REFUTE_READY-lawful-reason", then: RECORD-REASON-CONTINUE-04}
+  - {at: "03", if: "not-REFUTE_READY-corrupt-contract", then: ABORT-G7}
+  - {at: "09", if: "exact-refutation-obtained", then: VALIDATE-REFEREE-THEN-REFUTED-SKIP-PROOF}
+  - {at: "09", if: "no-exact-refutation", then: CONTINUE-08-08}
+  - {at: "08", if: "PROVE_READY", then: PROOF-TRACK-10-TO-16}
+  - {at: "08", if: "not-PROVE_READY", then: PROVE-TRACK-NOT-REACHED-OR-NOT-READY}
+  - {at: "ANY", if: "MST0-19-plus-BRIDGE_SOURCE_UNAVAILABLE", then: ROUTE-BLOCKED-SOURCE-DISPOSITION-NEVER-FAIL-ON-FALSE-READY}
+
+# --- G2: orthogonal truth status x track readiness (all nodes general) ---
+truth_states: [UNPROVED, PROVED, REVIEWED, REFUTED, BLOCKED]
+prove_track_states: [NOT_READY, READY, RUNNING, PROVED_PENDING_REVIEW, REVIEW_REJECTED, REVIEW_BLOCKED, REVIEWED, NOT_REACHED, INVALIDATED]
+refute_track_states: [NOT_READY, READY, RUNNING, NO_WITNESS, WITNESS_PENDING_VALIDATION, REFUTED, BLOCKED, NOT_REACHED, INVALIDATED]
+initial_tracks_prefreeze: {prove: NOT_READY, refute: NOT_READY}
+
+# Full transition table: every row is scope all-nodes unless noted.
+# Fields: from_truth / event / to_truth / prove_to / refute_to.
+transitions:
+  - {from_truth: UNPROVED, event: blocker-cleared, to_truth: UNPROVED, prove_to: NOT_READY, refute_to: NOT_READY}
+  - {from_truth: BLOCKED, event: blocker-cleared, to_truth: UNPROVED, prove_to: NOT_READY, refute_to: NOT_READY}
+  - {from_truth: UNPROVED, event: gates-computed-READY, to_truth: UNPROVED, prove_to: READY, refute_to: READY}
+  - {from_truth: UNPROVED, event: proof-complete, to_truth: PROVED, prove_to: PROVED_PENDING_REVIEW, refute_to: NOT_REACHED}
+  - {from_truth: PROVED, event: human-ACCEPT, to_truth: REVIEWED, prove_to: REVIEWED, refute_to: NOT_REACHED}
+  - {from_truth: PROVED, event: human-REJECT, to_truth: UNPROVED, prove_to: REVIEW_REJECTED, refute_to: NOT_READY}
+  - {from_truth: PROVED, event: human-BLOCKED, to_truth: BLOCKED, prove_to: REVIEW_BLOCKED, refute_to: NOT_READY}
+  - {from_truth: UNPROVED, event: exact-witness-validated-G5, to_truth: REFUTED, prove_to: NOT_REACHED, refute_to: REFUTED}
+  - {from_truth: PROVED, event: exact-witness-validated-G5, to_truth: REFUTED, prove_to: NOT_REACHED, refute_to: REFUTED}
+  - {from_truth: BLOCKED, event: exact-witness-validated-G5, to_truth: REFUTED, prove_to: NOT_REACHED, refute_to: REFUTED}
+  - {from_truth: UNPROVED, event: refutation-exhausted-no-witness, to_truth: UNPROVED, prove_to: READY, refute_to: NO_WITNESS}
+  - {from_truth: UNPROVED, event: resource-failure, to_truth: UNPROVED, prove_to: NOT_READY, refute_to: NOT_READY}
+  - {from_truth: BLOCKED, event: resource-failure, to_truth: BLOCKED, prove_to: NOT_READY, refute_to: NOT_READY}
+  - {from_truth: REVIEWED, event: erratum-E1-proof-defective, to_truth: UNPROVED, prove_to: INVALIDATED, refute_to: NOT_READY}
+  - {from_truth: REVIEWED, event: erratum-E2-exactly-refuted, to_truth: REFUTED, prove_to: NOT_REACHED, refute_to: REFUTED}
+  - {from_truth: REFUTED, event: erratum-E3-refutation-invalid, to_truth: UNPROVED, prove_to: NOT_READY, refute_to: INVALIDATED}
+  - {from_truth: UNPROVED, event: erratum-E4-dependency-invalidated, to_truth: UNPROVED, prove_to: INVALIDATED, refute_to: NOT_READY}
+  - {from_truth: BLOCKED, event: erratum-E4-dependency-invalidated, to_truth: BLOCKED, prove_to: INVALIDATED, refute_to: NOT_READY}
+  - {from_truth: REVIEWED, event: erratum-E4-dependency-invalidated, to_truth: UNPROVED, prove_to: INVALIDATED, refute_to: NOT_READY}
+  - {from_truth: REFUTED, event: downstream-reactivation-after-E3, to_truth: UNPROVED, prove_to: NOT_READY, refute_to: NOT_READY}
+
+# Illegal transitions (verifier asserts each is ABSENT from transitions above).
+illegal_transitions:
+  - {from_truth: BLOCKED, event: promote-to-REVIEWED-without-gates}
+  - {from_truth: UNPROVED, event: consume-before-REVIEWED}
+  - {from_truth: PROVED, event: treat-REJECT-as-REFUTED}
+  - {from_truth: UNPROVED, event: treat-proof-failure-as-REFUTED}
+  - {from_truth: UNPROVED, event: treat-finite-survival-as-PROVED}
+  - {from_truth: REVIEWED, event: silent-overwrite-without-erratum}
+  - {from_truth: REFUTED, event: require-layers-A-plus-B-of-false-positive}
+
+# General review semantics (G2): REJECT/BLOCKED never equal REFUTED, all nodes.
+review_semantics:
+  human-REJECT-means: proof-failed-theorem-open
+  human-BLOCKED-means: verdict-unreachable-re-review-when-cleared
+  proof-failure-means: theorem-open
+  timeout-means: theorem-open
+  finite-survival-means: not-proved
+  refuted-requires: exact-frozen-negation-witness-G5
+
+# --- G5: exact REFUTED rule ---
+refuted_rule:
+  requires: [exact-witness-satisfying-frozen-negation, independent-replay-check-AGREE,
+    canonical-minimization-where-applicable, formal-or-theorem-specific-exact-certificate,
+    schema-validation, dependency-hash-validation,
+    human-refutation-validation-bound-to-reviewer-attestation-and-theorem-plus-witness-hashes,
+    lifecycle-legality]
+  forbids_requiring: [layers-A-plus-B-proving-the-false-positive]
+  review_binding: refutation_review-in-proof_attack-record
+
+# --- G7: outer execution states ---
+outer_states: [PRE_FOUNDATION, RUN_VALID, ABORTED_PRE_FOUNDATION, INVALIDATED_POST_FREEZE, SEALED]
+outer_transitions:
+  - {from: PRE_FOUNDATION, event: freeze-script-chronology-green, to: RUN_VALID}
+  - {from: PRE_FOUNDATION, event: integrity-failure, to: ABORTED_PRE_FOUNDATION}
+  - {from: RUN_VALID, event: post-freeze-integrity-failure, to: INVALIDATED_POST_FREEZE}
+  - {from: RUN_VALID, event: phase-19-seal-on-G6-outcome, to: SEALED}
+outer_law: "no transition from ABORTED_PRE_FOUNDATION or INVALIDATED_POST_FREEZE reaches Phase 18; integrity failure never emits a theorem outcome"
+
 mutation_policy:
   operators_preregistered: [constant-swap-C-k, predicate-weakening-P_all, support-shift, injection-count-off-by-one, discharge-sign-flip, cost-convention-plus-one, endpoint-term-drop]
   rule: "every operator applied >= 1 mutant per theorem + known-killed controls in tests/mutation/ (T099/T100 authoritative); surviving mutants block REVIEWED"
 review_schema:
   package: "math/reviews/*.PACKAGE.md evidence, PENDING-HUMAN until verdict"
-  verdict: "math/reviews/*.review.json human verdict only; no assistant/review/formal substitution"
-erratum_policy: "REVIEWED overturned only by versioned erratum preserving old review + exact defect; downstream invalidated by dependency hash"
+  verdict: "math/reviews/*.review.json human verdict only (ACCEPT/REJECT/BLOCKED); reviewer provenance bound for REFUTED (G5); no assistant/review/formal substitution"
+erratum_policy: "G3 four cases; history never overwritten (old status/review/hashes + erratum record + trigger + new status + invalidated downstream hashes)"
 no_consumption_before_REVIEWED: true
-lifecycle: "UNPROVED->PROVED->REVIEWED; UNPROVED->REFUTED; PROVED->REFUTED only if alleged proof broken before REVIEWED"
+lifecycle: "truth_status x prove_track x refute_track per G2 table above (this file is the machine-readable table)"

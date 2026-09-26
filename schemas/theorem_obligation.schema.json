@@ -1,0 +1,46 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/theorem_obligation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Per-node obligation binding (FORM-12 hashes).",
+  "properties": {
+    "document_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "negation_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "node": {
+      "pattern": "^MST0-(08U|09|11|13|14|15|22|17|18|19)$",
+      "type": "string"
+    },
+    "owner_phase": {
+      "maximum": 7,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "required_status": {
+      "const": "REVIEWED"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "statement_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "node",
+    "statement_sha256",
+    "negation_sha256",
+    "document_sha256",
+    "owner_phase",
+    "required_status"
+  ],
+  "title": "theorem_obligation",
+  "type": "object"
+}

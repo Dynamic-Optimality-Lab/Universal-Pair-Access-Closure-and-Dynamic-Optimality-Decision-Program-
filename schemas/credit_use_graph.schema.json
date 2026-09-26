@@ -1,0 +1,46 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/credit_use_graph.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Credit-flow graph for integrability audit.",
+  "properties": {
+    "edges": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "credits": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "frm": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "frm",
+          "to",
+          "credits"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "ledger_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "ledger_hash",
+    "edges"
+  ],
+  "title": "credit_use_graph",
+  "type": "object"
+}

@@ -1,0 +1,39 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/formal_certificate.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Layer-B formal kernel certificate (D4: no custom theorem axioms).",
+  "properties": {
+    "axioms_closure_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "custom_theorem_axioms": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "toolchain": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "module",
+    "toolchain",
+    "custom_theorem_axioms",
+    "axioms_closure_hash",
+    "manifest_hash"
+  ],
+  "title": "formal_certificate",
+  "type": "object"
+}

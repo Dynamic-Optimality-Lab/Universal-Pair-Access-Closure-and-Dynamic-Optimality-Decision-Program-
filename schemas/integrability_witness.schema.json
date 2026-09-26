@@ -1,0 +1,34 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/integrability_witness.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Partition-independence record (D2/D5).",
+  "properties": {
+    "ledger_hashes": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "partition_pair_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "split_invariance": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "partition_pair_hash",
+    "split_invariance",
+    "ledger_hashes"
+  ],
+  "title": "integrability_witness",
+  "type": "object"
+}

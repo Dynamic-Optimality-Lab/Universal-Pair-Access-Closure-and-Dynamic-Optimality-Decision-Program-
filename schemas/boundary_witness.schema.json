@@ -1,0 +1,77 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/boundary_witness.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Boundary contribution witness (open payload).",
+  "properties": {
+    "boundary_class": {
+      "enum": [
+        "nested",
+        "alternating",
+        "creation-rate",
+        "rank-gap",
+        "span",
+        "burden",
+        "burst",
+        "lifetime",
+        "reactivation",
+        "asymmetry",
+        "mirror",
+        "scale"
+      ],
+      "type": "string"
+    },
+    "independent_checker_result": {
+      "enum": [
+        "AGREE",
+        "DISAGREE"
+      ],
+      "type": "string"
+    },
+    "node": {
+      "const": "MST0-09"
+    },
+    "replay_certificate": {
+      "additionalProperties": false,
+      "properties": {
+        "checker_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "replay_input_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "result": {
+          "const": "REPRODUCED"
+        }
+      },
+      "required": [
+        "replay_input_hash",
+        "checker_id",
+        "result"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "witness_payload": {
+      "description": "Open-world witness payload.",
+      "type": [
+        "object",
+        "array"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "node",
+    "boundary_class",
+    "witness_payload",
+    "replay_certificate",
+    "independent_checker_result"
+  ],
+  "title": "boundary_witness",
+  "type": "object"
+}

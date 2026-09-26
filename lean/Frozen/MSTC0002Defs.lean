@@ -163,3 +163,22 @@ def execLoop : Engine → BST → BST → Nat → List (Mode × Nat) → Nat →
 def execHist (E : Engine) (T0 : BST) (H : List (Mode × Nat)) (n : Nat)
     : Engine × Nat × Nat :=
   execLoop E T0 T0 n H 0 0
+
+/-- Paired execution exposing intermediate trees (history-partition
+    consistency for MST0-15 D5). -/
+def execTrees (E : Engine) (A B : BST) (H : List (Mode × Nat)) (n : Nat)
+    : Engine × BST × BST × Nat × Nat :=
+  execLoop E A B n H 0 0
+
+/-- Universal KEEP-repayment sufficiency along a paired run (MST0-14):
+    every KEEP discharge pays its positive regret in full. -/
+def execSuffices : Engine → BST → BST → List (Mode × Nat) → Nat → Bool
+  | _, _, _, [], _ => true
+  | E, A, B, (.KEEP, x) :: rest, n =>
+    let (E1, A2, a) := replayAccessA E A .KEEP x n
+    let (E2, B2, _, paid) := replayAccessB E1 B x n a
+    let need := required (splayCost B x) a
+    (paid == need) && execSuffices E2 A2 B2 rest n
+  | E, A, B, (.DELETE, x) :: rest, n =>
+    let (E1, A2, _) := replayAccessA E A .DELETE x n
+    execSuffices E1 A2 B rest n

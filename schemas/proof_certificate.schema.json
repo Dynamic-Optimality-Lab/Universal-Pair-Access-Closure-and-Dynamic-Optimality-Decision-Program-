@@ -1,0 +1,38 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/proof_certificate.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Layer-A proof certificate record.",
+  "properties": {
+    "layer_a_artifact": {
+      "type": "string"
+    },
+    "layer_a_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mutant_verdict": {
+      "const": "ALL-KNOWN-KILLED"
+    },
+    "node": {
+      "pattern": "^MST0-(08U|09|11|13|14|15|22|17|18|19)$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "CERTIFIED"
+    }
+  },
+  "required": [
+    "schema_version",
+    "node",
+    "layer_a_artifact",
+    "layer_a_hash",
+    "mutant_verdict",
+    "status"
+  ],
+  "title": "proof_certificate",
+  "type": "object"
+}

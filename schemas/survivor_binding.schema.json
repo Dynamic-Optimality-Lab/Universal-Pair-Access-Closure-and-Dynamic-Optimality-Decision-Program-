@@ -1,0 +1,41 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/survivor_binding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "MSTC-0002 survivor binding (mutation forbidden).",
+  "properties": {
+    "C": {
+      "const": 2
+    },
+    "calculus_id": {
+      "const": "MSTC-0002"
+    },
+    "k": {
+      "const": 6
+    },
+    "mutation_allowed": {
+      "const": false
+    },
+    "predicate": {
+      "const": "P_all"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "calculus_id",
+    "predicate",
+    "k",
+    "C",
+    "set_hash",
+    "mutation_allowed"
+  ],
+  "title": "survivor_binding",
+  "type": "object"
+}

@@ -1,5 +1,4 @@
-# theorem_gate_matrix.yaml — frozen Phase 1 (v0.4 section 19.7).
-# required status REVIEWED for every critical node before downstream consumption.
+# theorem_gate_matrix.yaml — frozen Phase 1 (v0.4 s19.7; N/A propagation v0.4.7 G8).
 gates:
   MST0-08U:
     owner_phase: 2
@@ -12,7 +11,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-09:
     owner_phase: 2
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (via repayment/integrability consumption)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-09_proof.md"
     formal_artifact: "lean/Proofs/Boundary.lean"
@@ -21,7 +20,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-11:
     owner_phase: 2
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (required-guard chain)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-11_proof.md"
     formal_artifact: "lean/Proofs/Preservation.lean"
@@ -30,7 +29,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-13:
     owner_phase: 2
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (BLOCKED on 13/14/15)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-13_proof.md"
     formal_artifact: "lean/Proofs/Injection.lean"
@@ -39,7 +38,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-14:
     owner_phase: 3
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (BLOCKED on 13/14/15)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-14_proof.md"
     formal_artifact: "lean/Proofs/Repayment.lean"
@@ -48,7 +47,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-15:
     owner_phase: 4
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (BLOCKED on 13/14/15)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-15_proof.md"
     formal_artifact: "lean/Proofs/Integrability.lean"
@@ -57,7 +56,7 @@ gates:
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-22:
     owner_phase: 2
-    first_consumer: "MST0-17"
+    first_consumer: "MST0-17 (constants govern the composition bound)"
     required_status: "REVIEWED"
     proof_artifact: "math/proofs/MST0-22_proof.md"
     formal_artifact: "lean/Proofs/Constants.lean"
@@ -83,10 +82,9 @@ gates:
     refutation_artifact_dir: "artifacts/v04/proof_attacks/MST0-18/"
     controls: ["16-checkpoint-order", "theorem-file-immutability-guard", "REFUTE_READY-vs-PROVE_READY"]
   MST0-19:
-    owner_phase: 5
-    first_consumer: "Phase-18-decision-gate"
-    required_status: "REVIEWED"
-    proof_artifact: "math/proofs/MST0-19_proof.md"
-    formal_artifact: "python/formal_bridge/bridge_audit.py"
-    review_artifacts: ["math/reviews/MST0-19.PACKAGE.md", "math/reviews/MST0-19.review.json"]
-    controls: ["16-checkpoint-order", "premise-freeze-gates", "10-point-convention-checklist", "STOP-55..59"]
+    required_status: "NOT_APPLICABLE_BY_SOURCE_UNAVAILABLE"
+    proof_artifact: "none-required-N/A"
+    formal_artifact: "none-required-N/A"
+    review_artifacts: ["none-required-N/A"]
+    blocked_record: ["math/theorem_MST19_bridge.md", "bridge_sources/README.md"]
+    controls: ["blocked-disposition-guard", "E2-representation-check", "G8-consistency"]

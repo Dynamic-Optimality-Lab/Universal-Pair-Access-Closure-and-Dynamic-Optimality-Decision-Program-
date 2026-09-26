@@ -1,0 +1,45 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/final_result_v0.4.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Terminal decision record (G6 precedence, mutual exclusion).",
+  "properties": {
+    "mutual_exclusion": {
+      "const": true
+    },
+    "outcome": {
+      "enum": [
+        "DYNAMIC_OPTIMALITY_PROVED",
+        "DYNAMIC_OPTIMALITY_DISPROVED",
+        "POSITIVE_ROUTE_REFUTED_NO_DOC_NEGATIVE",
+        "POSITIVE_ROUTE_BLOCKED_UNRESOLVED_NO_CLAIM",
+        "BRIDGE_BLOCKED_NO_CLAIM",
+        "RESOURCE_LIMIT_NO_CLAIM"
+      ],
+      "type": "string"
+    },
+    "precedence_rule": {
+      "const": "v0.4.7-G6"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "supporting_hashes": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "outcome",
+    "precedence_rule",
+    "mutual_exclusion",
+    "supporting_hashes"
+  ],
+  "title": "final_result_v0.4",
+  "type": "object"
+}

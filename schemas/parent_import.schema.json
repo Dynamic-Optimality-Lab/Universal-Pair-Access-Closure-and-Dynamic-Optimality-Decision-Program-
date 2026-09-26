@@ -1,0 +1,48 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/parent_import.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Parent seal import record (v0.4 s2).",
+  "properties": {
+    "files": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 10,
+      "type": "array"
+    },
+    "parent_full_sha": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "seal_verdict": {
+      "const": "SEALED"
+    }
+  },
+  "required": [
+    "schema_version",
+    "parent_full_sha",
+    "seal_verdict",
+    "files"
+  ],
+  "title": "parent_import",
+  "type": "object"
+}

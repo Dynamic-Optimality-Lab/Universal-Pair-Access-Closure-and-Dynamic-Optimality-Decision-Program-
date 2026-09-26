@@ -1,0 +1,63 @@
+{
+  "$id": "https://example.invalid/splay-am-decide-v0.4/schemas/negative_family.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Closed-form negative family certificate.",
+  "properties": {
+    "closed_form": {
+      "type": "string"
+    },
+    "divergence_proof_ref": {
+      "type": "string"
+    },
+    "f_of_m": {
+      "type": "string"
+    },
+    "family_id": {
+      "type": "string"
+    },
+    "g_of_m": {
+      "type": "string"
+    },
+    "legality_proof_ref": {
+      "type": "string"
+    },
+    "replay_certificate": {
+      "additionalProperties": false,
+      "properties": {
+        "checker_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "replay_input_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "result": {
+          "const": "REPRODUCED"
+        }
+      },
+      "required": [
+        "replay_input_hash",
+        "checker_id",
+        "result"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "family_id",
+    "closed_form",
+    "legality_proof_ref",
+    "g_of_m",
+    "f_of_m",
+    "divergence_proof_ref",
+    "replay_certificate"
+  ],
+  "title": "negative_family",
+  "type": "object"
+}
