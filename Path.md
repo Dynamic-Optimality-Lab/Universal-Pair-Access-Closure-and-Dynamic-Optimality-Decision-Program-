@@ -478,3 +478,8 @@
 **Exit matrix.** PROVE track: gate satisfied BUT proof incomplete (sufficiency open) → cannot PROVED → human ACCEPT impossible → BLOCKED_INTERNAL. REFUTE track: NO_WITNESS complete. REP green; T043–T052 controlled/armed. Verdict: WP-3 = BLOCKED (internal mathematical obstruction: pooled-sufficiency coupling lemma), REFUTE track complete, zero hidden gaps.
 **STEP inventory.** k6_saturation.py:152 (K6-01),179 (K6-02); repayment_check.py:129,131,137 (CK-01),156 (CK-02); run_phase10.py:23,26,29,32,35,40,43,49,52; run_phase11.py:26,32,35,38,49 (comments preceding; verified committed bytes).
 **Commit/push/tree.** Single commit below, pushed, remote HEAD verified == local, tree clean.
+
+## Entry R1-033 — WP-3 supplemental: late FULL-space K6 record committed honestly — FOLLOWS evidence rule
+
+**What happened.** The original background FULL campaign (launched before sharding, thought dead) finished late and wrote `PSC-K6_20260926T222008Z.json` (26,670 steps, all 7 sizes, worst=0) plus its log record after the R1-032 commit.
+**Disposition.** Committed as supplemental (`5257a5c`): generator-attested, worst=0, consistent with the 4 AGREEd shards whose union is the same space. Independent-checker recompute on the FULL blob specifically is PENDING (shard-level AGREE ×4 stands as the validated evidence). No stray processes remain (stopped, count 0). No science/status changes.
