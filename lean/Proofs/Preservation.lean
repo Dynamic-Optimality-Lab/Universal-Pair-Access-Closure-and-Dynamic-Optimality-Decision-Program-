@@ -28,6 +28,48 @@ theorem pres_beq_true {c : Credit} {t : CreditType} (h : (c.ctype == t) = true) 
 theorem pres_mem_cons {a b : Credit} {l : Ledger} (h : a = b ∨ a ∈ l) : a ∈ b :: l :=
   List.mem_cons.mpr h
 
+/-- activateFirst touches at most one position (the first LATENT), in place. -/
+theorem pres_act_single : ∀ (L : Ledger),
+    match activateFirst L with
+    | none => True
+    | some L' => L'.length = L.length ∧
+        ∀ i : Nat, L'[i]? = L[i]? ∨
+          ∃ c : Credit, L[i]? = some c ∧ c.ctype = .LATENT ∧
+            L'[i]? = some { ctype := .ACTIVE, sup := c.sup }
+  | [] => by simp [activateFirst]
+  | c :: cs => by
+    by_cases hc : (c.ctype == .LATENT) = true
+    · have heq : c.ctype = .LATENT := of_decide_eq_true hc
+      simp only [activateFirst, hc]
+      refine ⟨by simp, fun i => ?_⟩
+      cases i with
+      | zero =>
+        right
+        exact ⟨c, rfl, heq, rfl⟩
+      | succ j =>
+        left
+        rfl
+    · simp only [activateFirst, hc]
+      cases h0 : activateFirst cs with
+      | none => dsimp only; trivial
+      | some rest =>
+        dsimp only
+        have ih := pres_act_single cs
+        simp only [h0] at ih
+        obtain ⟨hlen, hsingle⟩ := ih
+        refine ⟨by simp [hlen], fun i => ?_⟩
+        cases i with
+        | zero => exact Or.inl rfl
+        | succ j =>
+          simp only [List.getElem?_cons_succ] at ⊢
+          have := hsingle j
+          simp only [List.getElem?_cons_succ] at this ⊢
+          cases this with
+          | inl h => exact Or.inl h
+          | inr h =>
+            obtain ⟨c0, hc0, hc0l, hc0f⟩ := h
+            exact Or.inr ⟨c0, hc0, hc0l, hc0f⟩
+
 /-- Every site support lies in the interval with matching orientation. -/
 theorem pres_site_ok : ∀ (lo hi x nkeys : Nat) (s : BoundarySup),
     s ∈ sites lo hi x nkeys →
@@ -185,3 +227,148 @@ theorem MST0_11_flow_identity : ∀ (E : Engine) (isA : Bool) (m : Mode)
     rw [h0] at hact
     obtain ⟨_, henergy', _, _⟩ := hact
     rw [hlen, henergy', henergy]
+
+
+/-- MST0-11: six-clause rotation-case law, composed from T7-shape, site
+    bounds, single-flip positions, and drop equations. -/
+theorem MST0_11_proved : MST0_11 := by
+  intro E isA m ev x nkeys
+  dsimp only
+  obtain ⟨picks, hpmem, hpeq⟩ :=
+    pres_T7_shape E isA ev.lo ev.hi x nkeys K_frozen
+  have hsup : ∀ s ∈ picks, ev.lo ≤ s.lo ∧ s.hi ≤ ev.hi
+      ∧ ((s.leftOriented = true → s.hi ≤ x) ∧ (s.leftOriented = false → x < s.hi)) :=
+    fun s hs => pres_site_ok ev.lo ev.hi x nkeys s (hpmem s hs)
+  have hE1 : (T7inject E isA ev.lo ev.hi x nkeys K_frozen).ledger
+      = E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)) := hpeq
+  have hlen : ((E.ledger ++ picks.map
+      (fun s => ({ ctype := .LATENT, sup := s } : Credit))).length - E.ledger.length)
+      = picks.length := by
+    rw [List.length_append, List.length_map]
+    exact Nat.add_sub_cancel_left _ _
+  have henergy : energy (E.ledger ++ picks.map
+      (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+      = energy E.ledger + picks.length := by
+    rw [pres_energy_append, pres_energy_map_latent picks]
+  have hdropP : ∀ c : Credit,
+      c ∈ (E.ledger ++ picks.map
+        (fun s => ({ ctype := .LATENT, sup := s } : Credit))).drop E.ledger.length →
+      (c.ctype = .LATENT ∨ c.ctype = .ACTIVE)
+      ∧ (∃ s ∈ picks, c.sup = s) := by
+    intro c hc
+    rw [List.drop_left] at hc
+    simp only [List.mem_map] at hc
+    obtain ⟨s, hs, rfl⟩ := hc
+    exact ⟨Or.inl rfl, s, hs, rfl⟩
+  rw [pres_T5_ledger, hE1]
+  cases h0 : activateFirst
+      (E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit))) with
+  | none =>
+    dsimp only
+    rw [hE1]
+    refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+    · rw [hlen]; exact henergy
+    · intro c hc
+      exact (hdropP c hc).1
+    · intro c hc hsp
+      simp only [List.mem_append] at hc
+      cases hc with
+      | inl h => exact h
+      | inr h =>
+        simp only [List.mem_map] at h
+        obtain ⟨s, _, heq⟩ := h
+        rw [←heq] at hsp
+        simp at hsp
+    · intro c hc
+      obtain ⟨_, hex⟩ := hdropP c hc
+      obtain ⟨s, hs, hseq⟩ := hex
+      rw [hseq]
+      exact ⟨(hsup s hs).1, ((hsup s hs).2).1⟩
+    · intro c hc hac
+      exact Or.inl hc
+    · intro c hc
+      obtain ⟨_, hex⟩ := hdropP c hc
+      obtain ⟨s, hs, hseq⟩ := hex
+      rw [hseq]
+      exact ((hsup s hs).2).2
+  | some L' =>
+    dsimp only
+    have hsingle := pres_act_single
+      (E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+    simp only [h0] at hsingle
+    obtain ⟨_, hpoint⟩ := hsingle
+    have hact := pres_act_spec
+      (E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+    simp only [h0] at hact
+    obtain ⟨_, _, hspentS, hactS⟩ := hact
+    have hdropS : ∀ c : Credit, c ∈ L'.drop E.ledger.length →
+        (c.ctype = .LATENT ∨ c.ctype = .ACTIVE)
+        ∧ (∃ s ∈ picks, c.sup = s) := by
+      intro c hc
+      rw [List.mem_iff_getElem?] at hc
+      obtain ⟨j, hj⟩ := hc
+      rw [List.getElem?_drop] at hj
+      have hpt := hpoint (E.ledger.length + j)
+      cases hpt with
+      | inl heq =>
+        rw [heq] at hj
+        have hge : E.ledger.length ≤ E.ledger.length + j := Nat.le_add_right _ _
+        have happ := List.getElem?_append_right (l₁ := E.ledger)
+          (l₂ := picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+          (i := E.ledger.length + j) hge
+        rw [happ] at hj
+        have hmem : c ∈ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)) :=
+          List.mem_iff_getElem?.mpr ⟨_, hj⟩
+        simp only [List.mem_map] at hmem
+        obtain ⟨s, hs, rfl⟩ := hmem
+        exact ⟨Or.inl rfl, s, hs, rfl⟩
+      | inr hfl =>
+        obtain ⟨c0, hc0eq, hc0l, hc0f⟩ := hfl
+        have hceq : c = ({ ctype := .ACTIVE, sup := c0.sup } : Credit) :=
+          Option.some_inj.mp (hj.symm.trans hc0f)
+        have hge : E.ledger.length ≤ E.ledger.length + j := Nat.le_add_right _ _
+        have happ := List.getElem?_append_right (l₁ := E.ledger)
+          (l₂ := picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+          (i := E.ledger.length + j) hge
+        rw [happ] at hc0eq
+        have hc0mem : c0 ∈ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)) :=
+          List.mem_iff_getElem?.mpr ⟨_, hc0eq⟩
+        simp only [List.mem_map] at hc0mem
+        obtain ⟨s, hs, rfl⟩ := hc0mem
+        have hseq2 : c.sup = s := by simp [hceq]
+        exact ⟨Or.inr (by simp [hceq]), s, hs, hseq2⟩
+    refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+    · rw [hlen]
+      have henergyS : energy L' = energy (E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit))) := by
+        have h2 := pres_act_spec (E.ledger ++ picks.map (fun s => ({ ctype := .LATENT, sup := s } : Credit)))
+        simp only [h0] at h2
+        obtain ⟨_, he, _, _⟩ := h2
+        exact he
+      rw [henergyS, henergy]
+    · intro c hc
+      exact (hdropS c hc).1
+    · intro c hc hsp
+      have h2 := hspentS c hc hsp
+      simp only [List.mem_append] at h2
+      cases h2 with
+      | inl h => exact h
+      | inr h =>
+        simp only [List.mem_map] at h
+        obtain ⟨s, _, heq⟩ := h
+        rw [←heq] at hsp
+        simp at hsp
+    · intro c hc
+      obtain ⟨_, hex⟩ := hdropS c hc
+      obtain ⟨s, hs, hseq⟩ := hex
+      rw [hseq]
+      exact ⟨(hsup s hs).1, ((hsup s hs).2).1⟩
+    · intro c hc hac
+      have h2 := hactS c hc hac
+      cases h2 with
+      | inl h => exact Or.inl h
+      | inr h => exact Or.inr h
+    · intro c hc
+      obtain ⟨_, hex⟩ := hdropS c hc
+      obtain ⟨s, hs, hseq⟩ := hex
+      rw [hseq]
+      exact ((hsup s hs).2).2

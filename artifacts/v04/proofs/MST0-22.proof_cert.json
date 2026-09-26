@@ -1,0 +1,8 @@
+{
+  "layer_a_artifact": "math/proofs/MST0-22_proof.md",
+  "layer_a_hash": "f601ea2192744533a44cc34ed5e08dbd61dd60cd9c727bf85441a70443bf6d05",
+  "mutant_verdict": "ALL-KNOWN-KILLED",
+  "node": "MST0-22",
+  "schema_version": "1.0",
+  "status": "CERTIFIED"
+}

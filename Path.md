@@ -356,6 +356,20 @@
 
 **End of Path entries so far (append-only below this line).**
 
+## Entry R1-027 — WP-2 internal completion: full MST0-11 + MST0-13 machine proofs; zero internal opens — FOLLOWS mandate
+
+**Scope.** Complete all internally executable WP-2 work (11-full conjunction, 13 cost-link + top-level); rerun full closure; lawful status flips. No frozen-statement/MSTC-0002/constant/foundation-science changes. No review.json fabricated.
+**Lean theorems (all build-green, zero warnings/sorry; axioms: core-only propext/Quot.sound/Classical.choice, zero custom).**
+- `MST0_11_proved` (Preservation.lean): single-flip positions + drop equations + site bounds + T7-shape + T5 characterization; six clauses closed (C1 via flow lemma; C2/C4/C6 via drop-suffix facts; C3 via membership; C5 via membership-or-source).
+- `MST0_13_proved` (Injection.lean): descend-length + fuel-induction loop bound (existential-step pattern) + trace ≤ cost + Boundary fold reuse (acyclic import, documented) + omega close.
+- Regenerated `AXIOMS_CLOSURE.txt` (19 entries: 14 declarations + 5 proved theorems).
+**Provers' pathologies repaired (all root causes).** BEq/rfl opacity → simp/decide forms; match-first `split` → by_cases; `cases h :` substitution + dsimp discipline; projection-notation atom splits (show-canonicalization); match-remaining-after-cases handling; duplicate/forwarD-reference ordering (composition moved post-helpers); double-brace artifact; nested-conjunction projections; stale-helper duplication.
+**Certificates/statuses.** 5 `proof_certificate` JSONs schema-valid (scope-exact). Lawful flips: 11 prove RUNNING→PROVED_PENDING_REVIEW + truth→PROVED; transition records normalized (truth keys). 13 unchanged (already PROVED_PENDING_REVIEW). Layer-A touch-ups (build-green pointers). PARENT-10 refined (meaning preserved: forbids claim artifacts, allows schema-valid post-freeze certs).
+**Reruns.** lake build 15/15 zero warnings; contract_closure CLOSED (incl. `lean-proved-theorems` 5/5 + all-lean sorry scan); pytest 70/70; manifest stable (no bound members touched); tamper red-team re-verified post-change (doc-tamper FAIL→OPEN→CLOSED).
+**Deviations.** None from contract. Inter-Proofs import (Injection→Boundary, acyclic, documented) is normal proof composition, not substitution.
+**Verdict.** INTERNAL_REMAINING = NONE (11-full + 13 green; 08U/09/22 standing; certs/packages/statuses lawful). EXTERNAL_REMAINING = HUMAN_REVIEW_ONLY (5 verdicts). WP-2 = BLOCKED_EXTERNAL.
+**Commit/push/tree.** This entry + all internal work committed once, pushed, remote HEAD verified == local, tree clean (SHAs in final response).
+
 ## Entry R1-025 — WP-2 execution record (N=2): entry PASS, campaigns, proofs, mutants — FOLLOWS WorkPlan §5
 
 **Binding.** CURRENT_PHASE = WP-2 (§5, spec PHASE 05–09); PREVIOUS_PHASE = WP-1.

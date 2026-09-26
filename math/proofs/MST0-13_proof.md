@@ -33,5 +33,5 @@ descend fails → empty trace → growth 0 ≤ 6·a (endpoint covered).
 ## Scope notes
 
 ACCEPT requires human verification of the lemma + formal green; bare REJECT
-never refutes. Matching Lean development: `lean/Proofs/Injection.lean`.
+never refutes. Matching Lean development: `lean/Proofs/Injection.lean` (build-green: `MST0_13_proved` + descend/loop/cost lemmas).
 Evidence package: `math/reviews/MST0-13.PACKAGE.md` (verdict PENDING-HUMAN).

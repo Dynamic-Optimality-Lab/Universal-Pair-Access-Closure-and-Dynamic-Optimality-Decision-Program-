@@ -36,17 +36,19 @@
     },
     "MST0-11": {
       "last_transition": {
-        "new_prove": "RUNNING",
+        "new_prove": "PROVED_PENDING_REVIEW",
         "new_refute": "NO_WITNESS",
-        "previous_prove": "NOT_READY",
-        "previous_refute": "NOT_READY",
+        "new_truth": "PROVED",
+        "previous_prove": "RUNNING",
+        "previous_refute": "NO_WITNESS",
+        "previous_truth": "UNPROVED",
         "review": "none",
-        "trigger": "WP-2 PSC-P campaign + Layer-A proof; Lean formalization partial (C1 lemma green, conjunction open)",
-        "utc": "2026-09-26T15:30:00Z"
+        "trigger": "Lean MST0_11_proved full conjunction green + Layer-A complete",
+        "utc": "2026-09-26T16:40:00Z"
       },
-      "prove_track": "RUNNING",
+      "prove_track": "PROVED_PENDING_REVIEW",
       "refute_track": "NO_WITNESS",
-      "truth": "UNPROVED"
+      "truth": "PROVED"
     },
     "MST0-13": {
       "last_transition": {

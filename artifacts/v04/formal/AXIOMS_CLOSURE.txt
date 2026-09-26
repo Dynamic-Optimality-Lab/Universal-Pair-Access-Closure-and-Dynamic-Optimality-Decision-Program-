@@ -12,3 +12,8 @@
 'discharge' does not depend on any axioms
 'execHist' does not depend on any axioms
 'execSuffices' does not depend on any axioms
+'MST0_22_proved' depends on axioms: [propext]
+'MST0_08U_proved' depends on axioms: [propext]
+'MST0_09_proved' depends on axioms: [propext, Quot.sound]
+'MST0_11_proved' depends on axioms: [propext, Quot.sound]
+'MST0_13_proved' depends on axioms: [propext, Classical.choice, Quot.sound]

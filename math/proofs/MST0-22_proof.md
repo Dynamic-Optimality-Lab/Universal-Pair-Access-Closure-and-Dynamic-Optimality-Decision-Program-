@@ -24,5 +24,5 @@ scanner output is support, never the proof.
 ## Scope notes
 
 No minimality claimed; no silent relaxation (new constants need a new
-experiment ID). Matching Lean theorem: `lean/Proofs/Constants.lean` (pending
-build-green). Hidden-dependence attack surface: none found by scan.
+experiment ID). Matching Lean theorem: `lean/Proofs/Constants.lean` (build-green: `MST0_22_proved`).
+Hidden-dependence attack surface: none found by scan.

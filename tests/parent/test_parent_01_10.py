@@ -84,7 +84,17 @@ def test_PARENT_09_blocker_dag_matches():
 
 
 def test_PARENT_10_no_preprereg_science():
-    for d in ["proofs", "counterexamples", "seal", "negative"]:
+    for d in ["counterexamples", "seal", "negative"]:
         files = [p for p in (IMPL / "artifacts/v04" / d).iterdir() if p.name != ".gitkeep"]
         assert not files, (d, files)
+    # proofs/ holds post-freeze evidence ONLY as schema-valid proof certificates;
+    # theorem-result claims (FINAL_RESULT, decision, counterexamples) never pre-freeze.
+    import json
+    from jsonschema import validate
+    schema = json.loads((IMPL / "schemas/proof_certificate.schema.json").read_text(encoding="utf-8"))
+    for p in (IMPL / "artifacts/v04/proofs").iterdir():
+        if p.name == ".gitkeep":
+            continue
+        assert p.suffixes == [".proof_cert", ".json"], p.name
+        validate(json.loads(p.read_text(encoding="utf-8")), schema)
     assert not (IMPL / "artifacts/v04/seal/FINAL_RESULT.json").exists()

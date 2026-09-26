@@ -39,6 +39,6 @@ Fix arbitrary `E, isA, m, ev, x, nkeys`. Let `E1 = T7inject ...`,
 ## Scope notes
 
 Symbolic over all intervals/sizes/ranks/supports/provenance. Matching Lean
-theorem: `lean/Proofs/Preservation.lean` (pending build-green). Attack
+theorem: `lean/Proofs/Preservation.lean` (build-green: helpers + `MST0_11_flow_identity` + full `MST0_11_proved`). Attack
 evidence: PSC-P campaign (NO_WITNESS, all 24 case/mode/side combos covered,
 checker AGREE).

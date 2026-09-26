@@ -27,5 +27,5 @@ the uniform per-event bound; no class needs a separate constant.
 ## Scope notes
 
 No finite enumeration as premise (bound uniform over all inputs). Matching
-Lean theorem: `lean/Proofs/Boundary.lean` (pending build-green). Attack
+Lean theorem: `lean/Proofs/Boundary.lean` (build-green: `MST0_09_proved`). Attack
 evidence: PSC-B campaign (NO_WITNESS, 12 classes, checker AGREE).

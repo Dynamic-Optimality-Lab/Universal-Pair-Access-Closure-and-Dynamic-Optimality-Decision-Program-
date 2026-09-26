@@ -255,8 +255,20 @@ for name, body in lean_bodies.items():
                              "CreditType", "BoundarySup", "Ledger", "Block", "Engine"]}:
                 unresolved.add(f"{name}:{tok}")
 check("lean-names-resolve", not unresolved, f"{sorted(unresolved)[:8]}")
+lean_all = "\n".join((IMPL / f).read_text(encoding="utf-8")
+                     for f in ["lean/Frozen/SplayDefs.lean", "lean/Frozen/MSTC0002Defs.lean",
+                               "lean/Frozen/Statements.lean"] + sorted(
+                               str(p.relative_to(IMPL)) for p in IMPL.glob("lean/Proofs/*.lean")))
 check("lean-no-sorry", not re.search(r"^\s*(opaque|axiom|sorry|admit)\b|:= sorry",
-                                     lean, re.M))
+                                     lean_all, re.M))
+required_proved = {"MST0_22_proved": "lean/Proofs/Constants.lean",
+                   "MST0_08U_proved": "lean/Proofs/Locality.lean",
+                   "MST0_09_proved": "lean/Proofs/Boundary.lean",
+                   "MST0_11_proved": "lean/Proofs/Preservation.lean",
+                   "MST0_13_proved": "lean/Proofs/Injection.lean"}
+missing_proved = [t for t, f in required_proved.items()
+                  if f"theorem {t} " not in (IMPL / f).read_text(encoding="utf-8")]
+check("lean-proved-theorems", not missing_proved, f"{missing_proved}")
 
 # ---------- V17: schemas frozen ----------
 import jsonschema

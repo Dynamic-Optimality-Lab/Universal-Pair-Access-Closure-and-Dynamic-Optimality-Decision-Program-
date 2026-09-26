@@ -23,5 +23,5 @@ interval — one constant for all inputs (uniformity = locality).
 ## Scope notes
 
 This proves the per-event downstream-consumption bound. No finite maxima are premises (the argument is uniform, LOC-07 clean).
-Matching Lean theorem: `lean/Proofs/Locality.lean` (pending build-green).
+Matching Lean theorem: `lean/Proofs/Locality.lean` (build-green: `MST0_08U_proved`).
 Attack evidence: PSC-L campaign (NO_WITNESS, checker AGREE).
