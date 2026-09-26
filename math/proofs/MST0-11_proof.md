@@ -40,5 +40,6 @@ Fix arbitrary `E, isA, m, ev, x, nkeys`. Let `E1 = T7inject ...`,
 
 Symbolic over all intervals/sizes/ranks/supports/provenance. Matching Lean
 theorem: `lean/Proofs/Preservation.lean` (build-green: helpers + `MST0_11_flow_identity` + full `MST0_11_proved`). Attack
-evidence: PSC-P campaign (NO_WITNESS, all 24 case/mode/side combos covered,
-checker AGREE).
+evidence: PSC-P campaign (NO_WITNESS, 20 labeled event/mode/side combos covered:
+5 event labels LL/RR/LR/RL/ZIG x 2 modes x 2 sides; ROOT emits no event
+(vacuous); ZIG-left and ZIG-right share the ZIG event label; checker AGREE).

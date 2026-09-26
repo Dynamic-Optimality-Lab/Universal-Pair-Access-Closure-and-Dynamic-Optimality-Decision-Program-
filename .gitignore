@@ -14,6 +14,8 @@ artifacts/v04/seal/*
 !artifacts/v04/proof_attacks/*/
 !artifacts/v04/proof_attacks/*/*.json
 !artifacts/v04/proofs/*.proof_cert.json
+!artifacts/v04/formal/*.formal_cert.json
+!artifacts/v04/formal/*.scan.json
 __pycache__/
 *.pyc
 .venv/

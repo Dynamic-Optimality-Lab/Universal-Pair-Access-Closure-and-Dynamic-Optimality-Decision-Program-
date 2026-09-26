@@ -356,6 +356,19 @@
 
 **End of Path entries so far (append-only below this line).**
 
+## Entry R1-028 — WP-2 review-gate compliance cleanup (surgical; no science/frozen-statement/proof changes) — FOLLOWS mandate
+
+**Scope.** Formal certs, package regeneration (incl. 13 run records), 22 dataflow scan + artifact, 2 stale-prose fixes. No theorem mathematics, frozen statements, proved results, reviews, or WP-3 touched.
+**Fixes.**
+1. Formal certs: 5 `formal_certificate` JSONs (module, pinned toolchain `leanprover/lean4:v4.21.0`, `AXIOMS_CLOSURE` hash, lake-manifest hash, `custom_theorem_axioms=[]`), all Draft202012-valid.
+2. Packages: all 5 regenerated via extended assembler (Layer-A cert + Layer-B cert + theorem/build status + attack/scan evidence + mutant result + run records); 13 now carries its sweep record + JSONL. Zero `.review.json` created/touched.
+3. 22 scan: rewritten as backward-slice dataflow (required/active_pool/discharge/energy + C/K literals; transitive call resolution; forbidden-inflow empty) + Lean dependency-cone check (C/K literal bodies; helper bodies free of forbidden tokens; quantifier order) → `MST0-22.scan.json` (CLEAN) + 24-field run record (SCAN-CLEAN). Mere mention never flags (bare-`n` recorded, not a hit).
+4. Stale prose: Preservation.lean C1 docstring (open→reused-below); Layer-A 11doc 24→20 combos with ROOT-vacuous + shared-ZIG-label wording.
+**Verification.** lake build 15/15 zero warnings; contract_closure CLOSED (34 checks); pytest 70/70 (10+12+9+4+26+9); 12/12 schemas valid (incl. 10 certs); manifest recompute == recorded (57); tamper red-team standing; PARENT-10 refined form green.
+**Deviations.** None. Inter-Proofs import (Injection→Boundary) documented prior turn; `.gitignore` extended for cert/scan evidence (WorkPlan hygiene rule).
+**Verdict.** THEOREM_FORMALIZATION_OPEN = 0; REVIEW_GATE_INTERNAL_GAPS = 0; INTERNAL_REMAINING = NONE; EXTERNAL_REMAINING = HUMAN_REVIEW_ONLY. WP-2 = BLOCKED_EXTERNAL.
+**Commit/push/tree.** This entry + fixes committed once, pushed, remote HEAD verified == local, tree clean (SHAs in final response).
+
 ## Entry R1-027 — WP-2 internal completion: full MST0-11 + MST0-13 machine proofs; zero internal opens — FOLLOWS mandate
 
 **Scope.** Complete all internally executable WP-2 work (11-full conjunction, 13 cost-link + top-level); rerun full closure; lawful status flips. No frozen-statement/MSTC-0002/constant/foundation-science changes. No review.json fabricated.

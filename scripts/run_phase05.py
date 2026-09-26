@@ -95,7 +95,8 @@ def main(argv=None):
     print("[WP-2][STEP 05-02] assembling MST0-13 hostile-review package", flush=True)
     path, sha = RP.assemble_package(
         "MST0-13", "math/theorem_MST13_delete_injection.md",
-        "lean/Proofs/Injection.lean", [str(rpath)], [])
+        "lean/Proofs/Injection.lean", [str(rpath)],
+        ["artifacts/v04/logs/WP2_RUN_RECORDS.jsonl"])
     # WP-2 STEP 05-03: phase 05 closed (review verdict human-only, pending).
     print(f"[WP-2][STEP 05-03] phase 05 done: package {path} sha={sha[:16]}", flush=True)
     return 0

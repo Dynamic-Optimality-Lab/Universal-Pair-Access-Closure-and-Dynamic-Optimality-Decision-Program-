@@ -187,9 +187,8 @@ theorem pres_T5_ledger (E1 : Engine) (m : Mode) :
   cases m <;> rfl
 
 /-- C1 (flow identity) as a standalone lemma: T5 preserves energy, T7's
-    growth is exactly the injected count. The full six-clause conjunction
-    (MST0_11) remains open: C2/C4/C6 need positional drop-facts beyond the
-    membership-level T5 characterization above. -/
+    growth is exactly the injected count. Reused inside the full six-clause
+    `MST0_11_proved` below. -/
 theorem MST0_11_flow_identity : ∀ (E : Engine) (isA : Bool) (m : Mode)
     (ev : StepEv) (x nkeys : Nat),
     let E1 := T7inject E isA ev.lo ev.hi x nkeys K_frozen;

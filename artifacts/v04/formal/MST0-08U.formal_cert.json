@@ -1,0 +1,8 @@
+{
+  "axioms_closure_hash": "362918d99fbc82691fd0b5470874e7a35bc1e2943c863cf84fc03f5c016688c8",
+  "custom_theorem_axioms": [],
+  "manifest_hash": "d8d1e7092985ad660d0d71d164b584576fd0e8dfb1445263602ce473b6541281",
+  "module": "lean/Proofs/Locality.lean",
+  "schema_version": "1.0",
+  "toolchain": "leanprover/lean4:v4.21.0"
+}

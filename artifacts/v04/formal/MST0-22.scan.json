@@ -1,0 +1,128 @@
+{
+  "findings": {
+    "lean_dependencies": {
+      "C_frozen": {
+        "body": "2"
+      },
+      "K_frozen": {
+        "body": "6"
+      },
+      "MST0_22_order_ok": true,
+      "T5activate": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "T7inject": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "activePool": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "discharge": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "energy": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "required": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      },
+      "sites": {
+        "bare_n_present": false,
+        "forbidden_tokens": []
+      }
+    },
+    "python_dataflow": {
+      "active_pool": {
+        "deps": [
+          "c",
+          "ledger"
+        ],
+        "forbidden_inflow": []
+      },
+      "constants": {
+        "C_FROZEN": {
+          "expected": 2,
+          "literal": 2
+        },
+        "K_FROZEN": {
+          "expected": 6,
+          "literal": 6
+        }
+      },
+      "discharge": {
+        "deps": [
+          "need",
+          "out",
+          "paid"
+        ],
+        "forbidden_inflow": []
+      },
+      "energy": {
+        "deps": [
+          "c",
+          "ledger"
+        ],
+        "forbidden_inflow": []
+      },
+      "p_all": {
+        "deps": [],
+        "forbidden_inflow": []
+      },
+      "regret": {
+        "deps": [
+          "a",
+          "y"
+        ],
+        "forbidden_inflow": []
+      },
+      "required": {
+        "deps": [
+          "a",
+          "regret",
+          "y"
+        ],
+        "forbidden_inflow": []
+      },
+      "t5activate": {
+        "deps": [
+          "activate_first",
+          "c",
+          "cursor",
+          "engine",
+          "i",
+          "ledger",
+          "nxt"
+        ],
+        "forbidden_inflow": []
+      },
+      "t7inject": {
+        "deps": [
+          "cursor",
+          "engine",
+          "hi",
+          "j",
+          "k",
+          "ledger",
+          "lo",
+          "new",
+          "nkeys",
+          "out",
+          "picks",
+          "s",
+          "sites",
+          "ss",
+          "x"
+        ],
+        "forbidden_inflow": []
+      }
+    }
+  },
+  "hits": [],
+  "verdict": "CLEAN"
+}
