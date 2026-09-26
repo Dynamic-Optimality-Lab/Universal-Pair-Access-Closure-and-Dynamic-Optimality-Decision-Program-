@@ -55,9 +55,21 @@ expected_existing = (
     | {p.name and f"schemas/{p.name}" for p in IMPL.glob("schemas/*.schema.json")})
 missing = sorted(f for f in expected_existing if not (IMPL / f).exists())
 check("bound-set-derived", not missing, f"missing={missing}")
-check("bound-count-asserted", len(expected_existing) == 42, f"count={len(expected_existing)}")
-# 42 on-disk pre-freeze + 2 freeze snapshots = 44 available (43 unavailable); G1.
+check("bound-count-asserted", len(expected_existing) == 43, f"count={len(expected_existing)}")
+# 43 on-disk pre-freeze working members + 2 freeze snapshots = 45 available (44 unavailable); v0.4.8 H2.
 ps_run = json.loads((IMPL / "math/proof_status.json").read_text(encoding="utf-8")).get("run_state")
+pending_hits = []
+for p in sorted(IMPL.glob("prereg/*.yaml")) + sorted(IMPL.glob("prereg/*.md")):
+    for i, ln in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+        if "PENDING-Phase-1" in ln:
+            pending_hits.append(f"{p.name}:{i}")
+if ps_run == "RUN_VALID":
+    check("no-pending-phase1-fields", not pending_hits, f"{pending_hits[:4]}")
+else:
+    check("no-pending-phase1-fields-skipped-prefreeze", True)
+all_prereg = "\n".join(p.read_text(encoding="utf-8") for p in IMPL.glob("prereg/*"))
+check("legitimate-pending-preserved",
+      "PENDING-owner-phase-execution" in all_prereg and "PENDING-HUMAN" in all_prereg)
 if ps_run == "RUN_VALID":
     check("bound-snapshots-present",
           (IMPL / "artifacts/v04/freeze/PATH_AT_FOUNDATION_FREEZE.md").exists()

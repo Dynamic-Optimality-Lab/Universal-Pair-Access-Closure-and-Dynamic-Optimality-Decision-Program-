@@ -347,4 +347,11 @@
 **Line inventory (freeze_foundation.py final).** STEP comments+prints at lines: 43/45 (01 contract), 48/50 (02 parent), 53/55 (03 form), 58/60 (04 canary), 63/65 (05 attacks), 68/72 (06 exit-evidence), 76/80 (07 ratified), 83/89 (08 no-science), 92/96 (09 bridge), 100 (ABORT), 110 (10 flip), 118 (11 snapshots), 123 (12 PHASE02), 137 (13 witness), 176/201 (14 manifest), 204 (15 record), 217/229 (16 post-verify), 232 (DONE); helper step() line 28. Matches committed bytes.
 **Verdict.** WP-1 repairs COMPLETE; freeze AUTHORIZED. Outputs + SHAs in R1-023 post-ceremony.
 
+## Entry R1-023 — WP-1 freeze commit record + post-freeze verification — FOLLOWS protocol §26
+
+**Ceremony outputs (commit A `6474462`).** `prereg_sha256.txt` 56 members, manifest SHA `83c8690f877d5a5c`; `FOUNDATION_FROZEN.json`; PATH + PROOF_STATUS snapshots; PHASE02 file (second-extraction match); WITNESS_SCHEMA_VALIDATION (2 schemas, good ACCEPTED/bad REJECTED); run_state RUN_VALID. Freeze exit 0; post-verify GREEN (manifest recompute, Path prefix, snapshot equality).
+**Post-freeze verification.** `contract_closure.py` CLOSED 31/31 (snapshots-present branch); pytest 57/57 (10+12+9+26); `git diff --quiet` ratified set clean; claim dirs result-empty; re-freeze refused exit 1 (no writes); doc-tamper red team FAIL→OPEN then CLOSED after restore (verifier gap found + repaired: document/blocked-record hash checks added).
+**Commit record.** commit_sha: `6474462` (+ this entry in follow-up commit below). remote: `Dynamic-Optimality-Lab/Universal-Pair-Access-Closure-and-Dynamic-Optimality-Decision-Program-`. push + remote HEAD + tree verified after second commit.
+**WP-1 verdict.** All exit criteria PASS (7 gates; PARENT 10/10; FORM 12/12; 23 threats controlled/armed; 19 stops armed/satisfied; 39 invariants holding; manifest 56-union + prefix verified). No human verdicts required or fabricated. WP-1 = COMPLETE (recertified). WP-2 entry gate now evaluable by a future phase instruction.
+
 **End of Path entries so far (append-only below this line).**

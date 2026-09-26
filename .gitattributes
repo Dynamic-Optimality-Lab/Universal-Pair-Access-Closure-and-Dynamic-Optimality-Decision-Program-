@@ -1,0 +1,4 @@
+# Byte stability is load-bearing: freeze-manifest hashes are computed over
+# working-tree bytes, so git must never convert line endings on commit/checkout.
+# v0.4.8 H2 byte-stability rule.
+* -text

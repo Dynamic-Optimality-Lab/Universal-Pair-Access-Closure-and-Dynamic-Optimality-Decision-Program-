@@ -7,7 +7,8 @@ literature:
     identity: "SPLAY-AM-MST-v0.3 final sealed release"
     role: context
     bytes: parent-bound
-    hash: PENDING-Phase-1-parent-contract
+    hash: NOT_APPLICABLE_BY_PARENT_BOUND
+    hash_authority: "release identity = parent_full_sha 353ee922b1cee0043afa46fe8929f42f7652e5bf (HEAD verified); release bytes = nine parent/V03_* files hashed in BOOTSTRAP_MANIFEST.sha256 (ae21d7022571b347026ffde48dd915ec5f4ef57b4670e382c20d899d1c386abd); no authority issues a single SHA-256 of the release as one blob"
   L1:
     identity: "Sleator & Tarjan, Self-Adjusting Binary Search Trees, JACM 1985"
     role: context

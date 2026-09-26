@@ -12,7 +12,12 @@
     "bridge-binding"
   ],
   "manifest": "prereg/prereg_sha256.txt",
-  "manifest_members": 56,
-  "manifest_sha256": "83c8690f877d5a5cbdd960925251ec8432accd6a5bc4e8a3087e76681d5f6a38",
-  "run_state": "RUN_VALID"
+  "manifest_members": 57,
+  "manifest_sha256": "6dbb767a9f5267f07ddc048c9b8c0b24f40d4d52e8a63befd6934fd2ddc74228",
+  "run_state": "RUN_VALID",
+  "supersession": {
+    "amendment": "v0.4.8",
+    "record": "SUPERSEDED_PREREG_PLACEHOLDER_REPAIR.json",
+    "superseded_manifest_sha256": "17bacf8c27c2a640c4e0ef40aaa0181df720f7f7b569e27fbda58623d3644d8f"
+  }
 }

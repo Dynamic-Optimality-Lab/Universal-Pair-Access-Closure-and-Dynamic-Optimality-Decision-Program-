@@ -1,0 +1,39 @@
+{
+  "authority": "SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.8_AMENDMENT.md",
+  "ending_note": "repo stored LF while ceremony hashed CRLF working bytes (core.autocrlf); fixed going forward by .gitattributes -text (v0.4.8 H2 byte-stability rule)",
+  "files_changed": [
+    "prereg/parent_contract.yaml",
+    "prereg/bridge_sources.yaml",
+    "WorkPlan.md",
+    "CHANGELOG.md",
+    "scripts/contract_closure.py",
+    "SPLAY_AM_DECIDE_IMPLEMENTATION_SPEC_v0.4.8_AMENDMENT.md"
+  ],
+  "new_manifest_sha256": "6dbb767a9f5267f07ddc048c9b8c0b24f40d4d52e8a63befd6934fd2ddc74228",
+  "new_path_snapshot_sha256": "0fcc68632d7f65824388ea4b8e22b2ce6c01516e59bcd3f98671f5c8e9611d3e",
+  "old_foundation_record": {
+    "date_utc": "2026-09-26",
+    "gates": [
+      "contract-closure",
+      "parent-suite",
+      "form-suite",
+      "canary",
+      "attacks",
+      "exit-evidence",
+      "ratified-stable",
+      "no-prefreeze-science",
+      "bridge-binding"
+    ],
+    "manifest": "prereg/prereg_sha256.txt",
+    "manifest_members": 56,
+    "manifest_sha256": "83c8690f877d5a5cbdd960925251ec8432accd6a5bc4e8a3087e76681d5f6a38",
+    "run_state": "RUN_VALID"
+  },
+  "old_manifest_preserved_at": "SUPERSEDED_prereg_sha256_17bacf8c.txt",
+  "old_manifest_sha256_as_recorded_working_bytes": "83c8690f877d5a5c",
+  "old_manifest_working_bytes_preserved_at": "SUPERSEDED_prereg_sha256_83c8690f.txt",
+  "old_manifest_sha256_repo_bytes": "17bacf8c27c2a640c4e0ef40aaa0181df720f7f7b569e27fbda58623d3644d8f",
+  "old_path_snapshot_preserved_at": "SUPERSEDED_PATH_AT_FOUNDATION_FREEZE_1e9fc63e.md",
+  "old_path_snapshot_sha256": "1e9fc63e37819cc4b5791b648b4eb46fdd01dfb02ee67f038537ae25a7585daf",
+  "reason": "foundation-owned prereg placeholders completed with verified values (v0.4.8 H1)"
+}
