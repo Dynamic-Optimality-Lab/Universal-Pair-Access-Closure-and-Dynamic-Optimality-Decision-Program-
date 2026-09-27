@@ -1,0 +1,31 @@
+{
+  "exhaustive": {
+    "alpha_slack_min": null,
+    "instances": 573734,
+    "min_margin": 0,
+    "min_margin_arg": {
+      "H": [
+        [
+          "KEEP",
+          1
+        ]
+      ],
+      "T0": [
+        "node",
+        1,
+        [
+          "leaf"
+        ],
+        [
+          "leaf"
+        ]
+      ],
+      "n": 1
+    },
+    "witnesses": []
+  },
+  "sweep": "exhaustive",
+  "utc_start": "20260927T091611Z",
+  "verdict": "NO_LEGAL_WITNESS",
+  "wall_seconds": 42.4
+}

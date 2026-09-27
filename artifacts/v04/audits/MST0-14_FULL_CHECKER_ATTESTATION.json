@@ -1,0 +1,19 @@
+{
+  "correction_run": {
+    "checker_path": "python/cleanroom/repayment_check.py",
+    "checker_sha256": "6924403f5aca296e3f6babdf3c48e6529fea0abec847291ed633458e86cd3f46",
+    "returncode": 0,
+    "stdout_tail": "[WP-3][STEP CK-01] cleanroom repayment check running\n[WP-3][STEP CK-02] CHECKER-VERDICT: AGREE (recomputed=0 claimed=0)\n",
+    "utc": "2026-09-27T09:07:28Z",
+    "verdict": "AGREE"
+  },
+  "disposition": "Historical scientific result (worst residual 0) validated retroactively; original blob overclaimed provenance at commit time (Path R1-033 PENDING note stands as the contemporaneous record). No historical bytes altered.",
+  "historical_blob": "PSC-K6_20260926T222008Z.json",
+  "historical_blob_sha256": "4b50927f350301c75ebdd0479aeea0dfdaa7571ace48f9dca62f79693528be0e",
+  "historical_claim": {
+    "independent_checker_result": "AGREE",
+    "replay": "REPRODUCED"
+  },
+  "record_kind": "FULL_CHECKER_CORRECTION_ATTESTATION (append-only; historical blob untouched)",
+  "schema_version": "1.0"
+}

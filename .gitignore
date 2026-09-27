@@ -14,6 +14,14 @@ artifacts/v04/seal/*
 !artifacts/v04/logs/WP3_RUN_RECORDS.jsonl
 !artifacts/v04/proof_attacks/*/
 !artifacts/v04/proof_attacks/*/*.json
+!artifacts/v04/counterexamples/MST0-14/
+!artifacts/v04/counterexamples/MST0-14/*.json
+!artifacts/v04/counterexamples/MST0-14R/
+!artifacts/v04/counterexamples/MST0-14R/*.json
+!artifacts/v04/audits/MST0-14R_K6_REBIND.jsonl
+!artifacts/v04/audits/MST0-14_FULL_CHECKER_ATTESTATION.json
+!artifacts/v04/audits/PSC_K6_CLARIFICATION_AND_DISPOSITION.md
+!artifacts/v04/audits/DOWNSTREAM_DOMAIN_PLAN.md
 !artifacts/v04/proofs/*.proof_cert.json
 !artifacts/v04/formal/*.formal_cert.json
 !artifacts/v04/formal/*.scan.json

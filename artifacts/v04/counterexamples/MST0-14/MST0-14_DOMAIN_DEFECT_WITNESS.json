@@ -1,0 +1,122 @@
+{
+  "dual_path_agreement": {
+    "exec_suffices_api": false,
+    "manual_step_replay": false
+  },
+  "frozen_dependency_hashes": {
+    "lean/Frozen/MSTC0002Defs.lean": "c621bac14543ab375b8ae1129386bc8e28c20e2c88f47afd0a097e8389722f34",
+    "lean/Frozen/SplayDefs.lean": "f88e9c9dc16704e6a22de17a58a1e417bc2fdf3255ff4111ac6b132e5142174c",
+    "lean/Frozen/Statements.lean": "46e110ca16fe48b43fd9f796aaad6499aa462514068357fa668d8b4cff1cced0",
+    "math/theorem_MST14_keep_repayment.md": "64e89270d0b833f6e4ab1fdc16ce0590345e4890d7cf644d2f3e995575b8c1fa",
+    "prereg/theorem_battlefield.yaml": "cd6fe5f1be84b1ec9191d8959ed112ab4286ae8a8abb04654a7037bc5f6baa1b",
+    "python/inherited/mstc0002.py": "2f35c2ffe2f14075aa9ed5df7a201c094532225f3d864d48702c872f03698cb6",
+    "python/inherited/pair_access.py": "e80d0c4ab2edc1626df7f7d294456bb03be587562739141d84b89b48f1c84592",
+    "python/inherited/splay.py": "deeda850ca159ef5345f6df71ba86b07d432b8c2848070bc7417d32683a9b8c1"
+  },
+  "g5_ledger": {
+    "canonical_minimization": "SATISFIED (all strict sub-histories satisfy)",
+    "canonical_representation": "SATISFIED (sorted-JSON payload, greedy-minimal history)",
+    "dependency_hash_validation": "SATISFIED (8 frozen files bound above)",
+    "exact_witness_satisfying_frozen_negation": "SATISFIED (second disjunct: exists T0,H,n with execSuffices=false)",
+    "formal_or_exact_certificate": "PENDING_TOOLCHAIN (Lean witness file staged; no toolchain in this environment)",
+    "human_refutation_validation": "PENDING-HUMAN (no verdict inferred or generated)",
+    "independent_replay_check_AGREE": "SATISFIED (dual Python call paths agree)",
+    "lifecycle_legality": "NO_TRANSITION_TAKEN (proof_status.json untouched; MATHEMATICAL fact recorded, LIFECYCLE REFUTED not claimed)",
+    "schema_validation": "SATISFIED (repayment_witness.schema.json, see below)"
+  },
+  "independent_checker_result": "AGREE",
+  "lifecycle_refuted": false,
+  "mathematical_counterexample_confirmed": true,
+  "node": "MST0-14",
+  "old_statement_line_sha256": "1b1244a2d8d6d4789fe5bfc1bb3915ba9b748edb0becbed9e0a4ea0285a47523",
+  "record_kind": "DOMAIN_DEFECT_WITNESS (old literal proposition; NOT a legal MSTC-0002 counterexample)",
+  "replay_certificate": {
+    "checker_id": "scripts/certify_mst014_domain_defect.py dual-path replay",
+    "replay_input_hash": "57e5e2c1709c7276c4ce3cf4c14c41e46d66c1917aeb204e1ef76cf394a3ffe9",
+    "result": "REPRODUCED"
+  },
+  "schema_version": "1.0",
+  "scientific_interpretation": "The literal frozen MST0-14 sufficiency conjunct is false (domain bug: no LegalPairInstance guard). The witness is ILLEGAL (violates C2+C4), so it does not touch the intended MSTC-0002 repayment claim. Old bytes preserved; repaired successor tracked separately.",
+  "witness_payload": {
+    "DELETE": {
+      "a": 3,
+      "cursor_after": 0,
+      "ledger_after": [],
+      "sites_1_3_3_0": [],
+      "trace": [
+        [
+          "RR",
+          1,
+          3
+        ]
+      ]
+    },
+    "H": [
+      [
+        "DELETE",
+        3
+      ],
+      [
+        "KEEP",
+        3
+      ]
+    ],
+    "KEEP": {
+      "A_trace": [],
+      "B_trace": [
+        [
+          "RR",
+          1,
+          3
+        ]
+      ],
+      "a": 1,
+      "need": 1,
+      "paid": 0,
+      "pool_pre": 0,
+      "y": 3
+    },
+    "T0": [
+      "node",
+      1,
+      [
+        "leaf"
+      ],
+      [
+        "node",
+        2,
+        [
+          "leaf"
+        ],
+        [
+          "node",
+          3,
+          [
+            "leaf"
+          ],
+          [
+            "leaf"
+          ]
+        ]
+      ]
+    ],
+    "T0_keys": [
+      1,
+      2,
+      3
+    ],
+    "T0_valid": true,
+    "exec_suffices": false,
+    "legal_violations": [
+      "C2-tree-keys-in-universe",
+      "C4-history-keys-in-universe"
+    ],
+    "minimality": {
+      "drop_DELETE_satisfies": true,
+      "drop_KEEP_satisfies": true,
+      "empty_satisfies": true
+    },
+    "n": 0,
+    "validate_history_H_0": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "experiment": "SPLAY-AM-DECIDE-v0.4",
+  "note": "SUCCESSOR ledger for MST0-14R only. The frozen 10-node math/proof_status.json is untouched (verifier-pinned). No frozen-table transition is claimed below; track words are descriptive of the successor investigation. Truth flips to REFUTED only via the frozen exact-witness-validated-G5 event, which requires human refutation validation (pending).",
+  "successor": {
+    "MST0-14R": {
+      "identity": "math/theorem_MST14R_legal_repayment.md",
+      "old_node": "MST0-14 (preserved; literal sufficiency FALSE via malformed-domain witness AND via legal witness below)",
+      "truth": "UNPROVED",
+      "prove_track": "CLOSED-DESCRIPTIVE (universal proof abandoned: exact legal refutation certified; not a frozen-table state, no transition claimed)",
+      "refute_track": "WITNESS-CERTIFIED-DESCRIPTIVE (exact legal witness + triple replay + minimization + schema + hashes; formal machine-check and human validation pending; not a frozen-table transition)",
+      "mechanism_conjunct": "REUSED-PROVED (MST0_14_paid_identity, domain-independent, untouched)",
+      "sufficiency_conjunct": "MATHEMATICALLY REFUTED (legal witness below); lifecycle REFUTED pending G5 human validation",
+      "formal_status": "WITNESS-STAGED-UNCHECKED (PENDING_TOOLCHAIN)",
+      "review_status": "PENDING-HUMAN (no verdict; none generated)",
+      "legal_witness": {
+        "record": "artifacts/v04/counterexamples/MST0-14R/MST0-14R_LEGAL_WITNESS.json",
+        "record_sha256": "4b235b659c515fd00b1ff538f15c2d284e4b2768e0baaa0ed8730e655d9682c9",
+        "canonical": {"T0": "vine-right-28", "H": [["DELETE", 27], ["DELETE", 28], ["KEEP", 28], ["KEEP", 27]], "n": 28},
+        "failing_keep": {"x": 27, "a": 2, "y": 15, "need": 11, "paid": 10, "margin": -1},
+        "minimality": "greedy-drop-minimal history; family-minimal n=28 (n=1..27 satisfy)",
+        "closed_form_family": "vine-right-n, H=[DEL(n-1),DEL(n),KEEP(n),KEEP(n-1)], n>=28; residual ~ -n/4 unbounded",
+        "independent_replay": "artifacts/v04/counterexamples/MST0-14R/INDEPENDENT_REPLAY.json (self-contained reimplementation; 8488-instance agreement; AGREE-AND-FALSIFIES)"
+      },
+      "failed_invariants_retained": {
+        "I2a:P>=maxneed": "FALSE in general (first breaks: DELETE-burst states, e.g. n=8 H=[DEL8,DEL8,DEL1,DEL5]); held n<=4 only",
+        "J0:no-L-bound": "FALSE in general (e.g. n=128 4-DELETE burst, slack -21); L term load-bearing",
+        "J:with-L": "FALSE in general (systematic burst grid, e.g. n=512 slack -122); theorem itself refuted",
+        "splay_target_monotonicity": "FALSE (917438/6576822 violations; non-target depths can decrease)"
+      },
+      "validated_structural_laws": {
+        "trace_count_ceil(d/2)": "holds on all probed vines + 573734 exhaustive instances (assert-level); Lean proof staged, unchecked",
+        "exact_six_A_injection_legal": "zero exceptions across all campaigns (every legal A-event injected exactly 6 with successful activation)",
+        "ledger_recurrence": "L=5RA-ActB, P=RA+ActB-D, E=6RA-D verified assert-level on 573734 instances"
+      },
+      "obstruction_mechanism": "drain-then-diverge rate mismatch: KEEP(n) drains pool to ~2 while B stays vine-like at target (y~n/2); target pinned at A-depth 1 (a=2) by churn+strike; need~n/2 vs pool~n/4; residual -n/4 unbounded",
+      "downstream_effect": "MST0-14R cannot become REVIEWED; MST0-17 PROVE prerequisites unmeetable via this route; Phase-6 lifting candidacy seeded (closed-form family enclosed in witness record)",
+      "history": [
+        {
+          "utc": "2026-09-27T00:00:00Z",
+          "event": "successor-opened",
+          "trigger": "certified MST0-14 domain-defect witness",
+          "new": "UNPROVED/RUNNING/NO_WITNESS"
+        },
+        {
+          "utc": "2026-09-27T12:00:00Z",
+          "event": "exact-legal-refutation-certified",
+          "trigger": "canonical legal witness n=28 (triple replay, minimization, schema, hashes); formal machine-check + human validation pending",
+          "new": "UNPROVED/CLOSED-DESCRIPTIVE/WITNESS-CERTIFIED-DESCRIPTIVE (no frozen transition claimed)"
+        }
+      ]
+    }
+  }
+}

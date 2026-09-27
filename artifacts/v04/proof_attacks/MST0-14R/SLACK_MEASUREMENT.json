@@ -1,0 +1,14 @@
+{
+  "delete_slack_arg": {
+    "P": 0,
+    "dA": 3,
+    "maxneed": 0,
+    "n": 4,
+    "rA": 2,
+    "x": 4
+  },
+  "delete_slack_min_gap": -4,
+  "delete_slack_negatives": 71594,
+  "mono_checked": 6576822,
+  "mono_violations": 917438
+}

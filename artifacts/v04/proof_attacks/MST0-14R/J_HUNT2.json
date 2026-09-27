@@ -1,0 +1,5 @@
+{
+  "breaks": 0,
+  "min_slack": 2,
+  "min_arg": "(16, 'vine-right', [('DELETE', 5), ('DELETE', 9), ('DELETE', 10), ('DELETE', 15)], (2, 15, 8, 40, 1, 15, 0, 7, 13))"
+}
